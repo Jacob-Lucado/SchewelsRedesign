@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schewels Home – Concept B: Room first</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111214;--lake:#EA0028;--lake-d:#C4001F;--gold:#EA0028;--mist:#F7F7F7;--white:#fff;--muted:#5B6168;--line:#DEE2E6;
+ --head:'Montserrat',system-ui,sans-serif;--body:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--body);color:var(--ink);background:var(--white);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}
+:focus-visible{outline:3px solid #111214;outline-offset:2px}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding-block:14px}
+.logo{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}
+.searchbox{display:flex;align-items:center;gap:10px;background:var(--mist);border-radius:12px;padding:12px 16px;max-width:620px;width:100%;justify-self:center;color:var(--muted)}
+.searchbox input{border:0;background:transparent;font:inherit;flex:1;min-width:0;color:var(--ink)}
+.searchbox input:focus{outline:none}
+.searchbox:focus-within{box-shadow:0 0 0 3px var(--gold)}
+.tools{display:flex;gap:10px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:14.5px;font-weight:500;text-decoration:none;cursor:pointer;font-family:inherit}
+.chip:hover{border-color:var(--lake)}
+.chip.pay{background:var(--lake);color:#fff;border-color:var(--lake)}
+.chip.pay:hover{background:var(--lake-d)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.cats{border-top:1px solid var(--line)}
+.cats .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+.cats a{white-space:nowrap;text-decoration:none;padding:7px 14px;border-radius:8px;font-weight:500;font-size:15px}
+.cats a:hover{background:var(--mist)}
+.cats a.mpay{display:none;font-weight:700;color:var(--lake)}
+.cats a.sale{color:#EA0028;font-weight:700}
+
+.pop-wrap{position:relative;height:0}
+.pop{position:absolute;right:0;top:-6px;width:300px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 24px 50px -20px rgba(18,22,28,.45);z-index:40}
+.pop[hidden]{display:none}
+.pop b{font-family:var(--head);font-size:17px}
+.pop input{width:100%;margin-top:10px;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px}
+#popList{display:grid;margin-top:8px}
+#popList button{font:inherit;text-align:left;border:0;background:transparent;padding:9px 8px;border-radius:8px;cursor:pointer}
+#popList button:hover{background:var(--mist)}
+/* hero */
+.hero{padding-block:36px 28px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:stretch}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding-block:12px}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(36px,5vw,70px);line-height:.98;letter-spacing:-.045em}
+.hero-l p{color:var(--muted);margin-top:18px;font-size:18px;max-width:28em}
+.rooms-pick{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.rooms-pick button{font:inherit;font-weight:600;font-size:16px;padding:12px 20px;border-radius:999px;border:1.5px solid var(--ink);background:#fff;cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.rooms-pick button:hover{background:var(--mist)}
+.rooms-pick button[aria-pressed=true]{background:var(--ink);color:#fff}
+.hero-r{position:relative;border-radius:28px;overflow:hidden;min-height:520px;background:#c9d2db}
+.hero-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.hero-r img.on{opacity:1}
+.hero-card{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.96);border-radius:18px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-card h2{font-family:var(--head);font-size:26px;letter-spacing:-.02em;line-height:1.1}
+.hero-card p{color:var(--muted);font-size:15px;margin-top:2px}
+.go{background:var(--gold);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none;white-space:nowrap}
+.go:hover{filter:brightness(.95)}
+
+/* trust strip */
+.strip{background:var(--ink);color:#fff}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.strip div{padding:22px 22px;border-left:1px solid rgba(255,255,255,.14);font-size:15px;color:#C9CCD1}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{display:block;font-family:var(--head);font-size:20px;color:#fff;letter-spacing:-.01em}
+
+/* sections */
+.sec{padding-block:72px}
+.sec h2.t{font-family:var(--head);font-weight:800;font-size:clamp(30px,3.8vw,50px);letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head a{font-weight:600;color:var(--lake)}
+
+.styles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.style{position:relative;aspect-ratio:3/4;border-radius:18px;overflow:hidden;text-decoration:none;color:#fff;display:flex;align-items:flex-end}
+.style img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.style:hover img{transform:scale(1.05)}
+.style::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,20,.75),transparent 50%)}
+.style span{position:relative;z-index:1;padding:16px 18px;font-family:var(--head);font-weight:700;font-size:21px;letter-spacing:-.02em}
+
+/* estimator */
+.est{background:var(--mist)}
+.est .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.est p.lede{color:var(--muted);margin-top:14px;max-width:30em;font-size:18px}
+.calc{background:#fff;border-radius:24px;padding:32px;box-shadow:0 24px 60px -28px rgba(18,22,28,.35)}
+.calc label{display:flex;justify-content:space-between;font-weight:600;font-size:15px}
+.calc output{font-family:var(--head);font-weight:800;font-size:20px}
+.calc input[type=range]{width:100%;margin:14px 0 26px;accent-color:var(--lake);height:28px}
+.result{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:22px}
+.result strong{font-family:var(--head);font-weight:800;font-size:60px;letter-spacing:-.04em;line-height:1}
+.result span{color:var(--muted)}
+.fine{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.45}
+.calc .go{display:inline-block;margin-top:20px;background:var(--lake);color:#fff}
+
+/* more */
+.split{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.tile{position:relative;border-radius:22px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;text-decoration:none;color:#fff}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,20,.8),rgba(10,14,20,.05) 60%)}
+.tile div{position:relative;z-index:1;padding:26px}
+.tile h3{font-family:var(--head);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1.05}
+.tile p{opacity:.92;margin-top:6px;max-width:26em}
+
+.story{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;border:1px solid var(--line);border-radius:22px;padding:28px 32px}
+.story .big{font-family:var(--head);font-weight:800;font-size:56px;letter-spacing:-.05em;color:var(--lake);line-height:1}
+.story p{color:var(--muted);max-width:44em}
+
+footer{background:var(--ink);color:#B9BDC3;padding-block:48px 28px;font-size:15px}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
+footer h4{color:#fff;font-family:var(--head);margin-bottom:10px;font-size:17px}
+footer ul{list-style:none;padding:0;display:grid;gap:7px}footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+footer .f{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#8C9097}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:50;background:#fff;color:var(--ink);font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.45);border:1px solid var(--line)}
+
+@media (max-width:980px){
+  .logo{font-size:16px;white-space:nowrap;padding:7px 11px 8px}.chip{white-space:nowrap;padding:9px 11px;font-size:14px}
+  .bar{grid-template-columns:1fr auto;row-gap:10px}.searchbox{grid-column:1 / -1;order:3;max-width:none}
+  .tools .chip:not(.pay):not(.store){display:none}
+  .hero .wrap,.est .grid,.split{grid-template-columns:1fr}
+  .hero-r{min-height:380px}
+  .strip .wrap{grid-template-columns:1fr 1fr}.strip div:nth-child(3){border-left:0;padding-left:0}
+  .styles{grid-template-columns:repeat(2,1fr)}
+  .story{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .sec{padding-block:48px}
+}
+@media (max-width:560px){.chip.pay{display:none}.cats a.mpay{display:block}}
+@media (max-width:480px){.tools{gap:6px}#storeLbl{max-width:92px;overflow:hidden;text-overflow:ellipsis}.pop{right:-8px;width:min(300px,calc(100vw - 32px))}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
+    <label class="searchbox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search sofas, mattresses, washers" aria-label="Search"></label>
+    <div class="tools">
+      <button class="chip store" id="storeBtn" aria-expanded="false" aria-controls="storePop"><span class="dot"></span><span id="storeLbl">Choose your showroom</span></button>
+      <a class="chip" href="#">Sign in</a>
+      <a class="chip pay" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a>
+    </div>
+  </div>
+  <div class="wrap pop-wrap"><div class="pop" id="storePop" hidden><b>Shopping at</b><input id="popIn" placeholder="Search your town" autocomplete="off" aria-label="Search your town"><div id="popList"></div></div></div>
+  <nav class="cats" aria-label="Departments"><div class="wrap">
+    <a class="mpay" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a><a href="#">Living room</a><a href="#">Bedroom</a><a href="#">Mattresses</a><a href="#">Dining</a><a href="#">Home office</a><a href="#">Accents</a><a href="#">Outdoor</a><a href="#">Appliances</a><a href="#">Electronics</a><a href="#">Lawn &amp; garden</a><a class="sale" href="#">Sale</a><a href="#est">Financing</a>
+  </div></nav>
+</header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="hero-l">
+    <h1>What are you furnishing?</h1>
+    <p>Pick a room and we’ll show you where to start. Every showroom has a real person who can help with financing and delivery.</p>
+    <div class="rooms-pick" id="pick" role="group" aria-label="Choose a room"></div>
+  </div>
+  <div class="hero-r" id="heroR">
+    <div class="hero-card"><div><h2 id="hTitle"></h2><p id="hSub"></p></div><a class="go" id="hGo" href="#">Shop living room</a></div>
+  </div>
+</div></section>
+
+<section class="strip"><div class="wrap">
+  <div><b>Our own accounts</b>Financing and lease-to-own, handled in store</div>
+  <div><b>180-night mattress trial</b>Sleep on it at home for six months</div>
+  <div><b>52 showrooms</b>Virginia, West Virginia, North Carolina</div>
+  <div><b>Family owned since 1897</b>Five generations in Lynchburg</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><h2 class="t">Shop by style</h2><a href="#">See all styles</a></div>
+  <div class="styles">
+    <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=700&q=75" alt=""><span>Casual</span></a>
+    <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=75" alt=""><span>Contemporary</span></a>
+    <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=75" alt=""><span>Traditional</span></a>
+    <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=75" alt=""><span>Transitional</span></a>
+    <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=75" alt=""><span>Relaxed vintage</span></a>
+  </div>
+</div></section>
+
+<section class="sec est" id="est"><div class="wrap grid">
+  <div>
+    <h2 class="t">See what a monthly payment could look like.</h2>
+    <p class="lede">Slide to a price and a term. It’s a quick way to plan before you walk in. Your showroom will go over real terms with you.</p>
+  </div>
+  <div class="calc">
+    <label for="price">Total purchase <output id="priceO">$2,400</output></label>
+    <input id="price" type="range" min="300" max="8000" step="50" value="2400">
+    <label for="term">Pay over <output id="termO">24 months</output></label>
+    <input id="term" type="range" min="6" max="48" step="6" value="24">
+    <div class="result"><strong id="mo">$100</strong><span>a month, before any fees or interest</span></div>
+    <p class="fine">Demo math only: price divided by months. Actual terms depend on the account or lease you qualify for.</p>
+    <a class="go" href="https://www.schewelshome.com/financing">Apply for financing</a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="split">
+    <a class="tile" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=75" alt=""><div><h3>Try your mattress for 180 nights</h3><p>If it’s not the one, we’ll help you find one you love.</p></div></a>
+    <a class="tile" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=900&q=75" alt=""><div><h3>Appliances that keep up</h3><p>Laundry, refrigerators, ranges, dishwashers.</p></div></a>
+  </div>
+  <div class="story" style="margin-top:18px">
+    <div class="big">1897</div>
+    <p>Elias Schewel began selling chairs door to door in Lynchburg and let neighbors pay over time. The Schewel family still runs the company today.</p>
+    <a class="chip" href="#">Our story</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h4>Schewels Home</h4><p>Furniture, mattresses, appliances, and electronics in 52 showrooms across Virginia, West Virginia, and North Carolina.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#">Living room</a></li><li><a href="#">Bedroom</a></li><li><a href="#">Mattresses</a></li><li><a href="#">Appliances</a></li></ul></div>
+    <div><h4>Customer care</h4><ul><li><a href="#">Financing</a></li><li><a href="#">Delivery</a></li><li><a href="#">Warranty</a></li><li><a href="#">Contact us</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Community</a></li><li><a href="#">Find a store</a></li></ul></div>
+  </div>
+  <div class="f">Redesign concept for review. Photos are stand-ins.</div>
+</div></footer>
+<a class="concept-tag" href="index.html">All concepts</a>
+
+<script>
+const R=[
+ {k:'Living room',t:'Living room',s:'Sofas, sectionals, recliners, and the tables to go with them.',img:'1493663284031-b7e3aefcae8e'},
+ {k:'Bedroom',t:'Bedroom',s:'Beds, dressers, nightstands, and full bedroom groups.',img:'1505693416388-ac5ce068fe85'},
+ {k:'Mattresses',t:'Mattresses',s:'Every size and comfort level, with a 180-night trial.',img:'1616594039964-ae9021a400a0'},
+ {k:'Dining',t:'Dining room',s:'Tables, chairs, and sets for 2 to 8 or more.',img:'1617806118233-18e1de247200'},
+ {k:'Office',t:'Home office',s:'Desks, task chairs, and storage that keeps up.',img:'1611269154421-4e27233ac5c7'},
+ {k:'Kitchen & laundry',t:'Appliances',s:'Washers, dryers, refrigerators, ranges, and dishwashers.',img:'1556909114-f6e7ad7d3136'},
+ {k:'Entertainment',t:'Entertainment',s:'TVs, speakers, and media storage.',img:'1594026112284-02bb6f3352fe'}];
+const pick=document.getElementById('pick'),box=document.getElementById('heroR');
+R.forEach((r,i)=>{
+  const im=new Image();im.src=`https://images.unsplash.com/photo-${r.img}?w=1300&q=80`;im.alt='';if(i===0)im.className='on';box.prepend(im);r.el=im;
+  const b=document.createElement('button');b.textContent=r.k;b.setAttribute('aria-pressed',i===0);b.onclick=()=>show(i);pick.append(b);r.btn=b});
+function show(i){R.forEach((r,j)=>{r.el.classList.toggle('on',i===j);r.btn.setAttribute('aria-pressed',i===j)});
+  hTitle.textContent=R[i].t;hSub.textContent=R[i].s;hGo.textContent='Shop '+R[i].t.toLowerCase()}
+show(0);
+const price=document.getElementById('price'),term=document.getElementById('term');
+function calc(){const p=+price.value,t=+term.value;priceO.textContent='$'+p.toLocaleString('en-US');termO.textContent=t+' months';mo.textContent='$'+Math.round(p/t).toLocaleString('en-US')}
+price.oninput=term.oninput=calc;calc();
+const TOWNS=["Altavista","Amherst","Bedford","Bristol","Charlottesville","Christiansburg","Danville","Galax","Harrisonburg","Lynchburg","Roanoke","Salem","Staunton","Winchester","Beckley","Martinsburg","Princeton","Elkin","Mount Airy","Reidsville","Richmond (Central)","Richmond (West)","Suffolk"];
+const pop=document.getElementById('storePop'),pl=document.getElementById('popList'),pi=document.getElementById('popIn');
+function fill(){const t=pi.value.trim().toLowerCase();pl.innerHTML='';TOWNS.filter(x=>x.toLowerCase().includes(t)).slice(0,8).forEach(x=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>{storeLbl.textContent=x;pop.hidden=true;storeBtn.setAttribute('aria-expanded','false')};pl.append(b)})}
+storeBtn.onclick=()=>{pop.hidden=!pop.hidden;storeBtn.setAttribute('aria-expanded',!pop.hidden);if(!pop.hidden){pi.value='';fill();pi.focus()}};
+pi.oninput=fill;document.addEventListener('keydown',e=>{if(e.key==='Escape'){pop.hidden=true}});
+</script>
+</body>
+</html>
