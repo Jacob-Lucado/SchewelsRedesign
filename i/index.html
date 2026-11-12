@@ -19,14 +19,14 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 .desk{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--wall,radial-gradient(900px 520px at 80% 0,rgba(234,0,40,.35),transparent 65%),radial-gradient(700px 480px at 0 100%,rgba(234,0,40,.2),transparent 65%),var(--bg));isolation:isolate}
 #waves{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .desk::after{content:"Schewels OS  ·  inspired by LucadoOS™";position:absolute;right:26px;bottom:66px;font-size:26px;font-weight:200;letter-spacing:.04em;color:rgba(255,255,255,.12);pointer-events:none;z-index:0}
-/* icons */
+
 .icons{position:absolute;left:14px;top:14px;bottom:64px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,92px);grid-auto-columns:96px;gap:4px;align-content:start;z-index:1}
 .ic{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 4px;border:1px solid transparent;border-radius:10px;background:none;color:#fff;font-size:12px;font-weight:500;cursor:pointer;text-align:center;position:relative}
 .ic:hover{background:rgba(255,255,255,.1)}.ic.sel,.ic:focus-visible{background:var(--hover);border-color:var(--red)}
 .art{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--red-2),var(--red));box-shadow:0 6px 16px rgba(0,0,0,.4);color:#fff}
 .ic .nm{text-shadow:0 1px 3px rgba(0,0,0,.9);line-height:1.15}
 .bdg{position:absolute;top:2px;right:14px;background:#fff;color:var(--red);border-radius:99px;min-width:18px;height:18px;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px}.bdg:empty{display:none}
-/* windows */
+
 .layer{position:absolute;left:0;right:0;top:0;bottom:48px;z-index:2;pointer-events:none;overflow:hidden}
 .win{position:absolute;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 34px rgba(0,0,0,.5);overflow:hidden;pointer-events:auto;min-width:300px;min-height:220px;animation:pop .14s ease-out}
 @keyframes pop{from{opacity:0;transform:scale(.97)}}
@@ -38,7 +38,7 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 .wbody{flex:1;min-height:0;overflow:auto;padding:20px 22px 26px}.wbody.flush{padding:16px}
 .grip{position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;touch-action:none}.win.max .grip{display:none}
 .snapv{position:absolute;z-index:50;pointer-events:none;background:rgba(234,0,40,.18);border:2px solid rgba(255,77,106,.8);border-radius:8px;transition:all .08s}
-/* content */
+
 .wbody h3{font-size:22px;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:6px}.wbody h4{color:#fff;margin:18px 0 6px}
 .wbody p{color:var(--muted);margin-bottom:14px;max-width:46em}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px;margin-top:12px}
@@ -50,7 +50,7 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 .pay select,.fi{background:var(--panel);border:1px solid var(--line);color:#fff;font:600 14px Montserrat;padding:10px 12px;border-radius:9px;width:100%}
 .stl{display:grid;gap:6px;margin-top:12px}.st{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 14px;cursor:pointer;text-align:left;font:500 14px Montserrat;color:#fff;width:100%}.st:hover{border-color:var(--red)}.st em{font-style:normal;color:var(--muted);font-size:12px}
 .vals{display:grid;gap:10px;margin-top:12px}.vals div{border-left:3px solid var(--red);padding-left:12px}.vals b{color:#fff;display:block}.vals span{color:var(--muted)}
-/* taskbar */
+
 .tbar{position:absolute;left:0;right:0;bottom:0;height:48px;z-index:40;display:flex;align-items:center;gap:8px;padding:0 10px;background:rgba(14,15,17,.88);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .sbtn{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:#fff;font-weight:700;font-size:13px;cursor:pointer}
 .sbtn:hover,.sbtn[aria-expanded=true]{border-color:var(--red)}
@@ -64,7 +64,7 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 .tray button{background:none;border:0;color:var(--text);cursor:pointer;border-radius:8px;padding:5px 9px;font:600 12px Montserrat;position:relative}.tray button:hover{background:var(--soft2)}
 .tray .cn{background:var(--red);color:#fff;border-radius:99px;font-size:10px;padding:0 6px;margin-left:4px}.tray .cn:empty{display:none}
 .clk{text-align:right;line-height:1.25}
-/* start */
+
 .start{position:absolute;left:10px;bottom:56px;z-index:60;width:640px;max-width:calc(100vw - 20px);height:min(540px,calc(100% - 70px));display:grid;grid-template-columns:48px 280px minmax(0,1fr);background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.6);overflow:hidden}
 .start[hidden]{display:none}
 .rail{display:flex;flex-direction:column;justify-content:flex-end;background:var(--soft)}.rail button{height:48px;border:0;background:none;color:#fff;font-size:18px;cursor:pointer}.rail button:hover{background:var(--hover)}
@@ -79,7 +79,6 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;background:var(--bg);border-top:1px solid var(--line)}
 .concept-tag.show{display:block}
 
-/* phone launcher: the same OS, shaped like a phone home screen */
 .phone{display:none;position:absolute;inset:0;z-index:3;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 10px) 18px 14px;color:#fff}
 .ph-stat{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;padding:0 6px}
 .ph-stat button{background:rgba(255,255,255,.14);border:0;border-radius:99px;padding:5px 11px;font:600 12px Montserrat;color:#fff;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -140,7 +139,7 @@ const WALLS=[['default','Default',''],['ember','Ember','linear-gradient(135deg,#
 let prefs={wall:'default',waves:true};try{Object.assign(prefs,JSON.parse(store.get('schewels-os-v1')||'{}'))}catch(e){}
 function applyPrefs(){const w=WALLS.find(x=>x[0]===prefs.wall);w&&w[2]?desk.style.setProperty('--wall',w[2]):desk.style.removeProperty('--wall');$('waves').style.display=prefs.waves?'block':'none'}
 function savePrefs(p){Object.assign(prefs,p);store.set('schewels-os-v1',JSON.stringify(prefs));applyPrefs()}
-/* apps */
+
 const APPS={
  welcome:{t:'Welcome',i:'✦',w:540,h:420,x:110,y:60,html:()=>`<h3>Welcome to Schewels OS</h3><p>A furniture store you can drag around. Open apps from the desktop, the Start menu or the search bar. Snap windows to the edges, and everything saves as you go.</p>
   <div class="tiles"><button class="tile" data-open="shop"><span>&#9636;</span>Shop all</button><button class="tile" data-open="rooms"><span>&#8962;</span>By room</button><button class="tile" data-open="pay"><span>$</span>Payments</button><button class="tile" data-open="rooms2"><span>&#9679;</span>Showrooms</button><button class="tile" data-open="about"><span>i</span>About us</button><button class="tile" data-open="look"><span>&#9881;</span>Personalize</button></div>`},
@@ -156,7 +155,7 @@ const APPS={
 };
 const ICONS=['welcome','shop','rooms','rooms2','pay','about'];
 $('icons').innerHTML=ICONS.map(k=>`<button class="ic" data-open="${k}"><span class="art">${APPS[k].i}</span><span class="nm">${APPS[k].t}</span></button>`).join('')+`<button class="ic" data-sx="cart"><span class="art">&#128722;</span><span class="nm">My cart</span><i class="bdg" data-sx-count="cart"></i></button>`;
-/* windows */
+
 const wins=new Map();let z=10,pv=null;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function place(w){const n=w.node,W=layer.clientWidth,H=layer.clientHeight;if(w.max){n.classList.add('max');return}n.classList.remove('max');
@@ -189,7 +188,7 @@ function openApp(id){const a=APPS[id];if(!a)return;closeStart();let w=wins.get(i
 document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){openApp(o.dataset.open);return}
  const r=e.target.closest('[data-room]');if(r){openApp('shop');setTimeout(()=>SX.filter(r.dataset.room),40);return}
  if(!e.target.closest('#start,#sbtn,#sin'))closeStart()});
-/* start menu */
+
 const start=$('start'),sbtn=$('sbtn');
 function closeStart(){start.hidden=true;sbtn.setAttribute('aria-expanded','false')}
 function openStart(){start.hidden=false;sbtn.setAttribute('aria-expanded','true');paint('')}
@@ -207,15 +206,14 @@ $('slist').addEventListener('click',e=>{const b=e.target.closest('[data-pid]');i
 const sin=$('sin');sin.addEventListener('focus',()=>{start.hidden=false;sbtn.setAttribute('aria-expanded','true');paint(sin.value)});sin.addEventListener('input',()=>paint(sin.value));
 sin.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=$('slist').querySelector('.si');b&&b.click();sin.blur()}if(e.key==='Escape'){closeStart();sin.blur()}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeStart()});
-/* clock */
+
 function tick(){const d=new Date();$('clk').innerHTML=d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+'<br>'+d.toLocaleDateString('en-US')}tick();setInterval(tick,30000);
-/* neon waves, in Schewels red */
+
 (function(){const c=$('waves'),x=c.getContext('2d');let W,H,t=0;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
  function rs(){W=c.width=desk.clientWidth;H=c.height=desk.clientHeight}rs();addEventListener('resize',rs);
  function draw(){x.clearRect(0,0,W,H);for(let i=0;i<5;i++){x.beginPath();for(let px=0;px<=W;px+=8){const y=H*.62+Math.sin(px/190+t+i*.9)*34+Math.sin(px/90-t*1.3+i)*16+i*22;px?x.lineTo(px,y):x.moveTo(px,y)}
   x.strokeStyle=`rgba(234,0,40,${.5-i*.08})`;x.lineWidth=2;x.shadowColor='#EA0028';x.shadowBlur=14;x.stroke()}t+=.008;if(!rm)requestAnimationFrame(draw)}draw()})();
 
-/* phone launcher */
 const PH=[['shop','Shop'],['rooms','Rooms'],['rooms2','Showrooms'],['pay','Payments'],['about','About'],['look','Style']];
 const phApp=(k,l,i,x)=>`<button class="ph-app" ${x||`data-open="${k}"`}><span class="art">${i}</span>${l}</button>`;
 $('phG').innerHTML=PH.map(p=>phApp(p[0],p[1],APPS[p[0]].i)).join('')+phApp('', 'Cart','&#128722;','data-sx="cart"')+phApp('','Saved','&#9825;','data-sx="wish"');

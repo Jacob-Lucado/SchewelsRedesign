@@ -1,5 +1,4 @@
-/* Shared demo engine: cart + saved drawer, quick view, product grid, search suggest, showroom picker.
-   Each concept themes it through CSS variables (--sx-*) and marks hooks with data-sx attributes. */
+
 (function () {
   'use strict';
   (function () {
@@ -17,7 +16,6 @@
   var CATS = { living: 'Living room', bedroom: 'Bedroom', dining: 'Dining room', office: 'Home office', entertainment: 'Entertainment', mattress: 'Mattresses', appliances: 'Appliances' };
   var STYLES = ['Casual', 'Contemporary', 'Traditional', 'Transitional', 'Relaxed vintage'];
 
-  // Sample catalog. Names, prices, and photos are stand-ins for the demo.
   var P = [
     { id: 's1', name: 'Velvet three-seat sofa', cat: 'living', style: 'Contemporary', price: 1099, img: '1555041469-a586c61ea9bc', blurb: 'Deep seats, tapered wood legs, and soft velvet in forest green.' },
     { id: 's2', name: 'Cognac leather sofa', cat: 'living', style: 'Transitional', price: 1799, img: '1549187774-b4e9b0445b41', blurb: 'Slim arms and a low profile. The leather softens the more you sit on it.' },
@@ -45,7 +43,6 @@
     return { n: r[0], st: r[1], id: r[2], full: STATE[r[1]][1], url: 'https://www.schewelshome.com/stores/' + (r[3] || r[0].toLowerCase().replace(/ /g, '-')) + '-' + STATE[r[1]][0] + '/' + r[2] };
   });
 
-  // Cleaned-up navigation: the real categories, grouped instead of repeated.
   var NAV = [
     { t: 'Living room', l: ['Sofas', 'Sectionals', 'Recliners', 'Accent chairs', 'Coffee tables', 'TV stands'] },
     { t: 'Bedroom', l: ['Beds', 'Bedroom groups', 'Dressers', 'Nightstands', 'Kids & teens'] },
@@ -65,7 +62,6 @@
   var cfg = { tiers: false, term: null };
   var listeners = [];
 
-  /* ---------- styles ---------- */
   var css = '\
 :where(:root){--sx-accent:#EA0028;--sx-accent-d:#C4001F;--sx-accent-ink:#fff;--sx-ink:#16171A;--sx-bg:#fff;--sx-soft:#F7F7F7;--sx-line:#DEE2E6;--sx-muted:#5B6168;--sx-radius:12px;--sx-btn-radius:10px;--sx-font:"Montserrat",system-ui,sans-serif;--sx-head:var(--sx-font);--sx-head-weight:700;--sx-ratio:4/3}\
 .sx-btn,.sx-ghost,.sx-chip{font:600 14px/1 var(--sx-font);cursor:pointer;border-radius:var(--sx-btn-radius);transition:background .15s,color .15s,border-color .15s}\
@@ -147,7 +143,6 @@
 @media (prefers-reduced-motion:reduce){.sx-drawer,.sx-modal,.sx-scrim,.sx-toast,.sx-img img{transition:none!important}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
-  /* ---------- helpers ---------- */
   var HEART = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg>';
   var mk = function (cls, html, tag) { var e = document.createElement(tag || 'div'); e.className = cls; if (html != null) e.innerHTML = html; return e; };
   var monthly = function (total) { return total / (S.term || 24); };
@@ -161,7 +156,6 @@
   var toastEl, toastT;
   function toast(msg) { if (!toastEl) { toastEl = mk('sx-toast'); toastEl.setAttribute('role', 'status'); document.body.appendChild(toastEl); } toastEl.textContent = msg; toastEl.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('on'); }, 2400); }
 
-  /* ---------- state changes ---------- */
   function changed() {
     save();
     document.querySelectorAll('[data-sx-count="cart"]').forEach(function (e) { var n = cartCount(); e.textContent = n; e.hidden = !n; });
@@ -177,7 +171,6 @@
   function wish(id) { var i = S.wish.indexOf(id); if (i > -1) { S.wish.splice(i, 1); toast('Removed from saved'); } else { S.wish.push(id); toast('Saved ' + byId[id].name); } changed(); }
   function setStore(n, stt) { var s = STORES.filter(function (x) { return x.n === n && (!stt || x.st === stt); })[0]; if (s) { S.store = s; changed(); toast('Your showroom is ' + s.n.replace(/ \(.*\)/, '') + ', ' + s.st); } }
 
-  /* ---------- scrim, drawer, modals ---------- */
   var scrim, drawer, modal, storeModal, tab = 'cart', lastFocus;
   function closeAll() { [drawer, modal, storeModal].forEach(function (e) { e && e.classList.remove('on'); }); scrim && scrim.classList.remove('on'); if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} } }
   function openLayer(el) { lastFocus = document.activeElement; scrim.classList.add('on'); el.classList.add('on'); var f = el.querySelector('input,button,select'); if (f) setTimeout(function () { f.focus(); }, 60); }
@@ -256,7 +249,6 @@
     openLayer(modal);
   }
 
-  /* ---------- showroom picker ---------- */
   var sState = 'ALL', sQuery = '';
   function renderStoreModal() {
     storeModal.innerHTML = '<button class="sx-x" aria-label="Close">&times;</button><div class="sx-sm"><h3>Choose your showroom</h3><p>We will keep it for the rest of your visit.</p><label class="sx-sr" style="position:absolute;left:-9999px" for="sx-sq">Town</label><input id="sx-sq" placeholder="Type your town" autocomplete="off"><div class="sx-chips">' + ['ALL', 'VA', 'WV', 'NC'].map(function (k) { return '<button class="sx-chip" data-s="' + k + '" aria-pressed="' + (sState === k) + '">' + (k === 'ALL' ? 'All 52' : STATE[k][1]) + '</button>'; }).join('') + '</div><div class="sx-slist" id="sx-sl"></div></div>';
@@ -271,7 +263,6 @@
   }
   function openStore() { renderStoreModal(); openLayer(storeModal); }
 
-  /* ---------- product grid ---------- */
   var grids = [];
   function mountGrid(el) {
     var o = { cat: el.getAttribute('data-cat') || 'all', limit: +(el.getAttribute('data-limit') || 0), filters: el.getAttribute('data-filters') !== 'off', sort: 'featured', cats: (el.getAttribute('data-cats') || '').split(',').filter(Boolean), style: el.getAttribute('data-style') || '', ids: (el.getAttribute('data-ids') || '').split(',').filter(Boolean) };
@@ -309,7 +300,6 @@
     if (scroll !== false && first) first.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }
 
-  /* ---------- search suggest ---------- */
   var sg, sgInput, sgItems = [], sgIdx = -1;
   function hideSuggest() { if (sg) sg.classList.remove('on'); sgIdx = -1; }
   function showSuggest(inp) {
@@ -348,7 +338,6 @@
   }
   document.addEventListener('mousedown', function (e) { var b = e.target.closest && e.target.closest('.sx-suggest button[data-i]'); if (b) pickSuggest(+b.getAttribute('data-i')); });
 
-  /* ---------- wire up ---------- */
   function init() {
     build();
     document.addEventListener('click', function (e) {
@@ -367,8 +356,6 @@
     changed();
   }
 
-
-  /* About Schewels: injected into every concept so the story and values are always on the page */
   (function () {
     var css = '.sx-about{padding:96px 24px;font-family:var(--sx-font,Montserrat,sans-serif);background:var(--ab-bg);color:var(--ab-ink)}' +
       '.sx-about .ab-in{max-width:1080px;margin:0 auto}' +

@@ -23,13 +23,11 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
 .wrap{width:min(1180px,100% - 48px);margin-inline:auto}
 
-/* utility bar */
 .util{background:var(--green);color:#EDEEF0;font-size:14px}
 .util .wrap{display:flex;justify-content:space-between;gap:16px;padding-block:8px;flex-wrap:wrap}
 .util a{text-decoration:none;opacity:.9}.util a:hover{opacity:1;text-decoration:underline}
 .util nav{display:flex;gap:22px}
 
-/* header */
 header.main{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 header.main .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:16px}
 .logo{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}
@@ -41,7 +39,6 @@ header.main .wrap{display:flex;align-items:center;justify-content:space-between;
 .search svg{flex:none}
 .menu-btn{display:none}
 
-/* hero */
 .hero{padding-block:72px 40px}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6vw,84px);line-height:1.02;letter-spacing:-.02em;color:var(--green);text-wrap:balance}
@@ -55,7 +52,6 @@ h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6vw,84px);lin
 .hero figcaption{position:absolute;left:-28px;bottom:36px;background:var(--white);padding:16px 20px;max-width:250px;font-size:14.5px;line-height:1.45;box-shadow:0 18px 40px -18px rgba(14,15,17,.4);border-left:4px solid var(--brass)}
 .hero figcaption b{display:block;font-family:var(--serif);font-size:16px;margin-bottom:3px;color:var(--green)}
 
-/* timeline */
 .timeline{padding-block:56px 24px}
 .timeline h2,.sec h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-.015em;color:var(--green);text-wrap:balance}
 .tl-intro{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:36px}
@@ -68,7 +64,6 @@ ol.tl li:last-child::before{background:var(--brass)}
 ol.tl .yr{font-family:var(--display);font-size:34px;color:var(--green);line-height:1}
 ol.tl p{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.5}
 
-/* rooms */
 .sec{padding-block:72px}
 .rooms-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
 .rooms{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
@@ -83,7 +78,6 @@ ol.tl p{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.5}
 .more-rooms a{border:1px solid var(--line);background:var(--white);border-radius:999px;padding:8px 18px;font-size:15px;text-decoration:none}
 .more-rooms a:hover{border-color:var(--green)}
 
-/* pay */
 .pay{background:var(--green);color:#EDEEF0}
 .pay h2{color:#fff}
 .pay .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
@@ -96,7 +90,6 @@ ol.tl p{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.5}
 .way a{color:var(--red-soft);font-weight:600;text-decoration:none;align-self:center;justify-self:end;grid-column:2;grid-row:1}
 .way a:hover{text-decoration:underline}
 
-/* custom */
 .custom .grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--white);border:1px solid var(--line)}
 .custom img{width:100%;height:100%;object-fit:cover;min-height:360px}
 .custom .txt{padding:56px}
@@ -106,7 +99,6 @@ ol.tl p{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.5}
 .swatches button[aria-pressed=true]{box-shadow:0 0 0 3px var(--brass)}
 .swatch-label{margin-top:12px;font-size:15px;font-weight:500}
 
-/* brands + stores */
 .brands{display:flex;flex-wrap:wrap;gap:14px 44px;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--muted);padding-block:44px;border-block:1px solid var(--line);font-style:italic}
 .stores .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .stores p{color:var(--muted);margin-top:16px;max-width:30em}
@@ -291,7 +283,7 @@ document.querySelectorAll('.swatches button').forEach(b=>b.addEventListener('cli
   const extra={Linen:' saturate(.15) brightness(1.35)',Charcoal:' saturate(.1) brightness(.55)'}[b.dataset.n]||'';
   document.getElementById('swImg').style.filter=`hue-rotate(${hue})${extra}`;
 }));
-/* mega menu */
+
 const MAP={'Living room':'living','Bedroom':'bedroom','Dining room':'dining','Mattresses':'mattress','Home office':'office','Appliances':'appliances','Electronics':'entertainment'};
 const mega=document.getElementById('mega'),mbtn=document.getElementById('megaBtn');
 mega.firstElementChild.innerHTML=SX.nav.map(g=>`<div><h4>${g.t}</h4><ul>${g.l.map(x=>`<li><a href="#shop" data-c="${MAP[g.t]||''}">${x}</a></li>`).join('')}</ul></div>`).join('');

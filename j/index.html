@@ -133,7 +133,6 @@ footer{padding:30px 20px;color:var(--mut);font-size:13px;text-align:center;borde
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
-// footprints in inches [width, depth]
 var FP={s1:[84,38],s2:[80,36],s3:[66,34],s4:[84,38],s5:[30,32],s6:[18,20],s7:[66,86],s8:[96,86],s9:[66,86],s10:[42,22],s11:[48,24],s12:[96,60],s13:[96,60],s14:[32,14],s15:[27,32],s16:[72,16],s17:[60,80]};
 var SIZES=[{n:'Small',w:10,h:12,r:'Bedroom'},{n:'Medium',w:12,h:14,r:'Living room'},{n:'Large',w:14,h:18,r:'Living room'},{n:'Open plan',w:16,h:22,r:'Great room'}];
 var KEY='schewels-plan-j',st={size:1,items:[]},sel=null,uid=0,PX=30;
@@ -151,7 +150,6 @@ function layout(){
   $('rname').textContent=s.r;$('rdim').textContent=s.w+' × '+s.h+' ft';
   document.querySelectorAll('#sizes button').forEach(function(b,i){b.setAttribute('aria-pressed',i===st.size)});
   var h='<div class="dim t">'+s.w+' ft</div><div class="dim l">'+s.h+' ft</div>';
-  // fixed door (red) on bottom wall, window on top wall
   h+='<div class="door" style="left:'+PX*1.5+'px;bottom:-3px;width:'+PX*3+'px;height:6px"></div>';
   h+='<div class="win" style="left:'+PX*(s.w/2-2)+'px;top:-3px;width:'+PX*4+'px;height:6px"></div>';
   st.items.forEach(function(it){var d=dims(it),p=SX.byId[it.id];
@@ -172,7 +170,6 @@ function stats(){var s=size(),tot=0,area=0,nb=0;
 }
 function place(id){
   var s=size(),f=FP[id],tries=0,it={u:++uid+Date.now()%1e6,id:id,x:0,y:0,r:0};
-  // find the first open spot on a 6 inch grid
   outer:for(var y=0;y<=s.h*12-f[1];y+=6)for(var x=0;x<=s.w*12-f[0];x+=6){it.x=x;it.y=y;if(!bad(it)){break outer}tries++}
   if(bad(it)){it.x=Math.max(0,(s.w*12-f[0])/2);it.y=Math.max(0,(s.h*12-f[1])/2)}
   st.items.push(it);sel=it.u;layout();
@@ -187,7 +184,6 @@ $('clr').onclick=function(){st.items=[];sel=null;layout()};
 $('all').onclick=function(){SX.addMany(st.items.map(function(i){return i.id}),'Added your '+st.items.length+'-piece layout to the cart')};
 document.addEventListener('keydown',function(e){if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='r'||e.key==='R')rot();if(e.key==='Delete'||e.key==='Backspace'){if(sel!=null){e.preventDefault();rem()}}
   if(sel!=null&&/^Arrow/.test(e.key)){var it=cur();if(!it)return;e.preventDefault();var m=6;if(e.key==='ArrowLeft')it.x-=m;if(e.key==='ArrowRight')it.x+=m;if(e.key==='ArrowUp')it.y-=m;if(e.key==='ArrowDown')it.y+=m;layout()}});
-// drag
 var drag=null;
 room.addEventListener('pointerdown',function(e){var el=e.target.closest('.it');if(!el){sel=null;layout();return}
   var u=+el.dataset.u;sel=u;var it=cur();drag={it:it,sx:e.clientX,sy:e.clientY,ox:it.x,oy:it.y};try{room.setPointerCapture(e.pointerId)}catch(x){}

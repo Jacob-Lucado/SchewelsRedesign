@@ -1,34 +1,11 @@
 # Schewels Home redesign concepts
 
-Thirteen working redesigns of schewelshome.com, plus a gallery with a live viewer and the audit behind them. Unofficial design exploration, not affiliated with Schewels Home.
+I work at Schewels Home, and I kept wondering whether our website could look better and bring in more traffic and sales. So I took a close look at schewelshome.com and built a set of redesign ideas to try out, each keeping the brand red, black and white.
 
-| Path | Concept | The bet |
-|---|---|---|
-| `/` | Gallery | Live viewer (desktop, tablet, phone), comparison, about the maker |
-| `/a/` | Since 1897 | Lead with the family story; mega menu, financing FAQ |
-| `/b/` | Room first | Room picker that filters stock; payment estimator |
-| `/c/` | Find your Schewels | Showroom finder is the hero |
-| `/d/` | Doorbusters | One sale voice; savings calculator and tier savings |
-| `/e/` | Match my room | Four-question quiz with top-three matches |
-| `/f/` | Lookbook | Shop-the-photo hotspots, add the whole room |
-| `/g/` | Aperture | Futuristic glass look, Ctrl K command bar, 3D tilt spotlight |
-| `/h/` | Material Library | Shop by material and texture |
-| `/i/` | Schewels OS | A desktop with draggable windows, Start menu and wallpapers |
-| `/j/` | Floor Plan | A blueprint room planner with true-scale pieces and an overlap check |
-| `/k/` | Swipe & Save | A phone-first card stack: swipe right to save, then add the shortlist |
-| `/l/` | Ask the Stylist | A chat that turns plain-language requests into product picks |
-| `/m/` | The Best Of It All | The strongest ideas from every concept combined into one homepage |
+Open `index.html` to browse them. Every concept is a working page you can click through, and the folders `a` through `m` hold the individual designs.
 
-## Shared features
-`shared/features.js` powers every concept: cart and saved drawer, quick view, search suggestions, 52-showroom picker, filter and sort grids, financing estimate. State lives in `localStorage` so it carries across concepts.
+The photos, products and prices are placeholders for demo purposes only.
 
-## Deploy
-Static files, no build. Works on GitHub Pages (deploy from `main`, root), Netlify, Vercel, Cloudflare Pages. Links are relative, so sub-path hosting is fine. Pages carry `noindex` and `robots.txt` disallows crawling.
-
-## Sample content
-Photos (Unsplash), products, prices and payment math are placeholders for demo only.
-
-## Copyright
 © 2026 Jacob Lucado. All rights reserved.
 
-LucadoOS™ is a trademark of Jacob Lucado. Concept I is a Schewels-branded desktop inspired by it.
+LucadoOS™ is a trademark of Jacob Lucado.
