@@ -20,3 +20,6 @@ Static files, no build. Works on GitHub Pages (deploy from `main`, root), Netlif
 
 ## Sample content
 Photos (Unsplash), products, prices and payment math are placeholders for demo only.
+
+## Copyright
+© 2026 Jacob Lucado. All rights reserved.
