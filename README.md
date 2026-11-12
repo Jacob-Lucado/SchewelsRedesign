@@ -26,3 +26,5 @@ Photos (Unsplash), products, prices and payment math are placeholders for demo o
 
 ## Copyright
 © 2026 Jacob Lucado. All rights reserved.
+
+LucadoOS™ is a trademark of Jacob Lucado. Concept I is a Schewels-branded desktop inspired by it.

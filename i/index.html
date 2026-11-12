@@ -18,7 +18,7 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 :focus-visible{outline:2px solid var(--red-2);outline-offset:2px}
 .desk{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--wall,radial-gradient(900px 520px at 80% 0,rgba(234,0,40,.35),transparent 65%),radial-gradient(700px 480px at 0 100%,rgba(234,0,40,.2),transparent 65%),var(--bg));isolation:isolate}
 #waves{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.desk::after{content:"Schewels OS";position:absolute;right:26px;bottom:66px;font-size:38px;font-weight:200;letter-spacing:.04em;color:rgba(255,255,255,.12);pointer-events:none;z-index:0}
+.desk::after{content:"Schewels OS  ·  inspired by LucadoOS™";position:absolute;right:26px;bottom:66px;font-size:26px;font-weight:200;letter-spacing:.04em;color:rgba(255,255,255,.12);pointer-events:none;z-index:0}
 /* icons */
 .icons{position:absolute;left:14px;top:14px;bottom:64px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,92px);grid-auto-columns:96px;gap:4px;align-content:start;z-index:1}
 .ic{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 4px;border:1px solid transparent;border-radius:10px;background:none;color:#fff;font-size:12px;font-weight:500;cursor:pointer;text-align:center;position:relative}
@@ -98,7 +98,7 @@ footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;backgrou
     <div class="tray"><button data-sx="store"><span data-sx-label="store" data-default="Choose showroom">Choose showroom</span></button><button data-sx="wish">Saved<span class="cn" data-sx-count="wish"></span></button><button data-sx="cart">Cart<span class="cn" data-sx-count="cart"></span></button><div class="clk" id="clk"></div></div>
   </div>
 </div>
-<footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos are stand-ins; prices are samples.</footer>
+<footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos are stand-ins; prices are samples. Desktop design inspired by LucadoOS. LucadoOS™ is a trademark of Jacob Lucado.</footer>
 <a class="concept-tag show" href="../" style="top:auto;bottom:62px;left:14px">All concepts</a>
 <script src="../shared/features.js"></script>
 <script>
@@ -167,7 +167,7 @@ sbtn.onclick=e=>{e.stopPropagation();start.hidden?openStart():closeStart()};
 const TILES=[['shop','#B8001F'],['rooms','#EA0028'],['pay','#2A2D31'],['rooms2','#3a3d42'],['about','#7a0017'],['look','#1f2226']];
 function paint(q){q=q.trim().toLowerCase();const apps=Object.keys(APPS).filter(k=>!q||APPS[k].t.toLowerCase().includes(q));
  const ps=q?SX.products.filter(p=>(p.name+' '+p.style).toLowerCase().includes(q)).slice(0,6):[];
- let h='<div class="brand">Schewels OS</div>';
+ let h='<div class="brand">Schewels OS</div><div class="sg" style="margin-top:-8px">Inspired by LucadoOS™</div>';
  h+=apps.length?'<div class="sg">Apps</div>'+apps.map(k=>`<button class="si" data-open="${k}"><i>${APPS[k].i}</i>${APPS[k].t}</button>`).join(''):'';
  if(ps.length)h+='<div class="sg">Furniture</div>'+ps.map(p=>`<button class="si" data-pid="${p.id}"><i>●</i>${SX.esc(p.name)}</button>`).join('');
  if(!apps.length&&!ps.length)h+='<div class="none">Nothing matches. Try "sofa" or "shop".</div>';
