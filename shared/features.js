@@ -370,25 +370,21 @@
 
   /* About Schewels: injected into every concept so the story and values are always on the page */
   (function () {
-    var css = '.sx-about{padding:72px 20px;font-family:var(--sx-font,Montserrat,sans-serif);background:var(--ab-bg);color:var(--ab-ink)}' +
-      '.sx-about .ab-in{max-width:1180px;margin:0 auto}' +
-      '.sx-about h2{font-family:var(--sx-head,var(--sx-font,Montserrat,sans-serif));font-weight:var(--sx-head-weight,800);font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px;max-width:18ch}' +
-      '.sx-about .ab-top{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;margin-bottom:44px}' +
-      '.sx-about .ab-top p{margin:0 0 14px;font-size:17px;line-height:1.65;color:var(--ab-mut);max-width:62ch}' +
-      '.sx-about .ab-gen{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}' +
-      '.sx-about .ab-gen span{border:1.5px solid var(--ab-line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}' +
-      '.sx-about .ab-mv{display:grid;gap:14px}' +
-      '.sx-about .ab-mv div{background:var(--ab-card);border:1px solid var(--ab-line);border-radius:var(--sx-radius,14px);padding:22px 24px}' +
-      '.sx-about .ab-mv b{display:block;color:var(--sx-accent,#EA0028);font-weight:800;margin-bottom:6px}' +
-      '.sx-about .ab-mv p{margin:0;font-size:16px;color:var(--ab-ink)}' +
-      '.sx-about .ab-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}' +
-      '.sx-about .ab-vals div{background:var(--ab-card);border:1px solid var(--ab-line);border-radius:var(--sx-radius,14px);padding:22px;border-top:4px solid var(--sx-accent,#EA0028)}' +
-      '.sx-about .ab-vals b{display:block;font-size:18px;margin-bottom:6px}.sx-about .ab-vals p{margin:0;color:var(--ab-mut);font-size:15px;line-height:1.55}' +
-      '.sx-about .ab-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}.sx-about .ab-ph figure{margin:0;border-radius:var(--sx-radius,14px);overflow:hidden;background:var(--ab-card);border:1px solid var(--ab-line)}.sx-about .ab-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.sx-about .ab-ph figcaption{padding:10px 14px;font-size:13px;font-weight:600;color:var(--ab-mut)}' +
-      '@media(max-width:560px){.sx-about .ab-ph{grid-template-columns:1fr}}' +
-      '.sx-about .ab-note{margin:26px 0 0;font-size:13px;color:var(--ab-mut)}' +
-      '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr}.sx-about .ab-vals{grid-template-columns:1fr 1fr}}' +
-      '@media(max-width:560px){.sx-about{padding:52px 16px}.sx-about .ab-vals{grid-template-columns:1fr}}';
+    var css = '.sx-about{padding:96px 24px;font-family:var(--sx-font,Montserrat,sans-serif);background:var(--ab-bg);color:var(--ab-ink)}' +
+      '.sx-about .ab-in{max-width:1080px;margin:0 auto}' +
+      '.sx-about h2{font-family:var(--sx-head,var(--sx-font,Montserrat,sans-serif));font-weight:var(--sx-head-weight,800);font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.025em;margin:0 0 22px}' +
+      '.sx-about .ab-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}' +
+      '.sx-about .ab-top p{margin:0 0 16px;font-size:17px;line-height:1.7;color:var(--ab-mut)}' +
+      '.sx-about .ab-mv{display:grid;gap:26px;padding-top:6px}' +
+      '.sx-about .ab-mv small{display:block;font-size:13px;font-weight:700;color:var(--sx-accent,#EA0028);margin-bottom:6px}' +
+      '.sx-about .ab-mv p{margin:0;font-size:20px;line-height:1.45;color:var(--ab-ink);font-weight:500}' +
+      '.sx-about .ab-ph{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin:64px 0}' +
+      '.sx-about .ab-ph img{width:100%;height:280px;object-fit:cover;display:block;border-radius:var(--sx-radius,12px);background:var(--ab-line)}' +
+      '.sx-about .ab-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:0 48px}' +
+      '.sx-about .ab-vals div{padding:22px 0;border-top:1px solid var(--ab-line)}' +
+      '.sx-about .ab-vals b{display:block;font-size:17px;margin-bottom:6px}.sx-about .ab-vals p{margin:0;color:var(--ab-mut);font-size:15px;line-height:1.6}' +
+      '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr;gap:32px}.sx-about .ab-vals{grid-template-columns:1fr 1fr}.sx-about .ab-ph img{height:200px}}' +
+      '@media(max-width:560px){.sx-about{padding:64px 20px}.sx-about .ab-ph{grid-template-columns:1fr;margin:40px 0}.sx-about .ab-vals{grid-template-columns:1fr}.sx-about .ab-ph img{height:220px}}';
     var vals = [['Integrity', 'Demonstrate honesty, respect and trust in everything we do.'], ['Customer Focus', 'Go above and beyond to provide an exceptional customer experience.'],
       ['Family', 'Treat our customers and employees like family.'], ['Commitment to Employees', 'Provide employees with opportunities to grow personally and professionally in an enjoyable work environment with great benefits.'],
       ['Teamwork', 'Work together for a common goal.'], ['Community', 'Give back to the communities that have made our business great.']];
@@ -403,14 +399,12 @@
       document.head.appendChild(st);
       var s = document.createElement('section'); s.id = 'about'; s.className = 'sx-about';
       s.innerHTML = '<div class="ab-in"><div class="ab-top"><div><h2>About Schewels Home</h2>' +
-        '<p>Founded in 1897, Schewels Home is one of the oldest furniture retailers in the United States. It all started when our ancestor, Elias Schewel, began peddling chairs door to door in Lynchburg, Virginia. Elias expanded his business by allowing his customers to pay back over time, and by serving all members of the community regardless of their race or religion.</p>' +
-        '<p>Currently, Schewels Home is owned and operated by Marc and Jack Schewel, the fourth generation of the family, and Matt Schewel, the fifth generation. Over the years we have grown to showrooms throughout Virginia, West Virginia and North Carolina.</p>' +
-        '<div class="ab-gen"><span>Marc Schewel, 4th generation</span><span>Jack Schewel, 4th generation</span><span>Matt Schewel, 5th generation</span></div></div>' +
-        '<div class="ab-mv"><div><b>Our mission</b><p>To provide affordable home furnishings and exceptional customer service to generations of families.</p></div>' +
-        '<div><b>Our vision</b><p>To be the premier destination for home furnishings in the communities we serve, where everyone wants to shop and everyone wants to work.</p></div></div></div>' +
-        '<div class="ab-ph">' + photos.map(function (p) { return '<figure><img loading="lazy" src="' + p[0] + '" alt="' + p[1] + '"><figcaption>' + p[1] + '</figcaption></figure>'; }).join('') + '</div>' +
-        '<div class="ab-vals">' + vals.map(function (v) { return '<div><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div>' +
-        '<p class="ab-note">Online prices and descriptions can differ from what you see in the showroom. Showroom pricing is the most accurate, so please confirm details with your local store.</p></div>';
+        '<p>Founded in 1897, Schewels Home is one of the oldest furniture retailers in the United States. It all started when our ancestor, Elias Schewel, began peddling chairs door to door in Lynchburg, Virginia. Elias let customers pay back over time and served everyone in the community, regardless of race or religion.</p>' +
+        '<p>Today we are owned and operated by Marc and Jack Schewel, the fourth generation, and Matt Schewel, the fifth, with showrooms throughout Virginia, West Virginia and North Carolina.</p></div>' +
+        '<div class="ab-mv"><div><small>Our mission</small><p>To provide affordable home furnishings and exceptional customer service to generations of families.</p></div>' +
+        '<div><small>Our vision</small><p>To be the premier destination for home furnishings in the communities we serve, where everyone wants to shop and everyone wants to work.</p></div></div></div>' +
+        '<div class="ab-ph">' + photos.map(function (p) { return '<img loading="lazy" src="' + p[0] + '" alt="' + p[1] + '">'; }).join('') + '</div>' +
+        '<div class="ab-vals">' + vals.map(function (v) { return '<div><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div></div>';
       foot.parentNode.insertBefore(s, foot);
       if (!document.querySelector('a[href="#about"]') && !foot.querySelector('a[href="#"]')) {
         var l = document.createElement('a'); l.href = '#about'; l.textContent = 'About us'; l.style.cssText = 'color:inherit;font-weight:700;margin-left:14px;text-decoration:underline';
