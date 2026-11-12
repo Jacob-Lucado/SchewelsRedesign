@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jacob Lucado">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept I: Schewels OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#EA0028;--red-2:#ff4d6a;--red-d:#B8001F;--bg:#0E0F11;--panel:#17191C;--soft:#1f2226;--soft2:#292d32;--line:#2A2D31;--text:#d7dade;--white:#fff;--muted:#8d949c;--hover:rgba(234,0,40,.16);
+ --sx-accent:#EA0028;--sx-accent-d:#B8001F;--sx-accent-ink:#fff;--sx-ink:#fff;--sx-bg:#0E0F11;--sx-soft:#17191C;--sx-line:#2A2D31;--sx-muted:#8d949c;--sx-radius:12px;--sx-btn-radius:9px;--sx-font:'Montserrat',system-ui,sans-serif;--sx-ratio:4/3}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--text);background:var(--bg);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{color:inherit}
+:focus-visible{outline:2px solid var(--red-2);outline-offset:2px}
+.desk{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--wall,radial-gradient(900px 520px at 80% 0,rgba(234,0,40,.35),transparent 65%),radial-gradient(700px 480px at 0 100%,rgba(234,0,40,.2),transparent 65%),var(--bg));isolation:isolate}
+#waves{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.desk::after{content:"Schewels OS";position:absolute;right:26px;bottom:66px;font-size:38px;font-weight:200;letter-spacing:.04em;color:rgba(255,255,255,.12);pointer-events:none;z-index:0}
+/* icons */
+.icons{position:absolute;left:14px;top:14px;bottom:64px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,92px);grid-auto-columns:96px;gap:4px;align-content:start;z-index:1}
+.ic{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 4px;border:1px solid transparent;border-radius:10px;background:none;color:#fff;font-size:12px;font-weight:500;cursor:pointer;text-align:center;position:relative}
+.ic:hover{background:rgba(255,255,255,.1)}.ic.sel,.ic:focus-visible{background:var(--hover);border-color:var(--red)}
+.art{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--red-2),var(--red));box-shadow:0 6px 16px rgba(0,0,0,.4);color:#fff}
+.ic .nm{text-shadow:0 1px 3px rgba(0,0,0,.9);line-height:1.15}
+.bdg{position:absolute;top:2px;right:14px;background:#fff;color:var(--red);border-radius:99px;min-width:18px;height:18px;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px}.bdg:empty{display:none}
+/* windows */
+.layer{position:absolute;left:0;right:0;top:0;bottom:48px;z-index:2;pointer-events:none;overflow:hidden}
+.win{position:absolute;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 34px rgba(0,0,0,.5);overflow:hidden;pointer-events:auto;min-width:300px;min-height:220px;animation:pop .14s ease-out}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.win[hidden]{display:none}.win.focus{border-color:rgba(234,0,40,.6);box-shadow:0 18px 50px rgba(0,0,0,.65)}
+.win.max{left:0!important;top:0!important;width:100%!important;height:100%!important;border-radius:0;border:0}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:6px 8px 6px 12px;background:var(--panel);border-bottom:1px solid var(--line);color:#fff;cursor:grab;user-select:none;touch-action:none}
+.bar:active{cursor:grabbing}.ttl{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;min-width:0}.ttl i{font-style:normal;color:var(--red-2)}.ttl span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wb{display:flex;gap:4px}.wb button{width:30px;height:24px;border-radius:7px;border:0;background:none;cursor:pointer;font-size:13px;color:var(--text)}.wb button:hover{background:var(--soft2)}.wb .x:hover{background:var(--red);color:#fff}
+.wbody{flex:1;min-height:0;overflow:auto;padding:20px 22px 26px}.wbody.flush{padding:16px}
+.grip{position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;touch-action:none}.win.max .grip{display:none}
+.snapv{position:absolute;z-index:50;pointer-events:none;background:rgba(234,0,40,.18);border:2px solid rgba(255,77,106,.8);border-radius:8px;transition:all .08s}
+/* content */
+.wbody h3{font-size:22px;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:6px}.wbody h4{color:#fff;margin:18px 0 6px}
+.wbody p{color:var(--muted);margin-bottom:14px;max-width:46em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px;margin-top:12px}
+.tile{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:16px 10px;text-align:center;cursor:pointer;font:600 13px Montserrat;color:#fff}.tile:hover{border-color:var(--red);background:var(--soft)}.tile span{display:block;font-size:26px;margin-bottom:6px}
+.btn{background:var(--red);color:#fff;border:0;border-radius:9px;padding:10px 16px;font:700 13px Montserrat;cursor:pointer}.btn:hover{background:var(--red-2)}.btn.gh{background:var(--soft2)}
+.pz-row{display:flex;flex-wrap:wrap;gap:10px}.wall{width:104px;height:66px;border-radius:10px;border:2px solid var(--line);color:#fff;cursor:pointer;display:grid;align-items:end;justify-items:start;padding:6px 8px;font:600 12px Montserrat;text-shadow:0 1px 3px rgba(0,0,0,.8)}.wall.on{border-color:var(--red);outline:2px solid var(--red)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px;cursor:pointer}.chk input{accent-color:var(--red);width:18px;height:18px;margin-top:2px}.chk small{display:block;color:var(--muted)}
+.pay .big{font:800 46px Montserrat;letter-spacing:-.04em;color:#fff}.pay input[type=range]{width:100%;accent-color:var(--red);margin:12px 0 18px}
+.pay select,.fi{background:var(--panel);border:1px solid var(--line);color:#fff;font:600 14px Montserrat;padding:10px 12px;border-radius:9px;width:100%}
+.stl{display:grid;gap:6px;margin-top:12px}.st{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 14px;cursor:pointer;text-align:left;font:500 14px Montserrat;color:#fff;width:100%}.st:hover{border-color:var(--red)}.st em{font-style:normal;color:var(--muted);font-size:12px}
+.vals{display:grid;gap:10px;margin-top:12px}.vals div{border-left:3px solid var(--red);padding-left:12px}.vals b{color:#fff;display:block}.vals span{color:var(--muted)}
+/* taskbar */
+.tbar{position:absolute;left:0;right:0;bottom:0;height:48px;z-index:40;display:flex;align-items:center;gap:8px;padding:0 10px;background:rgba(14,15,17,.88);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.sbtn{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:#fff;font-weight:700;font-size:13px;cursor:pointer}
+.sbtn:hover,.sbtn[aria-expanded=true]{border-color:var(--red)}
+.logo4{display:grid;grid-template:1fr 1fr/1fr 1fr;gap:2px;width:16px;height:16px}.logo4 i{background:var(--red);border-radius:2px}
+.sbox{display:flex;align-items:center;gap:8px;width:220px;height:34px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--muted)}
+.sbox input{flex:1;min-width:0;border:0;background:none;color:#fff;font:inherit;font-size:13px}.sbox input:focus{outline:none}
+.tasks{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.task{flex:0 1 170px;height:34px;display:flex;align-items:center;gap:8px;padding:0 10px;border:1px solid transparent;border-radius:9px;background:var(--soft);color:var(--text);font:500 12px Montserrat;cursor:pointer}.task i{font-style:normal;color:var(--red-2)}.task span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.task:hover{background:var(--soft2)}.task.on{background:var(--hover);border-color:var(--red);color:#fff}
+.tray{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.tray button{background:none;border:0;color:var(--text);cursor:pointer;border-radius:8px;padding:5px 9px;font:600 12px Montserrat;position:relative}.tray button:hover{background:var(--soft2)}
+.tray .cn{background:var(--red);color:#fff;border-radius:99px;font-size:10px;padding:0 6px;margin-left:4px}.tray .cn:empty{display:none}
+.clk{text-align:right;line-height:1.25}
+/* start */
+.start{position:absolute;left:10px;bottom:56px;z-index:60;width:640px;max-width:calc(100vw - 20px);height:min(540px,calc(100% - 70px));display:grid;grid-template-columns:48px 280px minmax(0,1fr);background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.6);overflow:hidden}
+.start[hidden]{display:none}
+.rail{display:flex;flex-direction:column;justify-content:flex-end;background:var(--soft)}.rail button{height:48px;border:0;background:none;color:#fff;font-size:18px;cursor:pointer}.rail button:hover{background:var(--hover)}
+.slist{overflow-y:auto;padding:10px 0}.brand{font-size:22px;font-weight:300;letter-spacing:.02em;color:#fff;padding:4px 14px 10px}
+.sg{margin:10px 14px 4px;font-size:12px;font-weight:600;color:var(--muted)}
+.si{display:flex;align-items:center;gap:12px;width:100%;padding:7px 14px;border:0;background:none;color:var(--text);font:500 13px Montserrat;text-align:left;cursor:pointer}.si:hover,.si:focus-visible{background:var(--hover)}
+.si i{font-style:normal;width:24px;height:24px;display:grid;place-items:center;border-radius:6px;background:linear-gradient(135deg,var(--red-2),var(--red));color:#fff;font-size:13px}
+.stiles{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;align-content:start;padding:10px 12px;overflow-y:auto}.stiles .sg{grid-column:1/-1;margin-left:2px}
+.tl{height:92px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:9px 11px;border:2px solid transparent;border-radius:10px;background:var(--c,#B8001F);color:#fff;font:600 12px Montserrat;text-align:left;cursor:pointer}.tl:hover{border-color:rgba(255,255,255,.6)}.tl span{font-size:26px}
+.none{margin:14px;color:var(--muted)}
+.concept-tag{position:fixed;left:14px;top:14px;z-index:2000;background:#fff;color:#111;padding:8px 14px;border-radius:99px;font:700 12px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.4);display:none}
+footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;background:var(--bg);border-top:1px solid var(--line)}
+.concept-tag.show{display:block}
+@media(max-width:760px){.icons{display:none}.sbox,.tray .clk,.task span,.desk::after{display:none}.task{flex:0 0 40px;justify-content:center;padding:0}.win{left:0!important;top:0!important;width:100%!important;height:100%!important;border-radius:0}.grip{display:none}.start{grid-template-columns:48px minmax(0,1fr)}.stiles{display:none}.sbtn b{display:none}}
+@media(prefers-reduced-motion:reduce){.win{animation:none}}
+</style>
+</head>
+<body>
+<div class="desk" id="desk">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="icons" id="icons"></div>
+  <div class="layer" id="layer"></div>
+  <div class="start" id="start" hidden role="dialog" aria-label="Start menu">
+    <div class="rail"><button title="Personalize" aria-label="Personalize" data-open="look">&#9881;</button><button title="My cart" aria-label="My cart" data-sx="cart">&#128722;</button></div>
+    <div class="slist" id="slist"></div><div class="stiles" id="stiles"></div>
+  </div>
+  <div class="tbar">
+    <button class="sbtn" id="sbtn" aria-expanded="false" aria-controls="start"><span class="logo4"><i></i><i></i><i></i><i></i></span><b>Schewels OS</b></button>
+    <label class="sbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="sin" placeholder="Search apps and furniture" aria-label="Search apps and furniture" autocomplete="off"></label>
+    <div class="tasks" id="tasks"></div>
+    <div class="tray"><button data-sx="store"><span data-sx-label="store" data-default="Choose showroom">Choose showroom</span></button><button data-sx="wish">Saved<span class="cn" data-sx-count="wish"></span></button><button data-sx="cart">Cart<span class="cn" data-sx-count="cart"></span></button><div class="clk" id="clk"></div></div>
+  </div>
+</div>
+<footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos are stand-ins; prices are samples.</footer>
+<a class="concept-tag show" href="../" style="top:auto;bottom:62px;left:14px">All concepts</a>
+<script src="../shared/features.js"></script>
+<script>
+const $=id=>document.getElementById(id),layer=$('layer'),desk=$('desk');
+const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const mobile=()=>matchMedia('(max-width:760px)').matches;
+const ROOMS=[['living','Living room','\u{1F6CB}'],['bedroom','Bedroom','\u{1F6CF}'],['dining','Dining room','\u{1F37D}'],['office','Home office','\u{1F4BB}'],['mattress','Mattresses','\u{1F634}'],['appliances','Appliances','\u{1F9FA}'],['entertainment','Entertainment','\u{1F4FA}']];
+const WALLS=[['default','Default',''],['ember','Ember','linear-gradient(135deg,#2a0008 0%,#7a0017 55%,#EA0028 130%)'],['graphite','Graphite','linear-gradient(135deg,#16181d,#2b2f38)'],['paper','Showroom','linear-gradient(135deg,#1b1c1f,#3a3d42 60%,#5b6168)'],['room','Living room','linear-gradient(rgba(14,15,17,.55),rgba(14,15,17,.75)),url("https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1800&q=70") center/cover']];
+let prefs={wall:'default',waves:true};try{Object.assign(prefs,JSON.parse(store.get('schewels-os-v1')||'{}'))}catch(e){}
+function applyPrefs(){const w=WALLS.find(x=>x[0]===prefs.wall);w&&w[2]?desk.style.setProperty('--wall',w[2]):desk.style.removeProperty('--wall');$('waves').style.display=prefs.waves?'block':'none'}
+function savePrefs(p){Object.assign(prefs,p);store.set('schewels-os-v1',JSON.stringify(prefs));applyPrefs()}
+/* apps */
+const APPS={
+ welcome:{t:'Welcome',i:'✦',w:540,h:420,x:110,y:60,html:()=>`<h3>Welcome to Schewels OS</h3><p>A furniture store you can drag around. Open apps from the desktop, the Start menu or the search bar. Snap windows to the edges, and everything saves as you go.</p>
+  <div class="tiles"><button class="tile" data-open="shop"><span>&#9636;</span>Shop all</button><button class="tile" data-open="rooms"><span>&#8962;</span>By room</button><button class="tile" data-open="pay"><span>$</span>Payments</button><button class="tile" data-open="rooms2"><span>&#9679;</span>Showrooms</button><button class="tile" data-open="about"><span>i</span>About us</button><button class="tile" data-open="look"><span>&#9881;</span>Personalize</button></div>`},
+ shop:{t:'Shop',i:'▦',w:920,h:580,x:200,y:50,flush:1,html:()=>`<div data-sx-grid id="winGrid"></div>`,after:e=>SX.mountGrid(e.querySelector('#winGrid'))},
+ rooms:{t:'Shop by room',i:'⌂',w:560,h:400,x:140,y:80,html:()=>`<h3>Pick a room</h3><p>We'll open the shop with just that room.</p><div class="tiles">${ROOMS.map(r=>`<button class="tile" data-room="${r[0]}"><span>${r[2]}</span>${r[1]}</button>`).join('')}</div>`},
+ pay:{t:'Payments',i:'$',w:520,h:470,x:300,y:70,cls:'pay',html:()=>`<h3>What would it cost a month?</h3><p>Slide to a price, then pick a term. Demo math: total divided by months.</p><div class="big" id="pAmt">$800</div><div id="pLine" style="color:var(--muted)"></div><input type="range" id="pR" min="200" max="4000" step="50" value="800" aria-label="Purchase price"><select id="pT" aria-label="Term"><option value="12">12 months</option><option value="24">24 months</option><option value="36">36 months</option><option value="60" selected>60 months</option></select>`,
+  after:e=>{const f=()=>{const v=+e.querySelector('#pR').value,m=+e.querySelector('#pT').value;e.querySelector('#pAmt').textContent=SX.money(v);e.querySelector('#pLine').textContent='about '+SX.money(v/m)+' a month over '+m+' months'};e.querySelector('#pR').oninput=f;e.querySelector('#pT').onchange=f;f()}},
+ rooms2:{t:'Showrooms',i:'●',w:520,h:520,x:260,y:60,html:()=>`<h3>Find your showroom</h3><p>Pick one and the whole site remembers it.</p><input class="fi" id="fq" placeholder="Search by town or state" aria-label="Search showrooms"><div class="stl" id="fl"></div>`,
+  after:e=>{const q=e.querySelector('#fq'),l=e.querySelector('#fl');const draw=()=>{const v=q.value.trim().toLowerCase();const a=SX.stores.filter(s=>!v||(s.n+' '+s.st).toLowerCase().includes(v)).slice(0,40);l.innerHTML=a.map(s=>`<button class="st" data-n="${SX.esc(s.n)}" data-st="${s.st}">${SX.esc(s.n.replace(/ \(.*\)/,''))}<em>${s.st}</em></button>`).join('')||'<p>No showrooms match.</p>'};q.oninput=draw;draw();l.onclick=ev=>{const b=ev.target.closest('.st');if(b)SX.setStore(b.dataset.n,b.dataset.st)}}},
+ about:{t:'About Schewels Home',i:'i',w:560,h:480,x:220,y:70,html:()=>`<h3>Since 1897</h3><p>Elias Schewel began peddling chairs door to door in Lynchburg, Virginia, and let customers pay back over time. Today the family's fourth and fifth generations run showrooms across Virginia, West Virginia and North Carolina.</p><div class="vals"><div><b>Our mission</b><span>To provide affordable home furnishings and exceptional customer service to generations of families.</span></div><div><b>Our values</b><span>Integrity, customer focus, family, commitment to employees, teamwork and community.</span></div></div><p style="margin-top:16px"><button class="btn" id="more">Read the full story</button></p>`,after:e=>{e.querySelector('#more').onclick=()=>document.getElementById('about').scrollIntoView({behavior:'smooth'})}},
+ look:{t:'Personalize',i:'⚙',w:520,h:400,x:280,y:90,html:()=>`<h3>Make it yours</h3><h4>Wallpaper</h4><div class="pz-row" id="wl"></div><label class="chk"><input type="checkbox" id="wv"><span><b style="color:#fff">Neon waves</b><small>A slow red wave behind your windows.</small></span></label>`,
+  after:e=>{const draw=()=>{e.querySelector('#wl').innerHTML=WALLS.map(w=>`<button class="wall ${prefs.wall===w[0]?'on':''}" data-w="${w[0]}" style="background:${w[2]||'linear-gradient(135deg,#7a0017,#0E0F11)'}">${w[1]}</button>`).join('')};draw();e.querySelector('#wl').onclick=ev=>{const b=ev.target.closest('[data-w]');if(b){savePrefs({wall:b.dataset.w});draw()}};const c=e.querySelector('#wv');c.checked=prefs.waves;c.onchange=()=>savePrefs({waves:c.checked})}}
+};
+const ICONS=['welcome','shop','rooms','rooms2','pay','about'];
+$('icons').innerHTML=ICONS.map(k=>`<button class="ic" data-open="${k}"><span class="art">${APPS[k].i}</span><span class="nm">${APPS[k].t}</span></button>`).join('')+`<button class="ic" data-sx="cart"><span class="art">&#128722;</span><span class="nm">My cart</span><i class="bdg" data-sx-count="cart"></i></button>`;
+/* windows */
+const wins=new Map();let z=10,pv=null;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function place(w){const n=w.node,W=layer.clientWidth,H=layer.clientHeight;if(w.max){n.classList.add('max');return}n.classList.remove('max');
+ w.w=clamp(w.w,300,W);w.h=clamp(w.h,220,H);w.x=clamp(w.x,-w.w+120,W-120);w.y=clamp(w.y,0,H-40);n.style.left=w.x+'px';n.style.top=w.y+'px';n.style.width=w.w+'px';n.style.height=w.h+'px'}
+function focus(w){wins.forEach(o=>{o.node.classList.toggle('focus',o===w);o.task.classList.toggle('on',o===w&&!o.min)});if(w){w.node.style.zIndex=++z;w.min=false;w.node.hidden=false;w.task.classList.add('on')}}
+function snapZone(x,y){const W=layer.clientWidth,H=layer.clientHeight,e=14;if(y<e)return'MAX';if(x<e)return'L';if(x>W-e)return'R';return null}
+function zoneRect(z){const W=layer.clientWidth,H=layer.clientHeight;return z==='L'?{x:0,y:0,w:W/2,h:H}:z==='R'?{x:W/2,y:0,w:W/2,h:H}:{x:0,y:0,w:W,h:H}}
+function showSnap(z){if(!z){pv&&pv.remove();pv=null;return}if(!pv){pv=document.createElement('div');pv.className='snapv';layer.append(pv)}const r=zoneRect(z);Object.assign(pv.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'})}
+function openApp(id){const a=APPS[id];if(!a)return;closeStart();let w=wins.get(id);if(w){focus(w);return}
+ if(mobile())wins.forEach(o=>{o.min=true;o.node.hidden=true;o.task.classList.remove('on')});
+ const n=wins.size,node=document.createElement('section');node.className='win';node.setAttribute('role','dialog');node.setAttribute('aria-label',a.t);
+ node.innerHTML=`<div class="bar"><div class="ttl"><i>${a.i}</i><span>${a.t}</span></div><div class="wb"><button class="mn" aria-label="Minimize">&#8212;</button><button class="mx" aria-label="Maximize">&#9633;</button><button class="x" aria-label="Close">&#10005;</button></div></div><div class="wbody ${a.cls||''} ${a.flush?'flush':''}">${a.html()}</div><div class="grip"></div>`;
+ layer.append(node);const task=document.createElement('button');task.className='task';task.innerHTML=`<i>${a.i}</i><span>${a.t}</span>`;$('tasks').append(task);
+ w={id,node,task,x:a.x+n*24,y:a.y+n*16,w:Math.min(a.w,layer.clientWidth-16),h:Math.min(a.h,layer.clientHeight-20),max:false,min:false};wins.set(id,w);place(w);a.after&&a.after(node);
+ node.addEventListener('pointerdown',()=>focus(w));
+ const shut=()=>{node.remove();task.remove();wins.delete(id);const t=[...wins.values()].filter(o=>!o.min).pop();focus(t||null)};
+ const mini=()=>{w.min=true;node.hidden=true;task.classList.remove('on');node.classList.remove('focus')};
+ const tmax=()=>{if(!w.max)w.restore={x:w.x,y:w.y,w:w.w,h:w.h};else Object.assign(w,w.restore);w.max=!w.max;place(w);focus(w)};
+ node.querySelector('.x').onclick=shut;node.querySelector('.mn').onclick=mini;node.querySelector('.mx').onclick=tmax;node.querySelector('.bar').addEventListener('dblclick',e=>{if(!e.target.closest('button'))tmax()});
+ task.onclick=()=>{if(w.min||!node.classList.contains('focus'))focus(w);else mini()};
+ const bar=node.querySelector('.bar');let d=null,tz=null;
+ bar.addEventListener('pointerdown',e=>{if(e.target.closest('button')||mobile())return;const r=layer.getBoundingClientRect();d={sx:e.clientX,sy:e.clientY,ox:w.x,oy:w.y,s:false};bar.setPointerCapture(e.pointerId)});
+ bar.addEventListener('pointermove',e=>{if(!d)return;if(!d.s){if(Math.hypot(e.clientX-d.sx,e.clientY-d.sy)<5)return;d.s=true;if(w.max){const f=(d.sx-layer.getBoundingClientRect().left)/layer.clientWidth;w.max=false;Object.assign(w,w.restore||{w:880,h:580});d.ox=e.clientX-w.w*clamp(f,.1,.9);d.oy=0;d.sx=e.clientX;d.sy=e.clientY}}
+  w.x=d.ox+e.clientX-d.sx;w.y=d.oy+e.clientY-d.sy;place(w);const r=layer.getBoundingClientRect();tz=snapZone(e.clientX-r.left,e.clientY-r.top);showSnap(tz)});
+ const up=()=>{if(d&&d.s&&tz){w.restore={x:w.x,y:w.y,w:w.w,h:w.h};if(tz==='MAX'){w.max=true}else{Object.assign(w,zoneRect(tz))}place(w)}showSnap(null);d=null;tz=null};
+ bar.addEventListener('pointerup',up);bar.addEventListener('pointercancel',up);
+ const grip=node.querySelector('.grip');let g=null;grip.addEventListener('pointerdown',e=>{g={sx:e.clientX,sy:e.clientY,w:w.w,h:w.h};grip.setPointerCapture(e.pointerId);e.stopPropagation()});
+ grip.addEventListener('pointermove',e=>{if(!g)return;w.w=g.w+e.clientX-g.sx;w.h=g.h+e.clientY-g.sy;place(w)});grip.addEventListener('pointerup',()=>g=null);
+ focus(w)}
+document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){openApp(o.dataset.open);return}
+ const r=e.target.closest('[data-room]');if(r){openApp('shop');setTimeout(()=>SX.filter(r.dataset.room),40);return}
+ if(!e.target.closest('#start,#sbtn,#sin'))closeStart()});
+/* start menu */
+const start=$('start'),sbtn=$('sbtn');
+function closeStart(){start.hidden=true;sbtn.setAttribute('aria-expanded','false')}
+function openStart(){start.hidden=false;sbtn.setAttribute('aria-expanded','true');paint('')}
+sbtn.onclick=e=>{e.stopPropagation();start.hidden?openStart():closeStart()};
+const TILES=[['shop','#B8001F'],['rooms','#EA0028'],['pay','#2A2D31'],['rooms2','#3a3d42'],['about','#7a0017'],['look','#1f2226']];
+function paint(q){q=q.trim().toLowerCase();const apps=Object.keys(APPS).filter(k=>!q||APPS[k].t.toLowerCase().includes(q));
+ const ps=q?SX.products.filter(p=>(p.name+' '+p.style).toLowerCase().includes(q)).slice(0,6):[];
+ let h='<div class="brand">Schewels OS</div>';
+ h+=apps.length?'<div class="sg">Apps</div>'+apps.map(k=>`<button class="si" data-open="${k}"><i>${APPS[k].i}</i>${APPS[k].t}</button>`).join(''):'';
+ if(ps.length)h+='<div class="sg">Furniture</div>'+ps.map(p=>`<button class="si" data-pid="${p.id}"><i>●</i>${SX.esc(p.name)}</button>`).join('');
+ if(!apps.length&&!ps.length)h+='<div class="none">Nothing matches. Try "sofa" or "shop".</div>';
+ $('slist').innerHTML=h;
+ $('stiles').innerHTML='<div class="sg">Pinned</div>'+TILES.map(t=>`<button class="tl" data-open="${t[0]}" style="--c:${t[1]}"><span>${APPS[t[0]].i}</span>${APPS[t[0]].t}</button>`).join('')}
+$('slist').addEventListener('click',e=>{const b=e.target.closest('[data-pid]');if(b){closeStart();SX.openProduct(b.dataset.pid)}});
+const sin=$('sin');sin.addEventListener('focus',()=>{start.hidden=false;sbtn.setAttribute('aria-expanded','true');paint(sin.value)});sin.addEventListener('input',()=>paint(sin.value));
+sin.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=$('slist').querySelector('.si');b&&b.click();sin.blur()}if(e.key==='Escape'){closeStart();sin.blur()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeStart()});
+/* clock */
+function tick(){const d=new Date();$('clk').innerHTML=d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+'<br>'+d.toLocaleDateString('en-US')}tick();setInterval(tick,30000);
+/* neon waves, in Schewels red */
+(function(){const c=$('waves'),x=c.getContext('2d');let W,H,t=0;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ function rs(){W=c.width=desk.clientWidth;H=c.height=desk.clientHeight}rs();addEventListener('resize',rs);
+ function draw(){x.clearRect(0,0,W,H);for(let i=0;i<5;i++){x.beginPath();for(let px=0;px<=W;px+=8){const y=H*.62+Math.sin(px/190+t+i*.9)*34+Math.sin(px/90-t*1.3+i)*16+i*22;px?x.lineTo(px,y):x.moveTo(px,y)}
+  x.strokeStyle=`rgba(234,0,40,${.5-i*.08})`;x.lineWidth=2;x.shadowColor='#EA0028';x.shadowBlur=14;x.stroke()}t+=.008;if(!rm)requestAnimationFrame(draw)}draw()})();
+applyPrefs();openApp('welcome');if(!mobile())setTimeout(()=>openApp('shop'),300);
+</script>
+</body>
+</html>

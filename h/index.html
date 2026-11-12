@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jacob Lucado">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept H: Material Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#EA0028;--red-d:#C4001F;--ink:#16171A;--gray:#F4F5F6;--line:#E3E5E8;--muted:#5B6168;
+ --sx-accent:#EA0028;--sx-radius:6px;--sx-btn-radius:6px;--sx-head-weight:800;--sx-ratio:5/4;--sx-soft:#F4F5F6;--sx-font:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}button{font-family:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.logo{font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:30}
+header .wrap{display:flex;align-items:center;gap:18px;padding-block:12px}
+header nav{display:flex;gap:24px;margin-left:24px;font-weight:600;font-size:15px}header nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}header nav a:hover{border-color:var(--red)}
+.right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.sbtn{display:inline-flex;gap:8px;align-items:center;font:600 14px Montserrat;border:1.5px solid var(--line);background:#fff;padding:9px 14px;border-radius:6px;cursor:pointer;max-width:220px}.sbtn:hover{border-color:var(--ink)}
+.sbtn i{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}.sbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib{width:42px;height:42px;border-radius:6px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;position:relative}.ib:hover{border-color:var(--ink)}
+.ib b{position:absolute;top:-6px;right:-6px;background:var(--red);color:#fff;border-radius:99px;min-width:19px;height:19px;font-size:11px;display:grid;place-items:center;padding:0 5px}.ib b:empty{display:none}
+/* hero */
+.intro{padding:70px 0 34px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end}
+h1{font-weight:900;font-size:clamp(40px,6vw,84px);line-height:.96;letter-spacing:-.045em}
+.intro p{color:var(--muted);font-size:18px;max-width:28em}
+/* swatches */
+.lab{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:10px}
+.sw{position:relative;border:0;padding:0;background:none;cursor:pointer;text-align:left;border-radius:8px;transition:transform .25s}
+.sw .tx{aspect-ratio:1;border-radius:8px;display:block;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 24px -12px rgba(0,0,0,.45);transition:box-shadow .25s,transform .25s}
+.sw:hover .tx{transform:translateY(-6px) rotate(-1.5deg);box-shadow:0 22px 34px -14px rgba(0,0,0,.5)}
+.sw b{display:block;margin-top:12px;font-size:15px}.sw small{color:var(--muted);font-size:13px}
+.sw[aria-pressed=true] .tx{outline:3px solid var(--red);outline-offset:4px;transform:translateY(-6px)}
+.sw[aria-pressed=true] b{color:var(--red)}
+.tx.leather{background-color:#7d4325;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>"),radial-gradient(circle at 30% 20%,rgba(255,200,150,.45),transparent 55%)}
+.tx.linen{background-color:#d8d0bf;background-image:repeating-linear-gradient(0deg,rgba(90,80,60,.16) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(90,80,60,.12) 0 2px,transparent 2px 9px)}
+.tx.velvet{background:radial-gradient(120% 90% at 25% 15%,#3f8f72,#1d5a44 45%,#0f3a2b);box-shadow:inset 0 0 40px rgba(0,0,0,.4)}
+.tx.oak{background-color:#c79d63;background-image:repeating-linear-gradient(92deg,rgba(90,55,20,.28) 0 2px,transparent 2px 11px),repeating-linear-gradient(88deg,rgba(255,235,200,.22) 0 5px,transparent 5px 23px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.02 .6' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .18  0 0 0 0 .05  0 0 0 .5 0'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>")}
+.tx.marble{background-color:#f3f3f1;background-image:linear-gradient(118deg,transparent 30%,rgba(60,60,70,.22) 31%,transparent 32.5%,transparent 52%,rgba(60,60,70,.14) 53%,transparent 54%),linear-gradient(62deg,transparent 40%,rgba(60,60,70,.12) 41%,transparent 42%,transparent 68%,rgba(60,60,70,.18) 69%,transparent 70.5%),radial-gradient(circle at 70% 30%,rgba(255,255,255,.9),transparent 50%)}
+.tx.metal{background:conic-gradient(from 200deg at 50% 50%,#8e6f3d,#d9b878,#a98446,#e8cc92,#8e6f3d 60%,#d9b878,#a98446,#8e6f3d)}
+/* detail */
+.detail{display:grid;grid-template-columns:340px 1fr;gap:44px;margin:60px 0 40px;padding:36px;background:var(--gray);border-radius:10px}
+.big{border-radius:8px;aspect-ratio:1;box-shadow:0 30px 50px -26px rgba(0,0,0,.5);transition:background .3s}
+.detail h2{font-size:clamp(30px,3.6vw,46px);font-weight:900;letter-spacing:-.035em;line-height:1;margin-bottom:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0 4px}
+.facts div{border-top:2px solid var(--ink);padding-top:10px}.facts small{color:var(--muted);font-weight:600;font-size:12px;display:block;margin-bottom:4px}.facts span{font-size:15px;font-weight:500}
+.detail p.lead{font-size:18px;color:#3a3f45;max-width:36em}
+.shopbar{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:44px 0 22px;flex-wrap:wrap}
+.shopbar h2{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-.03em}
+/* touch it */
+.pair{background:var(--ink);color:#fff;padding:80px 0;margin-top:80px}
+.pair h2{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:14px}
+.pair p{color:#b9bec4;max-width:36em;margin-bottom:34px}
+.mix{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mix div{border-radius:8px;padding:26px;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;position:relative;overflow:hidden}
+.mix div:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(0,0,0,.55))}.mix b,.mix span{position:relative;z-index:1}.mix b{font-size:19px}.mix span{font-size:14px;opacity:.9}
+footer{padding:30px 20px;color:var(--muted);font-size:13px;text-align:center;background:var(--gray)}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#111;color:#fff;padding:10px 16px;border-radius:99px;font:700 13px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+@media(max-width:960px){.intro,.detail{grid-template-columns:1fr}.lab{grid-template-columns:repeat(3,1fr)}.big{max-width:240px}header nav{display:none}.mix{grid-template-columns:1fr}}
+@media(max-width:560px){.lab{grid-template-columns:repeat(2,1fr)}.facts{grid-template-columns:1fr}.detail{padding:22px}.sbtn{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
+  <nav><a href="#lab">Materials</a><a href="#shop">Shop</a><a href="#about">About</a></nav>
+  <div class="right">
+    <button class="sbtn" data-sx="store"><i></i><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></button>
+    <button class="ib" data-sx="wish" aria-label="Saved"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6c-2.3 4.4-9.3 9-9.3 9z"/></svg><b data-sx-count="wish"></b></button>
+    <button class="ib" data-sx="cart" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0"/></svg><b data-sx-count="cart"></b></button>
+  </div>
+</div></header>
+
+<main>
+<div class="wrap">
+  <section class="intro"><h1>Choose by how it feels.</h1><p>You touch furniture before you buy it. So start there. Pick a material, learn how it wears, and see what we have on the floor.</p></section>
+  <section id="lab"><div class="lab" id="lab-sw"></div></section>
+
+  <section class="detail" id="detail" aria-live="polite">
+    <div class="big tx" id="dBig"></div>
+    <div><h2 id="dName"></h2><p class="lead" id="dLead"></p>
+      <div class="facts"><div><small>Feels like</small><span id="dFeel"></span></div><div><small>Great for</small><span id="dFor"></span></div><div><small>Keep it nice</small><span id="dCare"></span></div></div></div>
+  </section>
+
+  <section id="shop"><div class="shopbar"><h2 id="shopT">On the floor in leather</h2></div><div data-sx-grid id="mGrid" data-filters="off"></div></section>
+</div>
+
+<section class="pair"><div class="wrap">
+  <h2>Mix them. That's the trick.</h2><p>The best rooms use three materials, not one. Here are pairings our showroom teams reach for first.</p>
+  <div class="mix" id="mix"></div>
+</div></section>
+</main>
+
+<footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos are stand-ins; prices are samples.</footer>
+<a class="concept-tag" href="../">All concepts</a>
+<script src="../shared/features.js"></script>
+<script>
+const M=[
+ {k:'leather',n:'Leather',s:'Warm and ages well',re:/leather/i,cats:['living'],lead:'Leather softens and darkens with use, so the sofa you buy gets better looking. It is the one that gets handed down.',feel:'Smooth, a little cool at first, then warm',for:'Busy living rooms and dens',care:'Wipe with a damp cloth. Condition twice a year.'},
+ {k:'linen',n:'Woven fabric',s:'Soft, breathable, easy',re:/tufted gray|rust|accent|sectional|fabric|recliner/i,cats:['living'],lead:'Woven fabrics are the easy yes. They breathe, they come in every color, and they feel like home from the first sit.',feel:'Soft with a little texture',for:'Everyday seating and bedrooms',care:'Vacuum weekly. Blot spills right away.'},
+ {k:'velvet',n:'Velvet',s:'Rich, deep color',re:/velvet/i,cats:['dining','living'],lead:'Velvet makes color look expensive. It is softer than it looks and holds up better than most people expect.',feel:'Plush, with a gentle sheen',for:'Dining chairs and statement sofas',care:'Brush with the pile. Spot clean with a dry cloth.'},
+ {k:'oak',n:'Solid wood',s:'Built to last decades',re:/wood|armoire|desk|platform|dresser|nightstand|oak|bookcase/i,cats:['bedroom','office'],lead:'Real wood can be sanded, refinished and repaired. A good piece outlives the house it was bought for.',feel:'Grain you can feel under your hand',for:'Bedrooms, desks and storage',care:'Dust, then wax once a year. Use coasters.'},
+ {k:'marble',n:'Stone top',s:'Cool, clean, heavy',re:/marble|stone|dining set|table/i,cats:['dining','living'],lead:'Stone tops are made for tables that get used. They stay cool, wipe clean and look like nothing else.',feel:'Cool and perfectly smooth',for:'Dining and coffee tables',care:'Use a sealer. Wipe acids up quickly.'},
+ {k:'metal',n:'Brass and steel',s:'Slim lines, sharp detail',re:/metal|steel|brass|iron|frame|stool/i,cats:['office','entertainment','dining'],lead:'Metal keeps a piece light and slim. It is what makes a small room look bigger and a big room look finished.',feel:'Cool and solid',for:'Small spaces and modern rooms',care:'Wipe dry. A soft cloth brings back the shine.'}
+];
+const $=id=>document.getElementById(id);
+$('lab-sw').innerHTML=M.map((m,i)=>`<button class="sw" data-i="${i}" aria-pressed="false"><span class="tx ${m.k}"></span><b>${m.n}</b><small>${m.s}</small></button>`).join('');
+function ids(m){let a=SX.products.filter(p=>m.re.test(p.name+' '+p.blurb));if(a.length<3){SX.products.filter(p=>m.cats.indexOf(p.cat)>-1&&a.indexOf(p)<0).slice(0,4-a.length).forEach(p=>a.push(p))}return a.slice(0,6).map(p=>p.id)}
+function pick(i,scroll){const m=M[i];document.querySelectorAll('.sw').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+ $('dBig').className='big tx '+m.k;$('dName').textContent=m.n;$('dLead').textContent=m.lead;$('dFeel').textContent=m.feel;$('dFor').textContent=m.for;$('dCare').textContent=m.care;
+ $('shopT').textContent='On the floor in '+m.n.toLowerCase();const g=$('mGrid');g.setAttribute('data-ids',ids(m).join(','));SX.mountGrid(g);
+ if(scroll)$('detail').scrollIntoView({behavior:'smooth',block:'start'})}
+$('lab-sw').onclick=e=>{const b=e.target.closest('.sw');if(b)pick(+b.dataset.i,true)};
+const MX=[['leather','oak','Leather + solid wood','A cognac sofa on a walnut coffee table.'],['velvet','marble','Velvet + stone','Green velvet chairs around a stone-top table.'],['linen','metal','Fabric + brass','A soft sofa with slim metal side tables.']];
+$('mix').innerHTML=MX.map(x=>`<div class="tx ${x[0]}" style="background-size:cover"><b>${x[2]}</b><span>${x[3]}</span></div>`).join('');
+pick(0,false);
+</script>
+</body>
+</html>
