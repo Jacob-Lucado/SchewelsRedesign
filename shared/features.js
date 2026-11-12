@@ -384,12 +384,15 @@
       '.sx-about .ab-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}' +
       '.sx-about .ab-vals div{background:var(--ab-card);border:1px solid var(--ab-line);border-radius:var(--sx-radius,14px);padding:22px;border-top:4px solid var(--sx-accent,#EA0028)}' +
       '.sx-about .ab-vals b{display:block;font-size:18px;margin-bottom:6px}.sx-about .ab-vals p{margin:0;color:var(--ab-mut);font-size:15px;line-height:1.55}' +
+      '.sx-about .ab-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}.sx-about .ab-ph figure{margin:0;border-radius:var(--sx-radius,14px);overflow:hidden;background:var(--ab-card);border:1px solid var(--ab-line)}.sx-about .ab-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.sx-about .ab-ph figcaption{padding:10px 14px;font-size:13px;font-weight:600;color:var(--ab-mut)}' +
+      '@media(max-width:560px){.sx-about .ab-ph{grid-template-columns:1fr}}' +
       '.sx-about .ab-note{margin:26px 0 0;font-size:13px;color:var(--ab-mut)}' +
       '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr}.sx-about .ab-vals{grid-template-columns:1fr 1fr}}' +
       '@media(max-width:560px){.sx-about{padding:52px 16px}.sx-about .ab-vals{grid-template-columns:1fr}}';
-    var vals = [['Integrity', 'Honesty, respect and trust in everything we do.'], ['Customer focus', 'Going the extra mile to give every shopper a great experience.'],
-      ['Family', 'We treat customers and employees like family.'], ['Commitment to employees', 'Room to grow, a good place to work, and strong benefits.'],
-      ['Teamwork', 'Working together toward shared goals.'], ['Community', 'Giving back to the communities that have supported us.']];
+    var vals = [['Integrity', 'Demonstrate honesty, respect and trust in everything we do.'], ['Customer Focus', 'Go above and beyond to provide an exceptional customer experience.'],
+      ['Family', 'Treat our customers and employees like family.'], ['Commitment to Employees', 'Provide employees with opportunities to grow personally and professionally in an enjoyable work environment with great benefits.'],
+      ['Teamwork', 'Work together for a common goal.'], ['Community', 'Give back to the communities that have made our business great.']];
+    var photos = [['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/fd3ad17e-02aa-4da2-a37d-4c56bf5513e3.jpg?format=webp&quality=85&width=700','The Schewel family'],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/14f83c92-0932-45c7-9c8b-cbe6e5199b40.jpg?format=webp&quality=85&width=700','Our old locations'],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/7fc1bcb7-925e-42f9-807b-131037c272d4.jpg?format=webp&quality=85&width=700','A Schewels Home store today']];
     function lum(c) { var m = (c || '').match(/\d+(\.\d+)?/g); if (!m || (m.length > 3 && +m[3] === 0)) return 1; return (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) / 255; }
     function build() {
       if (document.getElementById('about')) return;
@@ -400,11 +403,12 @@
       document.head.appendChild(st);
       var s = document.createElement('section'); s.id = 'about'; s.className = 'sx-about';
       s.innerHTML = '<div class="ab-in"><div class="ab-top"><div><h2>About Schewels Home</h2>' +
-        '<p>Elias Schewel started selling chairs door to door in Lynchburg, Virginia in 1897. He let customers pay over time, and he served everyone in the community, whatever their race or religion.</p>' +
-        '<p>Today we are one of the oldest furniture retailers in the country, with showrooms across Virginia, West Virginia and North Carolina. We are still family owned.</p>' +
+        '<p>Founded in 1897, Schewels Home is one of the oldest furniture retailers in the United States. It all started when our ancestor, Elias Schewel, began peddling chairs door to door in Lynchburg, Virginia. Elias expanded his business by allowing his customers to pay back over time, and by serving all members of the community regardless of their race or religion.</p>' +
+        '<p>Currently, Schewels Home is owned and operated by Marc and Jack Schewel, the fourth generation of the family, and Matt Schewel, the fifth generation. Over the years we have grown to showrooms throughout Virginia, West Virginia and North Carolina.</p>' +
         '<div class="ab-gen"><span>Marc Schewel, 4th generation</span><span>Jack Schewel, 4th generation</span><span>Matt Schewel, 5th generation</span></div></div>' +
-        '<div class="ab-mv"><div><b>Our mission</b><p>Provide affordable home furnishings and excellent customer service to generations of families.</p></div>' +
-        '<div><b>Our vision</b><p>Be the leading home furnishings destination in the communities we serve, where customers want to shop and employees want to work.</p></div></div></div>' +
+        '<div class="ab-mv"><div><b>Our mission</b><p>To provide affordable home furnishings and exceptional customer service to generations of families.</p></div>' +
+        '<div><b>Our vision</b><p>To be the premier destination for home furnishings in the communities we serve, where everyone wants to shop and everyone wants to work.</p></div></div></div>' +
+        '<div class="ab-ph">' + photos.map(function (p) { return '<figure><img loading="lazy" src="' + p[0] + '" alt="' + p[1] + '"><figcaption>' + p[1] + '</figcaption></figure>'; }).join('') + '</div>' +
         '<div class="ab-vals">' + vals.map(function (v) { return '<div><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div>' +
         '<p class="ab-note">Online prices and descriptions can differ from what you see in the showroom. Showroom pricing is the most accurate, so please confirm details with your local store.</p></div>';
       foot.parentNode.insertBefore(s, foot);
