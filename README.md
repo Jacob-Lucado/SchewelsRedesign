@@ -1,6 +1,6 @@
 # Schewels Home redesign concepts
 
-Twelve working redesigns of schewelshome.com, plus a gallery with a live viewer and the audit behind them. Unofficial design exploration, not affiliated with Schewels Home.
+Thirteen working redesigns of schewelshome.com, plus a gallery with a live viewer and the audit behind them. Unofficial design exploration, not affiliated with Schewels Home.
 
 | Path | Concept | The bet |
 |---|---|---|
@@ -17,6 +17,7 @@ Twelve working redesigns of schewelshome.com, plus a gallery with a live viewer 
 | `/j/` | Floor Plan | A blueprint room planner with true-scale pieces and an overlap check |
 | `/k/` | Swipe & Save | A phone-first card stack: swipe right to save, then add the shortlist |
 | `/l/` | Ask the Stylist | A chat that turns plain-language requests into product picks |
+| `/m/` | The Best Of It All | The strongest ideas from every concept combined into one homepage |
 
 ## Shared features
 `shared/features.js` powers every concept: cart and saved drawer, quick view, search suggestions, 52-showroom picker, filter and sort grids, financing estimate. State lives in `localStorage` so it carries across concepts.
