@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jacob Lucado">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept N: Promotions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#EA0028;--red-d:#C4001F;--ink:#16171A;--black:#0E0F11;--gray:#F4F5F6;--line:#E3E5E8;--muted:#5B6168;
+ --sx-accent:#EA0028;--sx-radius:8px;--sx-btn-radius:8px;--sx-head-weight:800;--sx-ratio:5/4;--sx-soft:#F4F5F6;--sx-font:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.logo{font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+header .wrap{display:flex;align-items:center;gap:18px;padding-block:12px}
+header nav{display:flex;gap:24px;margin-left:20px;font-weight:600;font-size:15px}header nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}header nav a:hover{border-color:var(--red)}
+.right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.sbtn{display:inline-flex;gap:8px;align-items:center;font:600 14px Montserrat;border:1.5px solid var(--line);background:#fff;padding:9px 14px;border-radius:8px;cursor:pointer;max-width:220px}.sbtn:hover{border-color:var(--ink)}
+.sbtn i{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}.sbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib{width:42px;height:42px;border-radius:8px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;position:relative}.ib:hover{border-color:var(--ink)}
+.ib b{position:absolute;top:-6px;right:-6px;background:var(--red);color:#fff;border-radius:99px;min-width:19px;height:19px;font-size:11px;display:grid;place-items:center;padding:0 5px}.ib b:empty{display:none}
+.bx{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:13px 20px;font:800 15px Montserrat;text-decoration:none;border:2px solid var(--red);background:var(--red);color:#fff;cursor:pointer}.bx:hover{background:var(--red-d);border-color:var(--red-d)}
+.bx.ghost{background:transparent;color:inherit;border-color:currentColor}.bx.ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.bx.dark{background:var(--ink);border-color:var(--ink)}.bx.dark:hover{background:#000}
+/* hero ad */
+.poster{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.poster .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:64px}
+.poster h1{font-weight:900;font-size:clamp(44px,7vw,108px);line-height:.9;letter-spacing:-.05em}
+.poster h1 span{display:block;color:var(--ink)}
+.poster p{font-size:19px;max-width:26em;margin-top:18px}
+.poster .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.poster .bx{background:#fff;color:var(--red);border-color:#fff}.poster .bx:hover{background:var(--ink);color:#fff;border-color:var(--ink)}.poster .bx.ghost{background:transparent;color:#fff;border-color:#fff}
+.tier{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tier div{background:var(--ink);border-radius:14px;padding:18px 10px;text-align:center}
+.tier b{display:block;font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-.04em;line-height:1}.tier small{display:block;margin-top:6px;font-size:12px;font-weight:600;color:#c7ccd1}
+.tier div:last-child{background:#fff;color:var(--red)}.tier div:last-child small{color:var(--muted)}
+.fine{font-size:12px;margin-top:14px;color:rgba(255,255,255,.88);max-width:34em}
+.sec{padding:70px 0}.sec.soft{background:var(--gray)}
+h2.t{font-size:clamp(28px,3.4vw,44px);font-weight:900;letter-spacing:-.035em;line-height:1.05}
+.sub{color:var(--muted);max-width:34em;margin-top:8px}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+/* flyer */
+.flyer{background:var(--black);color:#fff}
+.book{background:#fff;color:var(--ink);border-radius:10px;padding:26px;display:grid;grid-template-columns:1fr 1.15fr;gap:26px;min-height:480px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.book .lead{position:relative;border-radius:8px;overflow:hidden;background:#d8dadd;min-height:300px}
+.book .lead img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.book .lead:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.75))}
+.book .lead div{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:#fff}
+.book .lead small{font-weight:700;font-size:12px}.book .lead b{display:block;font-size:24px;font-weight:900;letter-spacing:-.03em;line-height:1.05;margin:2px 0}
+.book .lead strong{font-size:22px;font-weight:900}
+.book .pg h3{font-size:30px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:4px}.book .pg>p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.book .it{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.book .it img{width:76px;height:60px;object-fit:cover;border-radius:6px;background:#d8dadd}
+.book .it b{display:block;font-size:14px;line-height:1.25}.book .it small{color:var(--muted);font-size:12px}
+.book .it .pr{font-weight:900;font-size:17px;text-align:right}.book .it button{display:block;margin-top:4px;border:0;border-radius:6px;background:var(--red);color:#fff;font:700 12px Montserrat;padding:6px 12px;cursor:pointer;width:100%}
+.fnav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px;flex-wrap:wrap}
+.fnav .dots{display:flex;gap:8px}.fnav .dots button{width:30px;height:6px;border-radius:99px;border:0;background:rgba(255,255,255,.25);cursor:pointer}.fnav .dots button[aria-current=true]{background:var(--red)}
+.fnav .arr{display:flex;gap:8px}.fnav .arr button{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;cursor:pointer;display:grid;place-items:center}.fnav .arr button:hover{background:#fff;color:var(--ink)}
+.fnav span{font-size:13px;color:#a3a9b0}
+/* ad gallery */
+.ads{display:grid;gap:22px;grid-template-columns:repeat(12,1fr);align-items:start}
+.adbox{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px}
+.adbox>small{display:flex;justify-content:space-between;font-weight:700;font-size:12px;color:var(--muted);margin-bottom:10px}
+.adfit{overflow:hidden;border-radius:8px;position:relative}
+.adin{transform-origin:top left;position:relative;overflow:hidden;background:var(--red);color:#fff;cursor:pointer;display:flex}
+.adin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#8a8d92}
+.adin .cp{position:relative;z-index:1}
+.adin h4{font-weight:900;letter-spacing:-.04em;line-height:.95}
+.adin .pill{display:inline-block;background:#fff;color:var(--red);border-radius:6px;font-weight:800}
+.a-lb{grid-column:span 12}.a-mr,.a-hp,.a-st,.a-sq{grid-column:span 3}
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.calc .box{background:var(--gray);border-radius:16px;padding:28px}
+.calc .save{font-size:60px;font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--red)}
+.calc input{width:100%;accent-color:var(--red);margin-top:14px}
+.calc .row{display:flex;justify-content:space-between;font-weight:700;margin-top:4px}
+.calc .next{margin-top:12px;font-size:14px;color:var(--muted);min-height:22px}
+.ladder{display:grid;gap:8px;margin-top:20px}
+.ladder div{display:flex;justify-content:space-between;border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;font-weight:700;background:#fff}
+.ladder div.on{border-color:var(--red);background:#fff5f6}.ladder div span:last-child{color:var(--red)}
+.disc{font-size:12px;color:var(--muted);margin-top:26px;max-width:60em}
+footer.site{background:var(--black);color:#a3a9b0;padding:34px 20px;text-align:center;font-size:13px}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#111;color:#fff;padding:10px 16px;border-radius:99px;font:700 13px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+@media(max-width:1000px){header nav{display:none}.poster .wrap,.calc{grid-template-columns:1fr}.book{grid-template-columns:1fr}.book .lead{min-height:220px}.a-mr,.a-hp,.a-sq,.a-st{grid-column:span 6}}
+@media(max-width:640px){.a-mr,.a-hp,.a-sq,.a-st{grid-column:span 12}.sbtn{display:none}.sec{padding:50px 0}.poster .wrap{padding-block:40px}.tier b{font-size:24px}.calc .save{font-size:46px}.concept-tag{bottom:12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="../" aria-label="Schewels Home">schewels<br><small style="font-size:9px;font-weight:600;letter-spacing:.02em">HOME</small></a>
+  <nav aria-label="Sections"><a href="#flyer">Digital flyer</a><a href="#ads">Ads</a><a href="#save">Savings</a><a href="#about">About</a></nav>
+  <div class="right">
+    <button class="sbtn" data-sx="store"><i></i><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></button>
+    <button class="ib" data-sx="wish" aria-label="Saved"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6c-2.3 4.4-9.3 9-9.3 9z"/></svg><b data-sx-count="wish"></b></button>
+    <button class="ib" data-sx="cart" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0"/></svg><b data-sx-count="cart"></b></button>
+  </div>
+</div></header>
+
+<main>
+<section class="poster"><div class="wrap">
+  <div>
+    <h1>Black Friday<span>at Schewels.</span></h1>
+    <p>One sale, no hunting for the good stuff. The more you bring home, the more comes off, and it all happens right in your cart.</p>
+    <div class="cta"><a class="bx" href="#flyer">Flip through the flyer</a><button class="bx ghost" data-sx="cart">See my savings</button></div>
+  </div>
+  <div>
+    <div class="tier" aria-label="Savings by order size"><div><b>$50</b><small>off $500+</small></div><div><b>$100</b><small>off $1,000+</small></div><div><b>$150</b><small>off $1,500+</small></div><div><b>$200</b><small>off $2,000+</small></div></div>
+    <p class="fine">Sample promotion for this concept. Showroom pricing and details always apply, so check with your store to confirm. Mattresses don't count toward the savings.</p>
+  </div>
+</div></section>
+
+<section class="sec flyer" id="flyer"><div class="wrap">
+  <div class="sh"><div><h2 class="t">This week's flyer.</h2><p class="sub" style="color:#a3a9b0">The paper ad, made to be tapped. Flip the pages, add what you like, and skip the video playlist.</p></div></div>
+  <div class="book" id="book" aria-live="polite"></div>
+  <div class="fnav"><div class="dots" id="dots"></div><span id="pcount"></span><div class="arr"><button id="fprev" aria-label="Previous page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><button id="fnext" aria-label="Next page"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button></div></div>
+</div></section>
+
+<section class="sec" id="ads"><div class="wrap">
+  <div class="sh"><div><h2 class="t">One offer, every size.</h2><p class="sub">The same message in the formats we'd actually run: web banners, social posts and stories. Tap any ad to shop its featured piece.</p></div></div>
+  <div class="ads" id="adgrid"></div>
+</div></section>
+
+<section class="sec soft" id="save"><div class="wrap calc">
+  <div><h2 class="t">See what you'd save.</h2><p class="sub">Slide to your order total. Savings apply automatically in your cart, so there's no code to hunt down.</p>
+    <div class="ladder" id="ladder"></div></div>
+  <div class="box" aria-live="polite"><div class="row"><span>Order total</span><span id="ot">$1,200</span></div>
+    <input id="oi" type="range" min="0" max="2800" step="50" value="1200" aria-label="Order total">
+    <div style="margin-top:22px;font-weight:700">You save</div><div class="save" id="sv">$100</div>
+    <div class="next" id="nx"></div></div>
+</div>
+<div class="wrap"><p class="disc">Sample promotion shown for this design concept. Prices and savings amounts are placeholders. Showroom pricing and offer details always apply, so check with your store to confirm.</p></div></section>
+</main>
+
+<footer class="site">© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos and products are stand-ins; prices are samples.</footer>
+<a class="concept-tag" href="../">All concepts</a>
+
+<script src="../shared/features.js?v=20261112d"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+SX.config.tiers=true;
+var PAGES=[
+ {t:'Living room',s:'Sit down, stay a while.',lead:'s2',ids:['s1','s3','s4','s5']},
+ {t:'Bedroom',s:'Sleep like you mean it.',lead:'s9',ids:['s7','s8','s10','s17']},
+ {t:'Dining room',s:'Room for everyone at the table.',lead:'s13',ids:['s12','s6','s14']},
+ {t:'Home, office and more',s:'The useful stuff.',lead:'s11',ids:['s16','s14','s15']}];
+var cur=0;
+function page(i){cur=(i+PAGES.length)%PAGES.length;var p=PAGES[cur],L=SX.byId[p.lead];
+ $('book').innerHTML='<div class="lead"><img alt="" src="'+SX.img(L.img,900)+'"><div><small>Featured</small><b>'+SX.esc(L.name)+'</b><strong>'+SX.money(L.price)+'</strong> <small>or '+SX.money(Math.round(L.price/36))+'/mo</small></div></div>'
+ +'<div class="pg"><h3>'+p.t+'</h3><p>'+p.s+'</p>'+p.ids.map(function(id){var x=SX.byId[id];return '<div class="it"><img alt="" loading="lazy" src="'+SX.img(x.img,200)+'"><span><b>'+SX.esc(x.name)+'</b><small>'+SX.esc(x.style)+'</small></span><span class="pr">'+SX.money(x.price)+'<button data-add="'+id+'">Add</button></span></div>'}).join('')+'<div class="it" style="border-top:2px solid var(--ink)"><span></span><span><b>Feature piece</b></span><span class="pr"><button data-add="'+p.lead+'" style="background:var(--ink)">Add</button></span></div></div>';
+ $('pcount').textContent='Page '+(cur+1)+' of '+PAGES.length;
+ $('dots').querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-current',j===cur)})}
+$('dots').innerHTML=PAGES.map(function(p,i){return '<button data-i="'+i+'" aria-label="Page '+(i+1)+': '+p.t+'"></button>'}).join('');
+$('dots').onclick=function(e){var b=e.target.closest('button');if(b)page(+b.dataset.i)};
+$('fprev').onclick=function(){page(cur-1)};$('fnext').onclick=function(){page(cur+1)};
+$('book').onclick=function(e){var b=e.target.closest('[data-add]');if(b)SX.add(b.dataset.add)};
+document.addEventListener('keydown',function(e){if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;var r=$('flyer').getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){if(e.key==='ArrowRight')page(cur+1);if(e.key==='ArrowLeft')page(cur-1)}});
+page(0);
+/* ad creatives, designed at native size and scaled to fit */
+var AD=[
+ {c:'a-lb',n:'Web leaderboard',w:728,h:90,id:'s2',f:function(p){return '<img alt="" src="'+SX.img(p.img,700)+'" style="width:230px;left:auto;right:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)"><div class="cp" style="padding:14px 24px;display:flex;align-items:center;gap:20px;height:100%;width:100%"><h4 style="font-size:30px">Black Friday</h4><div style="font-weight:700;font-size:15px;line-height:1.2">Save $50 to $200<br>on your order.</div><span class="pill" style="padding:8px 14px;font-size:14px;margin-left:8px">Shop now</span></div>'}},
+ {c:'a-mr',n:'Medium rectangle',w:300,h:250,id:'s9',f:function(p){return '<img alt="" src="'+SX.img(p.img,600)+'" style="opacity:.55;mix-blend-mode:multiply"><div class="cp" style="padding:22px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;width:100%"><h4 style="font-size:46px">Up to<br>$200 off</h4><div style="font-weight:600;font-size:14px;margin:8px 0 14px">Your whole order, at your showroom.</div><span class="pill" style="padding:9px 16px;font-size:14px;align-self:flex-start">Shop the sale</span></div>'}},
+ {c:'a-hp',n:'Half page',w:300,h:600,id:'s2',f:function(p){return '<img alt="" src="'+SX.img(p.img,700)+'" style="height:58%;top:auto;bottom:0"><div class="cp" style="padding:26px 24px;width:100%"><h4 style="font-size:54px">Black<br>Friday</h4><div style="font-weight:700;font-size:16px;margin:10px 0 14px;line-height:1.25">One sale. Savings applied right in your cart.</div><span class="pill" style="padding:10px 16px;font-size:15px">$50 to $200 off</span></div>'}},
+ {c:'a-st',n:'Story',w:270,h:480,id:'s7',f:function(p){return '<img alt="" src="'+SX.img(p.img,700)+'" style="height:55%;top:auto;bottom:0"><div class="cp" style="padding:26px 22px;width:100%"><div style="font-weight:800;font-size:14px;margin-bottom:10px">schewels home</div><h4 style="font-size:50px">Come say hello.</h4><div style="font-weight:600;font-size:15px;margin-top:10px;line-height:1.3">Black Friday savings are on at all 52 showrooms.</div></div>'}},
+ {c:'a-sq',n:'Social post',w:480,h:480,id:'s13',f:function(p){return '<img alt="" src="'+SX.img(p.img,900)+'" style="opacity:.5;mix-blend-mode:multiply"><div class="cp" style="padding:34px;display:flex;flex-direction:column;justify-content:space-between;height:100%;width:100%"><div style="font-weight:800;font-size:18px">schewels home</div><div><h4 style="font-size:84px">Take up<br>to $200<br>off.</h4><div style="font-weight:600;font-size:19px;margin-top:14px">Family owned since 1897.</div></div></div>'}}];
+$('adgrid').innerHTML=AD.map(function(a,i){return '<div class="adbox '+a.c+'"><small><span>'+a.n+'</span><span>'+a.w+' × '+a.h+'</span></small><div class="adfit" data-i="'+i+'"><div class="adin" style="width:'+a.w+'px;height:'+a.h+'px" role="button" tabindex="0" aria-label="Shop: '+SX.esc(SX.byId[a.id].name)+'">'+a.f(SX.byId[a.id])+'</div></div></div>'}).join('');
+function fitAds(){document.querySelectorAll('.adfit').forEach(function(f){var a=AD[+f.dataset.i],s=Math.min(1,f.clientWidth/a.w),i=f.firstChild;i.style.transform='scale('+s+')';f.style.height=a.h*s+'px'})}
+$('adgrid').onclick=function(e){var f=e.target.closest('.adfit');if(f)SX.openProduct(AD[+f.dataset.i].id)};
+$('adgrid').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){var f=e.target.closest('.adfit');if(f){e.preventDefault();SX.openProduct(AD[+f.dataset.i].id)}}};
+addEventListener('resize',fitAds);fitAds();setTimeout(fitAds,300);
+/* savings */
+function calc(){var v=+$('oi').value,s=0,n=null;SX.tiers.forEach(function(t){if(v>=t[0]&&!s)s=t[1]});
+ var up=SX.tiers.slice().reverse().filter(function(t){return t[0]>v})[0];
+ $('ot').textContent=SX.money(v);$('sv').textContent=SX.money(s);
+ $('nx').textContent=up?'Add '+SX.money(up[0]-v)+' more to save '+SX.money(up[1])+'.':'You\'ve hit the top savings.';
+ $('ladder').querySelectorAll('div').forEach(function(d,i){var t=SX.tiers.slice().reverse()[i];d.className=(v>=t[0]&&!(SX.tiers.slice().reverse()[i+1]&&v>=SX.tiers.slice().reverse()[i+1][0]))?'on':''})}
+$('ladder').innerHTML=SX.tiers.slice().reverse().map(function(t){return '<div><span>Spend '+SX.money(t[0])+'</span><span>Save '+SX.money(t[1])+'</span></div>'}).join('');
+$('oi').oninput=calc;calc();
+})();
+</script>
+</body>
+</html>
