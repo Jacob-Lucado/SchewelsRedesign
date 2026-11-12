@@ -4,7 +4,7 @@ Six working redesigns of schewelshome.com, plus a gallery with a live viewer and
 
 | Path | Concept | The bet |
 |---|---|---|
-| `/` | Gallery | Live viewer (desktop, tablet, phone), audit, comparison |
+| `/` | Gallery | Live viewer (desktop, tablet, phone), comparison, about the maker |
 | `/a/` | Since 1897 | Lead with the family story; mega menu, financing FAQ |
 | `/b/` | Room first | Room picker that filters stock; payment estimator |
 | `/c/` | Find your Schewels | Showroom finder is the hero |

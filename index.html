@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Schewels Home — six redesign concepts</title>
-<meta name="description" content="Six working redesign concepts for schewelshome.com, with a live viewer, the audit behind them, and the shared features.">
+<meta name="description" content="Six working redesign concepts for schewelshome.com, with a live viewer and the features they share.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -16,6 +16,12 @@ body{margin:0;font:400 16px/1.6 Montserrat,system-ui,sans-serif;color:var(--text
 a{color:inherit}img{max-width:100%;display:block}
 :focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+/* scrollbars */
+html{scrollbar-color:#EA0028 #0E0F11;scrollbar-width:thin}
+::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:#0E0F11}
+::-webkit-scrollbar-thumb{background:linear-gradient(#EA0028,#B8001F);border-radius:99px;border:3px solid #0E0F11}
+::-webkit-scrollbar-thumb:hover{background:#ff2a4d}
+.mx{scrollbar-color:#EA0028 #eee}.mx::-webkit-scrollbar-track{background:#eee;border-radius:99px}.mx::-webkit-scrollbar-thumb{border-color:#eee}
 /* top */
 .top{position:sticky;top:0;z-index:50;background:rgba(14,15,17,.92);backdrop-filter:blur(8px);color:#fff}
 .top .wrap{display:flex;align-items:center;gap:20px;height:58px}
@@ -45,10 +51,24 @@ a{color:inherit}img{max-width:100%;display:block}
 /* viewer */
 .viewer{background:var(--ink);color:#fff;padding:40px 0 70px}
 .viewer h2,.sec h2{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.03em;line-height:1.05;margin:0 0 10px;font-weight:800}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 0 14px;scrollbar-width:thin}
-.tab{flex:0 0 auto;background:var(--ink2);border:1.5px solid var(--line);color:#e5e7ea;border-radius:12px;padding:10px 16px;font:600 14px Montserrat;cursor:pointer;text-align:left;line-height:1.25}
-.tab b{display:block;font-size:15px}.tab small{color:var(--mut);font-weight:500}
-.tab[aria-selected=true]{background:#fff;color:#111;border-color:#fff}.tab[aria-selected=true] small{color:#666}
+.slidewrap{position:relative;margin:4px 0 10px}
+.tabs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:8px 2px 14px;scrollbar-width:none;cursor:grab;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs.drag{cursor:grabbing;scroll-snap-type:none}.tabs.drag .tab{pointer-events:none}
+.tab{flex:0 0 auto;width:236px;scroll-snap-align:center;position:relative;background:var(--ink2);border:1.5px solid var(--line);color:#e5e7ea;border-radius:16px;padding:0;font:600 14px Montserrat;cursor:pointer;text-align:left;line-height:1.25;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tab:hover{border-color:#5a5f66;transform:translateY(-2px)}
+.tab .th{height:88px;background-size:cover;background-position:center;position:relative;filter:grayscale(.7) brightness(.7);transition:filter .3s}
+.tab .th::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(23,25,28,.95))}
+.tab .ltr{position:absolute;left:12px;top:10px;z-index:1;width:30px;height:30px;border-radius:9px 9px 9px 2px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:900;font-size:16px}
+.tab .tx{padding:10px 14px 14px}.tab b{display:block;font-size:15px}.tab small{color:var(--mut);font-weight:500;font-size:12.5px}
+.tab[aria-selected=true]{border-color:var(--red);box-shadow:0 0 0 1px var(--red),0 12px 34px rgba(234,0,40,.28);transform:translateY(-2px)}
+.tab[aria-selected=true] .th{filter:none}.tab[aria-selected=true] .tx b{color:#fff}
+.arr{position:absolute;top:44px;z-index:3;width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;background:rgba(14,15,17,.85);backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s,opacity .2s,transform .2s}
+.arr:hover{background:var(--red);border-color:var(--red);transform:scale(1.07)}.arr[disabled]{opacity:0;pointer-events:none}
+.arr.p{left:-10px}.arr.n{right:-10px}.arr svg{width:18px;height:18px}
+.prog{height:4px;border-radius:99px;background:var(--line);margin:0 2px 18px;position:relative;overflow:hidden}
+.prog i{position:absolute;top:0;bottom:0;left:0;width:30%;border-radius:99px;background:linear-gradient(90deg,var(--red-d),var(--red));transition:left .15s,width .15s}
+@media(max-width:700px){.arr{display:none}.tab{width:200px}}
 .vbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:6px 0 16px}
 .vbar .desc{flex:1 1 320px;color:#c8ccd0;font-size:15px;max-width:70ch}
 .seg{display:inline-flex;background:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:3px}
@@ -90,6 +110,19 @@ a{color:inherit}img{max-width:100%;display:block}
 .fix span{font-size:12px;color:#777;font-weight:600;margin-right:4px}
 .pill{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-size:13px;text-decoration:none}
 .pill.off{background:#e5e7ea;color:#999}
+.maker{display:grid;grid-template-columns:1fr 1.25fr;gap:0;border-radius:24px;overflow:hidden;background:var(--ink);color:#fff;box-shadow:0 30px 70px rgba(14,15,17,.25)}
+@media(max-width:900px){.maker{grid-template-columns:1fr}}
+.mk-main{padding:44px 40px;position:relative;background:radial-gradient(120% 90% at 0 0,rgba(234,0,40,.35),transparent 60%),var(--ink)}
+.mk-main h2{color:#fff;font-size:clamp(28px,3.2vw,40px)}.mk-main p{color:#c8ccd0;max-width:44ch;margin:0 0 24px}
+.mk-av{width:68px;height:68px;border-radius:20px 20px 20px 4px;background:var(--red);display:grid;place-items:center;font-weight:900;font-size:26px;letter-spacing:-.03em;margin-bottom:22px;box-shadow:0 10px 30px rgba(234,0,40,.45)}
+.btn.x{background:#fff;color:#111}.btn.x:hover{background:#eee}
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+@media(max-width:560px){.mk-grid{grid-template-columns:1fr}}
+.proj{background:var(--ink2);padding:28px 26px;text-decoration:none;color:#fff;display:flex;flex-direction:column;gap:8px;transition:background .2s}
+a.proj:hover{background:#22252a}a.proj:hover .pi{background:var(--red);color:#fff}
+.proj b{font-size:17px;letter-spacing:-.01em}.proj p{margin:0;color:#aab0b6;font-size:14px;flex:1}
+.proj em{font-style:normal;font-size:12.5px;font-weight:700;color:#ff5a76}
+.pi{width:38px;height:38px;border-radius:11px;background:#2a2d31;display:grid;place-items:center;font-weight:900;transition:background .2s}
 /* matrix */
 .mx{overflow-x:auto;border:1px solid #e5e7ea;border-radius:14px;background:#fff}
 table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
@@ -114,7 +147,7 @@ footer p{margin:0 0 6px;max-width:80ch}
 <body>
 <header class="top"><div class="wrap">
   <div class="badge">schewels<small>home · redesign lab</small></div>
-  <nav aria-label="Sections"><a href="#viewer">Live demos</a><a href="#audit">The audit</a><a href="#compare">Compare</a><a href="#features">Features</a></nav>
+  <nav aria-label="Sections"><a href="#viewer">Live demos</a><a href="#maker">About me</a><a href="#compare">Compare</a><a href="#features">Features</a></nav>
 </div></header>
 
 <section class="hero"><div class="wrap">
@@ -122,7 +155,7 @@ footer p{margin:0 0 6px;max-width:80ch}
     <div>
       <h1>Six ways to sell a <em>couch</em> online.</h1>
       <p class="lead">I work at Schewels, and I keep wondering if our site could look better and bring in more traffic and sales. So I took a hard look at it and built six working redesigns to try out. Each keeps our red, black and white, and each bets on something different a shopper needs first.</p>
-      <div class="btns"><a class="btn" href="#viewer">Try the demos</a><a class="btn ghost" href="#audit">Read the audit</a></div>
+      <div class="btns"><a class="btn" href="#viewer">Try the demos</a><a class="btn ghost" href="#maker">Meet the maker</a></div>
     </div>
     <div class="fan" aria-hidden="true">
       <a href="d/" tabindex="-1"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=600&q=70" alt=""><span>Doorbusters</span></a>
@@ -138,7 +171,7 @@ footer p{margin:0 0 6px;max-width:80ch}
 <section class="viewer" id="viewer"><div class="wrap">
   <h2>Live demos</h2>
   <p style="color:#c8ccd0;margin:0 0 14px;max-width:62ch">Everything below is the real page running in a frame. Add to cart, pick a showroom, save a favorite. Your choices follow you from concept to concept.</p>
-  <div class="tabs" role="tablist" id="tabs" aria-label="Concepts"></div>
+  <div class="slidewrap"><button class="arr p" id="prev" aria-label="Previous concept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="arr n" id="next" aria-label="Next concept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="tabs" role="tablist" id="tabs" aria-label="Concepts"></div><div class="prog" aria-hidden="true"><i id="progi"></i></div></div>
   <div class="vbar">
     <div class="desc" id="vdesc"></div>
     <div class="seg" role="group" aria-label="Device size">
@@ -155,10 +188,24 @@ footer p{margin:0 0 6px;max-width:80ch}
   <div class="cards" id="cards"></div>
 </div></section>
 
-<section class="sec soft" id="audit"><div class="wrap">
-  <h2>What the audit found</h2>
-  <p class="sub">Findings from reading the live homepage, menus and promo banners. The red dots show which concepts fix each one.</p>
-  <div class="audit" id="auditList"></div>
+<section class="sec soft" id="maker"><div class="wrap">
+  <div class="maker">
+    <div class="mk-main">
+      <div class="mk-av" aria-hidden="true">JL</div>
+      <h2>Built by Jacob Lucado</h2>
+      <p>I work at Schewels and build things on the side: Discord bots, browser tools and web dashboards for gamers. This redesign lab is another one of them.</p>
+      <div class="btns">
+        <a class="btn x" href="https://x.com/twit_user69" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Follow @twit_user69</a>
+        <a class="btn ghost" href="https://x.com/SteamValueChecker" target="_blank" rel="noopener">@SteamValueChecker</a>
+      </div>
+    </div>
+    <div class="mk-grid">
+      <a class="proj" href="https://steamvaluechecker.com" target="_blank" rel="noopener"><span class="pi">S</span><b>Steam Value Checker</b><p>A Discord bot that prices game libraries, tracks wishlists and posts free-game alerts, with its own web dashboard.</p><em>Discord bot</em></a>
+      <div class="proj"><span class="pi">F</span><b>FanaticalGrabber</b><p>A Chrome extension that reveals, copies and exports your Fanatical game keys in one click.</p><em>On the Chrome Web Store</em></div>
+      <a class="proj" href="https://discord.gg/uCqSXgwSCQ" target="_blank" rel="noopener"><span class="pi">G</span><b>Game Junkies</b><p>The community server for people who use the bot. Come hang out, get support and catch free games first.</p><em>Discord server</em></a>
+      <div class="proj"><span class="pi">L</span><b>Lucado Services</b><p>A small storefront for my tools, with more on the way.</p><em>Coming soon</em></div>
+    </div>
+  </div>
 </div></section>
 
 <section class="sec" id="compare"><div class="wrap">
@@ -220,21 +267,12 @@ var C=[
   d:'Styled rooms with tap-able hotspots. Open a piece, add it, or add the whole room in one go.',
   li:['Hotspots on real products','Add the whole room','Editorial type']}
 ];
-var AU=[
- ['The best story is at the bottom','Over 125 years of family history sits below the fold, while the top of the page is a stack of banners.','a,c,f'],
- ['Too many doors in the menu','Twelve top-level items and well over a hundred links, many of them duplicates.','a,b,d'],
- ['Sale text baked into images','Offers live inside pictures, with alt text like "SAVE" or "DAED." Screen readers and phones lose them.','b,d,e'],
- ['Payments mixed into categories','"Make a payment" and "Financing" sit in the same row as sofas and beds.','a,b,c,e'],
- ['An empty store picker','The showroom picker reports "0 stores" until you search, even though there are 52.','c,e,f'],
- ['Three promos fighting for attention','A banner, a hero slider and a chat bubble all ask for a click at once.','d,e']
-];
 var tabs=document.getElementById('tabs'),ifr=document.getElementById('ifr'),frame=document.getElementById('frame'),box=document.getElementById('stagebox'),
  vd=document.getElementById('vdesc'),url=document.getElementById('url'),openfull=document.getElementById('openfull');
 var cur=0,W=1280,H=800;
 var U=function(id){return 'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&w=700&q=70'};
-tabs.innerHTML=C.map(function(c,i){return '<button class="tab" role="tab" data-i="'+i+'" aria-selected="false"><b>'+c.k.toUpperCase()+' · '+c.n+'</b><small>'+c.s+'</small></button>'}).join('');
+tabs.innerHTML=C.map(function(c,i){return '<button class="tab" role="tab" data-i="'+i+'" aria-selected="false"><div class="th" style="background-image:url('+U(c.img)+')"><span class="ltr">'+c.k.toUpperCase()+'</span></div><div class="tx"><b>'+c.n+'</b><small>'+c.s+'</small></div></button>'}).join('');
 document.getElementById('cards').innerHTML=C.map(function(c){return '<article class="card"><div class="ph"><img alt="" src="'+U(c.img)+'"><b>'+c.k.toUpperCase()+'</b></div><div class="bd"><h3>'+c.n+'</h3><p class="tag">'+c.tag+'</p><p>'+c.d+'</p><ul>'+c.li.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><div class="go"><a href="'+c.k+'/">Open</a><a href="#viewer" data-v="'+c.k+'">Preview</a></div></div></article>'}).join('');
-document.getElementById('auditList').innerHTML=AU.map(function(a,i){var set=a[2].split(',');return '<div class="fnd"><div class="n">'+(i+1)+'</div><div><h3>'+a[0]+'</h3><p>'+a[1]+'</p></div><div class="fix"><span>Fixed in</span>'+C.map(function(c){return set.indexOf(c.k)>-1?'<a class="pill" href="'+c.k+'/" title="'+c.n+'">'+c.k.toUpperCase()+'</a>':'<span class="pill off">'+c.k.toUpperCase()+'</span>'}).join('')+'</div></div>'}).join('');
 function fit(){
   var avail=box.clientWidth-40,s=Math.min(1,avail/W);
   var h=Math.round(Math.min(W<500?780:W<900?1000:820,window.innerHeight*0.95)/1);
@@ -245,12 +283,19 @@ function fit(){
 function show(i,noHash){
   cur=(i+C.length)%C.length;var c=C[cur];
   [].forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===cur)});
-  var t=tabs.children[cur];tabs.scrollLeft=t.offsetLeft-tabs.clientWidth/2+t.offsetWidth/2;
+  var t=tabs.children[cur];tabs.scrollTo({left:t.offsetLeft-tabs.clientWidth/2+t.offsetWidth/2,behavior:'smooth'});
   vd.textContent=c.d;url.textContent='your-site.example/'+c.k+'/';openfull.href=c.k+'/';
-  ifr.src=c.k+'/';
+  ifr.src=c.k+'/';prog();
   if(!noHash)try{history.replaceState(null,'','#'+c.k)}catch(e){}
   fit();
 }
+var pi=document.getElementById('progi'),pv=document.getElementById('prev'),nx=document.getElementById('next');
+function prog(){var m=tabs.scrollWidth-tabs.clientWidth,w=m<=0?100:tabs.clientWidth/tabs.scrollWidth*100;pi.style.width=w+'%';pi.style.left=(m<=0?0:tabs.scrollLeft/m*(100-w))+'%';pv.disabled=cur===0;nx.disabled=cur===C.length-1}
+tabs.addEventListener('scroll',prog);pv.onclick=function(){show(cur-1)};nx.onclick=function(){show(cur+1)};
+var dx=0,sl=0,down=false,moved=false;
+tabs.addEventListener('pointerdown',function(e){if(e.pointerType==='touch')return;down=true;moved=false;dx=e.clientX;sl=tabs.scrollLeft});
+addEventListener('pointermove',function(e){if(!down)return;var d=e.clientX-dx;if(Math.abs(d)>5){moved=true;tabs.classList.add('drag')}if(moved)tabs.scrollLeft=sl-d});
+addEventListener('pointerup',function(){down=false;setTimeout(function(){tabs.classList.remove('drag')},0)});
 tabs.addEventListener('click',function(e){var b=e.target.closest('.tab');if(b)show(+b.dataset.i)});
 document.querySelector('.seg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
   [].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b)});W=+b.dataset.w;fit()});

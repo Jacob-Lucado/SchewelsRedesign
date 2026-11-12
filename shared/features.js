@@ -2,6 +2,14 @@
    Each concept themes it through CSS variables (--sx-*) and marks hooks with data-sx attributes. */
 (function () {
   'use strict';
+  (function () {
+    var st = document.createElement('style');
+    st.textContent = 'html{scrollbar-color:#EA0028 transparent;scrollbar-width:thin}' +
+      '::-webkit-scrollbar{width:11px;height:11px}::-webkit-scrollbar-track{background:rgba(127,127,127,.12)}' +
+      '::-webkit-scrollbar-thumb{background:#EA0028;border-radius:99px;border:2.5px solid transparent;background-clip:padding-box}' +
+      '::-webkit-scrollbar-thumb:hover{background:#B8001F;background-clip:padding-box}';
+    document.head.appendChild(st);
+  })();
   var IMG = function (id, w) { return 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + (w || 800) + '&q=75'; };
   var $ = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
