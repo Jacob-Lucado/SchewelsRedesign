@@ -78,7 +78,30 @@ img{display:block;max-width:100%}button{font-family:inherit;color:inherit}a{colo
 .concept-tag{position:fixed;left:14px;top:14px;z-index:2000;background:#fff;color:#111;padding:8px 14px;border-radius:99px;font:700 12px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.4);display:none}
 footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;background:var(--bg);border-top:1px solid var(--line)}
 .concept-tag.show{display:block}
-@media(max-width:760px){.icons{display:none}.sbox,.tray .clk,.task span,.desk::after{display:none}.task{flex:0 0 40px;justify-content:center;padding:0}.win{left:0!important;top:0!important;width:100%!important;height:100%!important;border-radius:0}.grip{display:none}.start{grid-template-columns:48px minmax(0,1fr)}.stiles{display:none}.sbtn b{display:none}}
+
+/* phone launcher: the same OS, shaped like a phone home screen */
+.phone{display:none;position:absolute;inset:0;z-index:3;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 10px) 18px 14px;color:#fff}
+.ph-stat{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;padding:0 6px}
+.ph-stat button{background:rgba(255,255,255,.14);border:0;border-radius:99px;padding:5px 11px;font:600 12px Montserrat;color:#fff;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ph-clock{margin:26px 4px 22px}.ph-clock b{display:block;font-size:64px;font-weight:200;letter-spacing:-.04em;line-height:1}.ph-clock span{color:#d7dade;font-size:15px}
+.ph-search{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 16px;color:#e6e8ea;font:500 14px Montserrat;width:100%;cursor:pointer;text-align:left;margin-bottom:22px}
+.ph-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 6px}
+.ph-app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;color:#fff;font:600 11px Montserrat;position:relative}
+.ph-app .art{width:58px;height:58px;border-radius:16px;font-size:26px}
+.ph-app .bdg{right:4px}
+.ph-dock{margin-top:auto;display:flex;justify-content:space-around;background:rgba(255,255,255,.16);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.22);border-radius:26px;padding:12px 8px}
+.ph-dock .ph-app{font-size:0}.ph-dock .ph-app .art{width:54px;height:54px}
+.ph-bar{width:120px;height:5px;border-radius:9px;background:rgba(255,255,255,.7);margin:12px auto 0}
+.ph-psearch{display:none}
+@media(max-width:760px){
+ .icons,.tbar,.start,.desk::after{display:none!important}
+ .phone{display:flex}.desk{height:100dvh;min-height:0}.layer{bottom:0;z-index:5}
+ .win{border-radius:0;top:0!important;left:0!important;width:100%!important;height:100%!important;z-index:20}
+ .bar{flex-direction:row-reverse;justify-content:flex-end;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 10px}
+ .wb .mn,.wb .mx{display:none}.wb .x{width:auto;padding:0 12px;height:32px;border-radius:99px;background:var(--soft2);font-size:0}.wb .x:before{content:"\2039  Back";font-size:14px;font-weight:700}
+ .ttl{flex:1;justify-content:center;margin-right:64px}.wbody{padding:18px 16px 40px}
+ .concept-tag{bottom:auto!important;top:calc(env(safe-area-inset-top,0px) + 44px)!important;left:auto!important;right:12px;z-index:30;padding:6px 12px;font-size:11px}
+}
 @media(prefers-reduced-motion:reduce){.win{animation:none}}
 </style>
 </head>
@@ -86,6 +109,13 @@ footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;backgrou
 <div class="desk" id="desk">
   <canvas id="waves" aria-hidden="true"></canvas>
   <div class="icons" id="icons"></div>
+  <div class="phone" id="phone">
+    <div class="ph-stat"><span id="phT">9:41</span><button data-sx="store"><span data-sx-label="store" data-default="Choose showroom">Choose showroom</span></button></div>
+    <div class="ph-clock"><b id="phC">9:41</b><span id="phD"></span></div>
+    <button class="ph-search" id="phS"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search furniture</button>
+    <div class="ph-grid" id="phG"></div>
+    <div class="ph-dock" id="phDk"></div><div class="ph-bar"></div>
+  </div>
   <div class="layer" id="layer"></div>
   <div class="start" id="start" hidden role="dialog" aria-label="Start menu">
     <div class="rail"><button title="Personalize" aria-label="Personalize" data-open="look">&#9881;</button><button title="My cart" aria-label="My cart" data-sx="cart">&#128722;</button></div>
@@ -100,7 +130,7 @@ footer{padding:26px 20px;color:#8d949c;font-size:13px;text-align:center;backgrou
 </div>
 <footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. Photos are stand-ins; prices are samples. Desktop design inspired by LucadoOS. LucadoOS™ is a trademark of Jacob Lucado.</footer>
 <a class="concept-tag show" href="../" style="top:auto;bottom:62px;left:14px">All concepts</a>
-<script src="../shared/features.js?v=20261112c"></script>
+<script src="../shared/features.js?v=20261112d"></script>
 <script>
 const $=id=>document.getElementById(id),layer=$('layer'),desk=$('desk');
 const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
@@ -136,7 +166,7 @@ function snapZone(x,y){const W=layer.clientWidth,H=layer.clientHeight,e=14;if(y<
 function zoneRect(z){const W=layer.clientWidth,H=layer.clientHeight;return z==='L'?{x:0,y:0,w:W/2,h:H}:z==='R'?{x:W/2,y:0,w:W/2,h:H}:{x:0,y:0,w:W,h:H}}
 function showSnap(z){if(!z){pv&&pv.remove();pv=null;return}if(!pv){pv=document.createElement('div');pv.className='snapv';layer.append(pv)}const r=zoneRect(z);Object.assign(pv.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'})}
 function openApp(id){const a=APPS[id];if(!a)return;closeStart();let w=wins.get(id);if(w){focus(w);return}
- if(mobile())wins.forEach(o=>{o.min=true;o.node.hidden=true;o.task.classList.remove('on')});
+ if(mobile())[...wins.values()].forEach(o=>{o.node.remove();o.task.remove();wins.delete(o.id)});
  const n=wins.size,node=document.createElement('section');node.className='win';node.setAttribute('role','dialog');node.setAttribute('aria-label',a.t);
  node.innerHTML=`<div class="bar"><div class="ttl"><i>${a.i}</i><span>${a.t}</span></div><div class="wb"><button class="mn" aria-label="Minimize">&#8212;</button><button class="mx" aria-label="Maximize">&#9633;</button><button class="x" aria-label="Close">&#10005;</button></div></div><div class="wbody ${a.cls||''} ${a.flush?'flush':''}">${a.html()}</div><div class="grip"></div>`;
  layer.append(node);const task=document.createElement('button');task.className='task';task.innerHTML=`<i>${a.i}</i><span>${a.t}</span>`;$('tasks').append(task);
@@ -184,7 +214,15 @@ function tick(){const d=new Date();$('clk').innerHTML=d.toLocaleTimeString('en-U
  function rs(){W=c.width=desk.clientWidth;H=c.height=desk.clientHeight}rs();addEventListener('resize',rs);
  function draw(){x.clearRect(0,0,W,H);for(let i=0;i<5;i++){x.beginPath();for(let px=0;px<=W;px+=8){const y=H*.62+Math.sin(px/190+t+i*.9)*34+Math.sin(px/90-t*1.3+i)*16+i*22;px?x.lineTo(px,y):x.moveTo(px,y)}
   x.strokeStyle=`rgba(234,0,40,${.5-i*.08})`;x.lineWidth=2;x.shadowColor='#EA0028';x.shadowBlur=14;x.stroke()}t+=.008;if(!rm)requestAnimationFrame(draw)}draw()})();
-applyPrefs();openApp('welcome');if(!mobile())setTimeout(()=>openApp('shop'),300);
+
+/* phone launcher */
+const PH=[['shop','Shop'],['rooms','Rooms'],['rooms2','Showrooms'],['pay','Payments'],['about','About'],['look','Style']];
+const phApp=(k,l,i,x)=>`<button class="ph-app" ${x||`data-open="${k}"`}><span class="art">${i}</span>${l}</button>`;
+$('phG').innerHTML=PH.map(p=>phApp(p[0],p[1],APPS[p[0]].i)).join('')+phApp('', 'Cart','&#128722;','data-sx="cart"')+phApp('','Saved','&#9825;','data-sx="wish"');
+$('phDk').innerHTML=phApp('shop','','&#9636;')+phApp('rooms2','','&#9679;')+phApp('','','&#128722;','data-sx="cart"')+phApp('pay','','$');
+$('phS').onclick=()=>{openApp('shop');setTimeout(()=>{const s=document.querySelector('.win[aria-label="Shop"] .sx-sort');s&&s.focus()},80)};
+function phTick(){const d=new Date(),t=d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});$('phT').textContent=t;$('phC').textContent=t.replace(/ ?[AP]M/,'');$('phD').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}phTick();setInterval(phTick,30000);
+applyPrefs();if(!mobile()){openApp('welcome');setTimeout(()=>openApp('shop'),300)}
 </script>
 </body>
 </html>
