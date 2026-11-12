@@ -1,6 +1,6 @@
 # Schewels Home redesign concepts
 
-Nine working redesigns of schewelshome.com, plus a gallery with a live viewer and the audit behind them. Unofficial design exploration, not affiliated with Schewels Home.
+Twelve working redesigns of schewelshome.com, plus a gallery with a live viewer and the audit behind them. Unofficial design exploration, not affiliated with Schewels Home.
 
 | Path | Concept | The bet |
 |---|---|---|
@@ -14,6 +14,9 @@ Nine working redesigns of schewelshome.com, plus a gallery with a live viewer an
 | `/g/` | Aperture | Futuristic glass look, Ctrl K command bar, 3D tilt spotlight |
 | `/h/` | Material Library | Shop by material and texture |
 | `/i/` | Schewels OS | A desktop with draggable windows, Start menu and wallpapers |
+| `/j/` | Floor Plan | A blueprint room planner with true-scale pieces and an overlap check |
+| `/k/` | Swipe & Save | A phone-first card stack: swipe right to save, then add the shortlist |
+| `/l/` | Ask the Stylist | A chat that turns plain-language requests into product picks |
 
 ## Shared features
 `shared/features.js` powers every concept: cart and saved drawer, quick view, search suggestions, 52-showroom picker, filter and sort grids, financing estimate. State lives in `localStorage` so it carries across concepts.

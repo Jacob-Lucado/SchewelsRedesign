@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jacob Lucado">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept L: Ask the Stylist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#EA0028;--red-d:#C4001F;--ink:#16171A;--gray:#F4F5F6;--line:#E3E5E8;--muted:#5B6168;
+ --sx-accent:#EA0028;--sx-radius:12px;--sx-btn-radius:99px;--sx-head-weight:800;--sx-ratio:5/4;--sx-soft:#F4F5F6;--sx-font:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.logo{font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:30}
+header .wrap{display:flex;align-items:center;gap:18px;padding-block:12px}
+.right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.sbtn{display:inline-flex;gap:8px;align-items:center;font:600 14px Montserrat;border:1.5px solid var(--line);background:#fff;padding:9px 14px;border-radius:99px;cursor:pointer;max-width:220px}.sbtn:hover{border-color:var(--ink)}
+.sbtn i{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}.sbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;position:relative}.ib:hover{border-color:var(--ink)}
+.ib b{position:absolute;top:-6px;right:-6px;background:var(--red);color:#fff;border-radius:99px;min-width:19px;height:19px;font-size:11px;display:grid;place-items:center;padding:0 5px}.ib b:empty{display:none}
+.stage{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;padding:56px 0 70px;align-items:start}
+.copy h1{font-weight:900;font-size:clamp(38px,5vw,68px);line-height:.98;letter-spacing:-.045em}
+.copy p{margin-top:16px;color:var(--muted);font-size:17px;max-width:24em}
+.try{margin-top:24px;display:grid;gap:8px}
+.try b{font-size:13px;color:var(--muted)}
+.try button{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font:600 14px Montserrat;cursor:pointer}.try button:hover{border-color:var(--red)}
+.chat{border:1.5px solid var(--line);border-radius:22px;background:var(--gray);display:flex;flex-direction:column;height:640px;max-height:calc(100vh - 110px);min-height:460px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(0,0,0,.35);position:sticky;top:78px}
+.ch{background:var(--ink);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-weight:900;font-size:16px;flex:none}
+.ch b{display:block;font-size:15px;line-height:1.2}.ch small{color:#9ba1a8;font-size:12px;display:flex;align-items:center;gap:6px}.ch small:before{content:"";width:7px;height:7px;border-radius:50%;background:#2fd06a}
+.ch button{margin-left:auto;background:transparent;border:1.5px solid #3a3d42;border-radius:99px;padding:6px 12px;font:600 12px Montserrat;cursor:pointer;color:#fff}.ch button:hover{border-color:#fff}
+.log{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.m{max-width:84%;padding:11px 15px;border-radius:18px;font-size:15px;line-height:1.45;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.m{animation:none}}
+.m.b{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+.m.u{background:var(--red);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.typing{display:flex;gap:4px;padding:14px 16px}.typing i{width:7px;height:7px;border-radius:50%;background:#b5bac0;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);background:var(--red)}}
+.picks{display:grid;gap:10px;align-self:stretch;max-width:100%}
+.pk{display:grid;grid-template-columns:104px 1fr;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;animation:pop .3s ease}
+.pk img{width:104px;height:100%;min-height:104px;object-fit:cover;background:#d8dadd}
+.pk div{padding:10px 12px}
+.pk small{color:var(--red);font-weight:700;font-size:11px}
+.pk h3{font-size:14px;font-weight:800;line-height:1.2;margin:1px 0 3px}
+.pk p{font-size:12px;color:var(--muted);line-height:1.35}
+.pk .row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.pk .pr{font-weight:800;font-size:15px}.pk .pr span{font-weight:600;font-size:11px;color:var(--muted)}
+.pk button{border:0;border-radius:99px;padding:7px 12px;font:700 12px Montserrat;cursor:pointer;background:var(--ink);color:#fff}.pk button.r{background:var(--red)}.pk button.o{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.pk button:hover{filter:brightness(1.15)}
+.qr{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px}
+.qr button{border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:99px;padding:8px 14px;font:700 13px Montserrat;cursor:pointer}.qr button:hover{background:var(--red);color:#fff}
+.in{display:flex;gap:8px;padding:12px;background:#fff;border-top:1px solid var(--line)}
+.in input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:99px;padding:12px 16px;font:500 15px Montserrat;outline:none}.in input:focus{border-color:var(--red)}
+.in button{width:46px;border-radius:50%;border:0;background:var(--red);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none}
+footer{padding:30px 20px;color:var(--muted);font-size:13px;text-align:center;background:var(--gray)}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#111;color:#fff;padding:10px 16px;border-radius:99px;font:700 13px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+@media(max-width:900px){.stage{grid-template-columns:1fr;gap:26px;padding-top:30px}.chat{position:static;height:600px}.sbtn{display:none}}
+@media(max-width:480px){.pk{grid-template-columns:84px 1fr}.pk img{width:84px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="../">schewels<br><small style="font-size:9px;font-weight:600;letter-spacing:.02em">HOME</small></a>
+  <div class="right">
+    <button class="sbtn" data-sx="store"><i></i><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></button>
+    <button class="ib" data-sx="wish" aria-label="Saved"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6c-2.3 4.4-9.3 9-9.3 9z"/></svg><b data-sx-count="wish"></b></button>
+    <button class="ib" data-sx="cart" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0"/></svg><b data-sx-count="cart"></b></button>
+  </div>
+</div></header>
+<main><div class="wrap"><section class="stage">
+  <div class="copy">
+    <h1>Just tell us what you need.</h1>
+    <p>Skip the catalog. Type it the way you'd say it in the showroom, or tap an answer, and the stylist pulls real pieces that fit your room, style and budget.</p>
+    <div class="try"><b>Try asking</b>
+      <button>A leather sofa under $2,000</button>
+      <button>Something cozy for a small bedroom</button>
+      <button>Where's the closest showroom?</button>
+    </div>
+  </div>
+  <div class="chat" role="region" aria-label="Schewels stylist chat">
+    <div class="ch"><div class="av">S</div><div><b>Schewels Stylist</b><small>Online now</small></div><button id="restart">Start over</button></div>
+    <div class="log" id="log" aria-live="polite"></div>
+    <div class="qr" id="qr"></div>
+    <form class="in" id="f"><input id="t" autocomplete="off" placeholder="Describe what you're looking for" aria-label="Message"><button aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  </div>
+</section></div></main>
+<footer>© 2026 Jacob Lucado. All rights reserved. Redesign concept for review. The stylist is a scripted demo; photos are stand-ins; prices are samples.</footer>
+<a class="concept-tag" href="../">All concepts</a>
+<script src="../shared/features.js?v=20261112d"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var log=$('log'),qr=$('qr'),need={},shown={},busy=false;
+var CATW={living:/sofa|couch|living|loveseat|recliner|accent chair|sectional/,bedroom:/bed|bedroom|nightstand|armoire|dresser/,dining:/dining|table|kitchen|chair/,office:/office|desk|shelf|bookcase|work from/,entertainment:/\btv\b|media|entertain|console/,mattress:/mattress|sleep/,appliances:/washer|dryer|appliance|laundry/};
+var STW={Casual:/casual|relaxed|easy|cozy|comfy|comfortable/,Contemporary:/modern|contemporary|sleek|clean|bold/,Traditional:/traditional|classic|tufted|formal/,Transitional:/transitional|mix|neutral|balanced/,'Relaxed vintage':/vintage|rustic|farmhouse|old|antique/};
+function bot(h,delay){return new Promise(function(res){var t=document.createElement('div');t.className='m b typing';t.innerHTML='<i></i><i></i><i></i>';log.appendChild(t);scroll();
+  setTimeout(function(){t.className='m b';t.innerHTML=h;scroll();res()},delay||650)})}
+function user(t){var d=document.createElement('div');d.className='m u';d.textContent=t;log.appendChild(d);scroll()}
+function scroll(){log.scrollTop=log.scrollHeight}
+function chips(a){qr.innerHTML=a.map(function(x){return '<button>'+x+'</button>'}).join('')}
+function start(){need={};shown={};log.innerHTML='';chips([]);
+  bot("Hi, I'm the Schewels stylist. What are you shopping for today?",500).then(function(){chips(['Living room','Bedroom','Dining room','Home office','Not sure yet'])})}
+function parse(t){var s=t.toLowerCase(),got=false;
+  Object.keys(CATW).forEach(function(k){if(!got&&CATW[k].test(s)){need.cat=k;got=true}});
+  if(/room i'm|living/.test(s)&&!got){need.cat='living'}
+  Object.keys(STW).forEach(function(k){if(STW[k].test(s))need.style=k});
+  var m=s.replace(/,/g,'').match(/\$?\s?(\d{3,5})(k)?/);if(m&&/under|below|less|max|budget|\$|up to|around/.test(s)){need.max=+m[1]*(m[2]?1000:1)}
+  if(/cheap|affordable|budget|inexpensive/.test(s)&&!need.max)need.max=800;
+  if(/leather/.test(s))need.kw='leather';else if(/velvet/.test(s))need.kw='velvet';else if(/\bsmall\b|apartment|compact|tiny/.test(s))need.kw='small';
+  return got||m||Object.keys(STW).some(function(k){return STW[k].test(s)})||need.kw}
+function find(){var list=SX.products.filter(function(p){if(need.cat&&p.cat!==need.cat)return false;if(need.max&&p.price>need.max)return false;return true});
+  var sc=list.map(function(p){var s=0;if(need.style&&p.style===need.style)s+=3;if(need.kw){var re=need.kw==='small'?/compact|small|apartment/:new RegExp(need.kw);if(re.test((p.name+' '+p.blurb).toLowerCase()))s+=4}return {p:p,s:s}});
+  sc.sort(function(a,b){return b.s-a.s||a.p.price-b.p.price});
+  return sc.map(function(x){return x.p}).filter(function(p){return !shown[p.id]}).slice(0,3)}
+function cards(list){var d=document.createElement('div');d.className='picks';
+  d.innerHTML=list.map(function(p){return '<div class="pk"><img alt="" src="'+SX.img(p.img,300)+'"><div><small>'+SX.esc(p.style)+' · '+SX.esc(SX.cats[p.cat])+'</small><h3>'+SX.esc(p.name)+'</h3><p>'+SX.esc(p.blurb)+'</p><div class="row"><span class="pr">'+SX.money(p.price)+' <span>or '+SX.money(Math.round(p.price/36))+'/mo</span></span><button class="r" data-a="add" data-id="'+p.id+'">Add to cart</button><button class="o" data-a="save" data-id="'+p.id+'">Save</button></div></div></div>'}).join('');
+  log.appendChild(d);scroll()}
+function say(t){if(busy)return;busy=true;user(t);chips([]);var s=t.toLowerCase();
+  if(/showroom|store|near|closest|visit|where/.test(s)&&!/where do i start/.test(s)){
+    var st=SX.state.store;
+    bot(st?'Your showroom is <b>'+SX.esc(st.n)+', '+st.st+'</b>. Want a different one?':'We have 52 showrooms across Virginia, West Virginia and North Carolina. Pick yours and I\'ll remember it.').then(function(){chips([st?'Change showroom':'Choose showroom','Keep shopping']);busy=false});return}
+  if(/^(start over|reset)$/.test(s)){busy=false;start();return}
+  if(/keep shopping|show me more|more/.test(s)&&Object.keys(need).length){return answer(true)}
+  if(/not sure/.test(s)){bot("No problem. Is it for a particular room, or are you after a certain look?").then(function(){chips(['Cozy and casual','Modern and bold','Classic and traditional','Under $1,000']);busy=false});return}
+  if(/cheaper|lower/.test(s)){need.max=Math.max(300,Math.round((need.max||2000)*.65/50)*50);delete need.kw;return answer(false,'Going a bit lower, up to '+SX.money(need.max)+'.')}
+  if(/different style|another style|switch style/.test(s)){delete need.style;return answer(false,'Sure, here are other looks.')}
+  var ok=parse(t);
+  if(!ok){bot("I didn't catch that. Try a room, a style or a budget, like \"modern dining set under $1,500\".").then(function(){chips(['Living room','Bedroom','Dining room','Under $1,000']);busy=false});return}
+  answer()}
+function answer(more,pre){
+  var list=find();
+  if(!need.cat&&!more&&!pre&&!need.style&&!need.max&&!need.kw){busy=false;return}
+  if(!need.cat&&!need.kw&&!need.style&&!need.max){busy=false;return}
+  if(!list.length){bot("That's a tight search. Nothing matches yet. Want me to loosen the budget or style?").then(function(){chips(['Cheaper','Different style','Start over']);busy=false});return}
+  var bits=[];if(need.cat)bits.push(SX.cats[need.cat].toLowerCase());if(need.style)bits.push(need.style.toLowerCase());if(need.kw&&need.kw!=='small')bits.push(need.kw);if(need.max)bits.push('up to '+SX.money(need.max));
+  bot((pre?pre+' ':'')+(more?'Here are a few more':'Here\'s what I\'d look at')+(bits.length?' for <b>'+bits.join(', ')+'</b>':'')+':').then(function(){
+    list.forEach(function(p){shown[p.id]=1});cards(list);
+    var nx=[];if(!need.style)nx.push('Pick a style');nx.push('Show me more','Cheaper','Different style','Where\'s my showroom?');
+    setTimeout(function(){chips(nx);busy=false;scroll()},250)})}
+qr.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||busy)return;var t=b.textContent;
+  if(t==='Pick a style'){user(t);chips([]);busy=true;bot('What look are you going for?').then(function(){chips(['Casual','Contemporary','Traditional','Transitional','Relaxed vintage']);busy=false});return}
+  if(/^(Choose|Change) showroom$/.test(t)){SX.openStore();return}
+  if(/^Where's my showroom/.test(t)){say('Where is my showroom?');return}
+  if(t==='Living room'||t==='Bedroom'||t==='Dining room'||t==='Home office'){say(t);return}
+  if(/^(Casual|Contemporary|Traditional|Transitional|Relaxed vintage)$/.test(t)){busy=true;user(t);chips([]);need.style=t;busy=false;busy=true;answer();return}
+  if(t==='Cozy and casual')t='casual cozy';if(t==='Modern and bold')t='modern bold';if(t==='Classic and traditional')t='classic traditional';
+  if(t==='Under $1,000')t='something under $1000';
+  say(t)});
+$('f').addEventListener('submit',function(e){e.preventDefault();var v=$('t').value.trim();if(!v||busy)return;$('t').value='';say(v)});
+document.querySelector('.try').addEventListener('click',function(e){var b=e.target.closest('button');if(b&&!busy){say(b.textContent)}});
+log.addEventListener('click',function(e){var b=e.target.closest('button[data-id]');if(!b)return;var id=b.dataset.id;
+  if(b.dataset.a==='add'){SX.add(id);b.textContent='Added';}else{if(SX.state.wish.indexOf(id)<0){SX.wish(id)}b.textContent='Saved'}});
+$('restart').onclick=function(){busy=false;start()};
+start();
+})();
+</script>
+</body>
+</html>
