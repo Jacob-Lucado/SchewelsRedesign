@@ -139,19 +139,40 @@ footer .fine{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,
   .sec{padding-block:52px}
 }
 body.menu-open .nav{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:20px 24px;border-bottom:1px solid var(--line);gap:10px}
+.icons{display:flex;gap:8px}.ic{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:inherit}.ic:hover{border-color:currentColor}.bdg{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;border-radius:99px;background:#EA0028;color:#fff;font:700 11px/19px 'Montserrat',sans-serif;text-align:center;padding:0 5px}.bdg[hidden]{display:none}
+:root{--sx-accent:var(--brass);--sx-accent-d:var(--brass-d);--sx-ink:var(--green);--sx-soft:var(--paper);--sx-radius:4px;--sx-btn-radius:2px;--sx-head:var(--display);--sx-head-weight:400}
+.sx-name{font-size:21px!important;letter-spacing:-.01em}
+.util-store{background:none;border:0;color:#fff;font:600 14px var(--sans);text-decoration:underline;cursor:pointer;padding:0}
+.search input{border:0;background:none;font:inherit;flex:1;min-width:0;color:var(--ink)}.search input:focus{outline:none}.search:focus-within{box-shadow:0 0 0 3px var(--brass)}
+.navbtn{font:inherit;font-weight:600;background:none;border:0;border-bottom:2px solid transparent;padding:6px 0;cursor:pointer;color:inherit;display:inline-flex;gap:6px;align-items:center}
+.navbtn:hover,.navbtn[aria-expanded=true]{border-color:var(--brass)}
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);box-shadow:0 30px 50px -30px rgba(0,0,0,.35)}
+.mega[hidden]{display:none}
+.mega .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 40px;padding-block:30px}
+.mega h4{font-family:var(--display);font-weight:400;font-size:23px;margin-bottom:8px;color:var(--green)}
+.mega ul{list-style:none;padding:0;display:grid;gap:7px}.mega a{text-decoration:none;color:var(--muted);font-size:15px}.mega a:hover{color:var(--brass-d);text-decoration:underline}
+.faq{margin-top:34px;border-top:1px solid rgba(255,255,255,.18)}
+.faq details{border-bottom:1px solid rgba(255,255,255,.18)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px;color:#fff}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--red-soft)}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 0 18px;color:#C4C7CC;max-width:34em}
+.shop-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.shop-head p{color:var(--muted);max-width:28em}
+@media (max-width:960px){.search{display:flex;order:5;flex-basis:100%;min-width:0}header.main .wrap{flex-wrap:wrap;row-gap:12px}.mega .wrap{grid-template-columns:1fr 1fr}.icons{margin-left:auto}}
 </style>
 </head>
 <body>
-<div class="util"><div class="wrap"><span>52 showrooms in Virginia, West Virginia, and North Carolina</span><nav><a href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a><a href="#pay">Financing</a><a href="#stores">Find a store</a></nav></div></div>
+<div class="util"><div class="wrap"><span>Your showroom: <button class="util-store" data-sx="store"><span data-sx-label="store" data-default="Choose one">Choose one</span></button></span><nav><a href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a><a href="#pay">Financing</a><a href="#stores">Find a store</a></nav></div></div>
 
 <header class="main"><div class="wrap">
   <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
   <nav class="nav" aria-label="Main">
-    <a href="#rooms">Rooms</a><a href="#rooms">Mattresses</a><a href="#rooms">Appliances &amp; electronics</a><a href="#rooms">Outdoor &amp; lawn</a><a class="sale" href="#">This week’s sale</a>
+    <button class="navbtn" id="megaBtn" aria-expanded="false" aria-controls="mega">Shop all <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 4 4 4-4"/></svg></button><a href="#shop" data-sx="filter" data-cat="mattress">Mattresses</a><a href="#shop" data-sx="filter" data-cat="appliances">Appliances &amp; electronics</a><a href="#rooms">Outdoor &amp; lawn</a><a class="sale" href="#">This week’s sale</a>
   </nav>
-  <div class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search sofas, beds, washers</div>
+  <label class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input data-sx="search" placeholder="Search sofas, beds, washers" aria-label="Search"></label><div class="icons"><button class="ic" data-sx="wish" aria-label="Saved items"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg><span class="bdg" data-sx-count="wish" hidden>0</span></button><button class="ic" data-sx="cart" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" data-sx-count="cart" hidden>0</span></button></div>
   <button class="menu-btn" aria-expanded="false" id="menuBtn">Menu</button>
-</div></header>
+</div><div class="mega" id="mega" hidden><div class="wrap"></div></div></header>
 
 <main>
 <section class="hero"><div class="wrap">
@@ -181,17 +202,28 @@ body.menu-open .nav{display:flex;flex-direction:column;position:absolute;top:100
 <section class="sec" id="rooms"><div class="wrap">
   <div class="rooms-head"><h2>Start with the room you’re working on.</h2><a class="btn ghost" href="#">Browse everything</a></div>
   <div class="rooms">
-    <a class="room r1" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1200&q=75" alt=""><span>Living room<small>Sofas, sectionals, recliners, tables</small></span></a>
-    <a class="room r2" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=75" alt=""><span>Bedroom<small>Beds, dressers, nightstands</small></span></a>
-    <a class="room r3" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=75" alt=""><span>Dining room<small>Sets for 2 to 8+</small></span></a>
-    <a class="room r4" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=900&q=75" alt=""><span>Home office<small>Desks, chairs, storage</small></span></a>
-    <a class="room r5" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=75" alt=""><span>Kitchen &amp; laundry<small>Appliances for every budget</small></span></a>
+    <a class="room r1" href="#shop" data-sx="filter" data-cat="living"><img loading="lazy" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1200&q=75" alt=""><span>Living room<small>Sofas, sectionals, recliners, tables</small></span></a>
+    <a class="room r2" href="#shop" data-sx="filter" data-cat="bedroom"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=75" alt=""><span>Bedroom<small>Beds, dressers, nightstands</small></span></a>
+    <a class="room r3" href="#shop" data-sx="filter" data-cat="dining"><img loading="lazy" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=75" alt=""><span>Dining room<small>Sets for 2 to 8+</small></span></a>
+    <a class="room r4" href="#shop" data-sx="filter" data-cat="office"><img loading="lazy" src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=900&q=75" alt=""><span>Home office<small>Desks, chairs, storage</small></span></a>
+    <a class="room r5" href="#shop" data-sx="filter" data-cat="appliances"><img loading="lazy" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=75" alt=""><span>Kitchen &amp; laundry<small>Appliances for every budget</small></span></a>
   </div>
-  <div class="more-rooms"><a href="#">Mattresses</a><a href="#">Entertainment</a><a href="#">Accents &amp; decor</a><a href="#">Kids &amp; teens</a><a href="#">Electronics</a><a href="#">Outdoor</a><a href="#">Lawn &amp; garden</a></div>
+  <div class="more-rooms"><a href="#shop" data-sx="filter" data-cat="mattress">Mattresses</a><a href="#shop" data-sx="filter" data-cat="entertainment">Entertainment</a><a href="#">Accents &amp; decor</a><a href="#">Kids &amp; teens</a><a href="#">Electronics</a><a href="#">Outdoor</a><a href="#">Lawn &amp; garden</a></div>
+</div></section>
+
+<section class="sec" id="shop" style="padding-top:8px"><div class="wrap">
+  <div class="shop-head"><h2>What people are taking home.</h2><p>Tap a photo for a closer look, save what you like, and add it to your cart. Every showroom can tell you what is on the floor.</p></div>
+  <div data-sx-grid></div>
 </div></section>
 
 <section class="sec pay" id="pay"><div class="wrap grid">
-  <div><h2>Pay over time, with people you can walk in and talk to.</h2><p class="lede">We carry more financing and lease-to-own options than most furniture stores because we’ve been doing it since the beginning.</p></div>
+  <div><h2>Pay over time, with people you can walk in and talk to.</h2><p class="lede">We carry more financing and lease-to-own options than most furniture stores because we’ve been doing it since the beginning.</p>
+    <div class="faq">
+      <details><summary>Who holds my account?</summary><p>We do. Schewels carries its own accounts, so you deal with the same people who sold you the furniture.</p></details>
+      <details><summary>What if I don’t qualify for an account?</summary><p>We also offer lease-to-own options. Ask your showroom which one fits.</p></details>
+      <details><summary>How do I make a payment?</summary><p>Use “Make a payment” at the top of any page, or stop by your showroom.</p></details>
+      <details><summary>What if I don’t love my mattress?</summary><p>You get 180 nights to sleep on it at home. If it’s not right, we’ll help you find one that is.</p></details>
+    </div></div>
   <div class="ways">
     <div class="way"><h3>A Schewels account</h3><a href="https://www.schewelshome.com/financing">Apply</a><p>Our own accounts, managed by people at your local showroom.</p></div>
     <div class="way"><h3>Lease-to-own</h3><a href="https://www.schewelshome.com/financing">See options</a><p>Take it home now and own it after your last payment.</p></div>
@@ -240,13 +272,15 @@ body.menu-open .nav{display:flex;flex-direction:column;position:absolute;top:100
 </div></footer>
 <a class="concept-tag" href="../">All concepts</a>
 
+<script src="../shared/features.js"></script>
 <script>
-const STORES=["Ahoskie NC","Altavista VA","Amherst VA","Appomattox VA","Beckley WV","Bedford VA","Blackstone VA","Bristol VA","Charles Town WV","Charlottesville VA","Christiansburg VA","Collinsville VA","Covington VA","Culpeper VA","Danville VA","Eden NC","Elizabeth City NC","Elkin NC","Emporia VA","Farmville VA","Franklin VA","Front Royal VA","Galax VA","Harrisonburg VA","Henderson NC","Lewisburg WV","Lexington VA","Luray VA","Lynchburg VA","Martinsburg WV","Mount Airy NC","Orange VA","Oxford NC","Princeton WV","Reidsville NC","Richlands VA","Richmond VA (Central)","Richmond VA (West)","Roanoke VA","Roanoke Rapids NC","Rocky Mount VA","Roxboro NC","Salem VA","South Boston VA","South Hill VA","Staunton VA","Suffolk VA","Washington NC","Waynesboro VA","Williamston NC","Winchester VA","Wytheville VA"];
+const STORES_OLD=["Ahoskie NC","Altavista VA","Amherst VA","Appomattox VA","Beckley WV","Bedford VA","Blackstone VA","Bristol VA","Charles Town WV","Charlottesville VA","Christiansburg VA","Collinsville VA","Covington VA","Culpeper VA","Danville VA","Eden NC","Elizabeth City NC","Elkin NC","Emporia VA","Farmville VA","Franklin VA","Front Royal VA","Galax VA","Harrisonburg VA","Henderson NC","Lewisburg WV","Lexington VA","Luray VA","Lynchburg VA","Martinsburg WV","Mount Airy NC","Orange VA","Oxford NC","Princeton WV","Reidsville NC","Richlands VA","Richmond VA (Central)","Richmond VA (West)","Roanoke VA","Roanoke Rapids NC","Rocky Mount VA","Roxboro NC","Salem VA","South Boston VA","South Hill VA","Staunton VA","Suffolk VA","Washington NC","Waynesboro VA","Williamston NC","Winchester VA","Wytheville VA"];
 const out=document.getElementById('out'),town=document.getElementById('town');
 function find(e){e&&e.preventDefault();const q=town.value.trim().toLowerCase();
   if(!q){out.textContent='';return}
-  const m=STORES.filter(s=>s.toLowerCase().includes(q));
-  out.innerHTML=m.length?m.slice(0,6).map(s=>`<a href="https://www.schewelshome.com/stores" style="display:inline-block;margin:0 10px 6px 0;color:#EA0028;font-weight:700">${s.replace(/ (VA|WV|NC)/,', $1')}</a>`).join(''):`No showroom in “${town.value.trim()}” yet. Try a nearby town.`}
+  const m=SX.stores.filter(s=>s.n.toLowerCase().includes(q));
+  out.innerHTML=m.length?m.slice(0,6).map(s=>`<button type="button" data-n="${SX.esc(s.n)}" data-st="${s.st}" style="margin:0 10px 6px 0;color:#EA0028;font:700 15px var(--sans);background:none;border:0;text-decoration:underline;cursor:pointer;padding:0">${SX.esc(s.n)}, ${s.st}</button>`).join('')+'<br><span style="font-size:14px">Tap one to make it your showroom.</span>':`No showroom in “${SX.esc(town.value.trim())}” yet. Try a nearby town.`}
+out.addEventListener('click',e=>{const b=e.target.closest('button[data-n]');if(b)SX.setStore(b.dataset.n,b.dataset.st)});
 document.getElementById('finder').addEventListener('submit',find);town.addEventListener('input',find);
 document.querySelectorAll('.swatches button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.swatches button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
@@ -255,6 +289,15 @@ document.querySelectorAll('.swatches button').forEach(b=>b.addEventListener('cli
   const extra={Linen:' saturate(.15) brightness(1.35)',Charcoal:' saturate(.1) brightness(.55)'}[b.dataset.n]||'';
   document.getElementById('swImg').style.filter=`hue-rotate(${hue})${extra}`;
 }));
+/* mega menu */
+const MAP={'Living room':'living','Bedroom':'bedroom','Dining room':'dining','Mattresses':'mattress','Home office':'office','Appliances':'appliances','Electronics':'entertainment'};
+const mega=document.getElementById('mega'),mbtn=document.getElementById('megaBtn');
+mega.firstElementChild.innerHTML=SX.nav.map(g=>`<div><h4>${g.t}</h4><ul>${g.l.map(x=>`<li><a href="#shop" data-c="${MAP[g.t]||''}">${x}</a></li>`).join('')}</ul></div>`).join('');
+function megaToggle(o){mega.hidden=!o;mbtn.setAttribute('aria-expanded',o)}
+mbtn.addEventListener('click',e=>{e.stopPropagation();megaToggle(mega.hidden)});
+mega.addEventListener('click',e=>{const l=e.target.closest('a');if(!l)return;e.preventDefault();megaToggle(false);const c=l.dataset.c;c?SX.filter(c):SX.toast('Demo: this would open that category.')});
+document.addEventListener('click',e=>{if(!mega.hidden&&!mega.contains(e.target))megaToggle(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')megaToggle(false)});
 document.getElementById('menuBtn').addEventListener('click',e=>{const o=document.body.classList.toggle('menu-open');e.target.setAttribute('aria-expanded',o)});
 </script>
 </body>

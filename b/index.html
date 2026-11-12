@@ -34,6 +34,7 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdro
 .cats .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
 .cats a{white-space:nowrap;text-decoration:none;padding:7px 14px;border-radius:8px;font-weight:500;font-size:15px}
 .cats a:hover{background:var(--mist)}
+.cats a.mstore{display:none;font-weight:700}
 .cats a.mpay{display:none;font-weight:700;color:var(--lake)}
 .cats a.sale{color:#EA0028;font-weight:700}
 
@@ -130,25 +131,29 @@ footer .f{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255
   footer .cols{grid-template-columns:1fr 1fr}
   .sec{padding-block:48px}
 }
-@media (max-width:560px){.chip.pay{display:none}.cats a.mpay{display:block}}
+@media (max-width:560px){.chip.pay,.chip.store{display:none}.cats a.mpay,.cats a.mstore{display:block}}
 @media (max-width:480px){.tools{gap:6px}#storeLbl{max-width:92px;overflow:hidden;text-overflow:ellipsis}.pop{right:-8px;width:min(300px,calc(100vw - 32px))}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.icons{display:flex;gap:8px}.ic{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:inherit}.ic:hover{border-color:currentColor}.bdg{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;border-radius:99px;background:#EA0028;color:#fff;font:700 11px/19px 'Montserrat',sans-serif;text-align:center;padding:0 5px}.bdg[hidden]{display:none}
+:root{--sx-accent:#EA0028;--sx-radius:18px;--sx-btn-radius:12px;--sx-head-weight:800;--sx-ratio:1/1}
+.sx-name{letter-spacing:-.02em}
+.tools .ic{width:40px;height:40px;border-radius:12px}
+#shop{background:#fff}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
     <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
-    <label class="searchbox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search sofas, mattresses, washers" aria-label="Search"></label>
+    <label class="searchbox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" data-sx="search" placeholder="Search sofas, mattresses, washers" aria-label="Search"></label>
     <div class="tools">
-      <button class="chip store" id="storeBtn" aria-expanded="false" aria-controls="storePop"><span class="dot"></span><span id="storeLbl">Choose your showroom</span></button>
+      <button class="chip store" data-sx="store"><span class="dot"></span><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></button><div class="icons"><button class="ic" data-sx="wish" aria-label="Saved items"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg><span class="bdg" data-sx-count="wish" hidden>0</span></button><button class="ic" data-sx="cart" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" data-sx-count="cart" hidden>0</span></button></div>
       <a class="chip" href="#">Sign in</a>
       <a class="chip pay" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a>
     </div>
   </div>
-  <div class="wrap pop-wrap"><div class="pop" id="storePop" hidden><b>Shopping at</b><input id="popIn" placeholder="Search your town" autocomplete="off" aria-label="Search your town"><div id="popList"></div></div></div>
   <nav class="cats" aria-label="Departments"><div class="wrap">
-    <a class="mpay" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a><a href="#">Living room</a><a href="#">Bedroom</a><a href="#">Mattresses</a><a href="#">Dining</a><a href="#">Home office</a><a href="#">Accents</a><a href="#">Outdoor</a><a href="#">Appliances</a><a href="#">Electronics</a><a href="#">Lawn &amp; garden</a><a class="sale" href="#">Sale</a><a href="#est">Financing</a>
+    <a class="mstore" href="#" data-sx="store"><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></a><a class="mpay" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a><a href="#shop" data-sx="filter" data-cat="living">Living room</a><a href="#shop" data-sx="filter" data-cat="bedroom">Bedroom</a><a href="#shop" data-sx="filter" data-cat="mattress">Mattresses</a><a href="#shop" data-sx="filter" data-cat="dining">Dining</a><a href="#shop" data-sx="filter" data-cat="office">Home office</a><a href="#">Accents</a><a href="#">Outdoor</a><a href="#shop" data-sx="filter" data-cat="appliances">Appliances</a><a href="#shop" data-sx="filter" data-cat="entertainment">Electronics</a><a href="#">Lawn &amp; garden</a><a class="sale" href="#">Sale</a><a href="#est">Financing</a>
   </div></nav>
 </header>
 
@@ -160,7 +165,7 @@ footer .f{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255
     <div class="rooms-pick" id="pick" role="group" aria-label="Choose a room"></div>
   </div>
   <div class="hero-r" id="heroR">
-    <div class="hero-card"><div><h2 id="hTitle"></h2><p id="hSub"></p></div><a class="go" id="hGo" href="#">Shop living room</a></div>
+    <div class="hero-card"><div><h2 id="hTitle"></h2><p id="hSub"></p></div><a class="go" id="hGo" href="#shop" data-sx="filter" data-cat="living">Shop living room</a></div>
   </div>
 </div></section>
 
@@ -180,6 +185,11 @@ footer .f{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255
     <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=75" alt=""><span>Transitional</span></a>
     <a class="style" href="#"><img loading="lazy" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=75" alt=""><span>Relaxed vintage</span></a>
   </div>
+</div></section>
+
+<section class="sec" id="shop"><div class="wrap">
+  <div class="sec-head"><h2 class="t">Shop what’s in stock</h2><a href="#" data-sx="store">Pick your showroom</a></div>
+  <div data-sx-grid></div>
 </div></section>
 
 <section class="sec est" id="est"><div class="wrap grid">
@@ -222,30 +232,26 @@ footer .f{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255
 </div></footer>
 <a class="concept-tag" href="../">All concepts</a>
 
+<script src="../shared/features.js"></script>
 <script>
 const R=[
- {k:'Living room',t:'Living room',s:'Sofas, sectionals, recliners, and the tables to go with them.',img:'1493663284031-b7e3aefcae8e'},
- {k:'Bedroom',t:'Bedroom',s:'Beds, dressers, nightstands, and full bedroom groups.',img:'1505693416388-ac5ce068fe85'},
- {k:'Mattresses',t:'Mattresses',s:'Every size and comfort level, with a 180-night trial.',img:'1616594039964-ae9021a400a0'},
- {k:'Dining',t:'Dining room',s:'Tables, chairs, and sets for 2 to 8 or more.',img:'1617806118233-18e1de247200'},
- {k:'Office',t:'Home office',s:'Desks, task chairs, and storage that keeps up.',img:'1611269154421-4e27233ac5c7'},
- {k:'Kitchen & laundry',t:'Appliances',s:'Washers, dryers, refrigerators, ranges, and dishwashers.',img:'1556909114-f6e7ad7d3136'},
- {k:'Entertainment',t:'Entertainment',s:'TVs, speakers, and media storage.',img:'1594026112284-02bb6f3352fe'}];
+ {k:'Living room',c:'living',t:'Living room',s:'Sofas, sectionals, recliners, and the tables to go with them.',img:'1493663284031-b7e3aefcae8e'},
+ {k:'Bedroom',c:'bedroom',t:'Bedroom',s:'Beds, dressers, nightstands, and full bedroom groups.',img:'1505693416388-ac5ce068fe85'},
+ {k:'Mattresses',c:'mattress',t:'Mattresses',s:'Every size and comfort level, with a 180-night trial.',img:'1616594039964-ae9021a400a0'},
+ {k:'Dining',c:'dining',t:'Dining room',s:'Tables, chairs, and sets for 2 to 8 or more.',img:'1617806118233-18e1de247200'},
+ {k:'Office',c:'office',t:'Home office',s:'Desks, task chairs, and storage that keeps up.',img:'1611269154421-4e27233ac5c7'},
+ {k:'Kitchen & laundry',c:'appliances',t:'Appliances',s:'Washers, dryers, refrigerators, ranges, and dishwashers.',img:'1556909114-f6e7ad7d3136'},
+ {k:'Entertainment',c:'entertainment',t:'Entertainment',s:'TVs, speakers, and media storage.',img:'1594026112284-02bb6f3352fe'}];
 const pick=document.getElementById('pick'),box=document.getElementById('heroR');
 R.forEach((r,i)=>{
   const im=new Image();im.src=`https://images.unsplash.com/photo-${r.img}?w=1300&q=80`;im.alt='';if(i===0)im.className='on';box.prepend(im);r.el=im;
   const b=document.createElement('button');b.textContent=r.k;b.setAttribute('aria-pressed',i===0);b.onclick=()=>show(i);pick.append(b);r.btn=b});
 function show(i){R.forEach((r,j)=>{r.el.classList.toggle('on',i===j);r.btn.setAttribute('aria-pressed',i===j)});
-  hTitle.textContent=R[i].t;hSub.textContent=R[i].s;hGo.textContent='Shop '+R[i].t.toLowerCase()}
+  hTitle.textContent=R[i].t;hSub.textContent=R[i].s;hGo.textContent='Shop '+R[i].t.toLowerCase();hGo.dataset.cat=R[i].c}
 show(0);
 const price=document.getElementById('price'),term=document.getElementById('term');
 function calc(){const p=+price.value,t=+term.value;priceO.textContent='$'+p.toLocaleString('en-US');termO.textContent=t+' months';mo.textContent='$'+Math.round(p/t).toLocaleString('en-US')}
 price.oninput=term.oninput=calc;calc();
-const TOWNS=["Altavista","Amherst","Bedford","Bristol","Charlottesville","Christiansburg","Danville","Galax","Harrisonburg","Lynchburg","Roanoke","Salem","Staunton","Winchester","Beckley","Martinsburg","Princeton","Elkin","Mount Airy","Reidsville","Richmond (Central)","Richmond (West)","Suffolk"];
-const pop=document.getElementById('storePop'),pl=document.getElementById('popList'),pi=document.getElementById('popIn');
-function fill(){const t=pi.value.trim().toLowerCase();pl.innerHTML='';TOWNS.filter(x=>x.toLowerCase().includes(t)).slice(0,8).forEach(x=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>{storeLbl.textContent=x;pop.hidden=true;storeBtn.setAttribute('aria-expanded','false')};pl.append(b)})}
-storeBtn.onclick=()=>{pop.hidden=!pop.hidden;storeBtn.setAttribute('aria-expanded',!pop.hidden);if(!pop.hidden){pi.value='';fill();pi.focus()}};
-pi.oninput=fill;document.addEventListener('keydown',e=>{if(e.key==='Escape'){pop.hidden=true}});
 </script>
 </body>
 </html>

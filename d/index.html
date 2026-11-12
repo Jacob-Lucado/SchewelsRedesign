@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept D: Doorbusters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0E0F11;--ink:#16171A;--red:#EA0028;--red-d:#C4001F;--white:#fff;--gray:#F7F7F7;--line:#DEE2E6;--muted:#5B6168;--font:'Montserrat',system-ui,sans-serif;
+ --sx-accent:#EA0028;--sx-radius:6px;--sx-btn-radius:6px;--sx-head-weight:800;--sx-ratio:5/4}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);color:var(--ink);background:#fff;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+.logo{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}.icons{display:flex;gap:8px}.ic{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;display:grid;place-items:center;cursor:pointer;color:inherit}.ic:hover{border-color:currentColor}.bdg{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;border-radius:99px;background:#EA0028;color:#fff;font:700 11px/19px 'Montserrat',sans-serif;text-align:center;padding:0 5px}.bdg[hidden]{display:none}
+/* ticker */
+.ticker{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;font-weight:800;font-size:14px;letter-spacing:.01em}
+.track{display:inline-flex;gap:0;animation:slide 34s linear infinite;padding-block:9px}
+.ticker:hover .track{animation-play-state:paused}
+.track span{display:inline-flex;align-items:center;gap:22px;padding-right:22px}
+.track i{width:8px;height:8px;background:#fff;transform:rotate(45deg);display:inline-block}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+/* header */
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.bar{display:grid;grid-template-columns:auto 1fr auto auto;gap:22px;align-items:center;padding-block:12px}
+.searchbox{display:flex;gap:10px;align-items:center;background:var(--gray);border-radius:8px;padding:12px 16px;color:var(--muted);max-width:560px;width:100%;justify-self:center}
+.searchbox input{border:0;background:none;font:inherit;flex:1;min-width:0;color:var(--ink)}.searchbox input:focus{outline:none}.searchbox:focus-within{box-shadow:0 0 0 3px var(--red)}
+.storebtn{display:inline-flex;gap:8px;align-items:center;font:700 14px var(--font);border:1.5px solid var(--ink);background:#fff;color:var(--ink);padding:9px 13px;border-radius:8px;cursor:pointer;max-width:220px}
+.storebtn span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dot{width:9px;height:9px;border-radius:50%;background:var(--red);flex:none}
+.cats{border-top:1px solid var(--line)}.cats .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:7px}
+.cats a{white-space:nowrap;text-decoration:none;padding:7px 14px;border-radius:6px;font-weight:600;font-size:15px}.cats a:hover{background:var(--gray)}.cats a.hot{color:var(--red);font-weight:800}
+/* hero */
+.hero{background:var(--black);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;padding-block:60px 64px;align-items:center}
+h1{font-weight:900;font-size:clamp(40px,6.2vw,92px);line-height:.92;letter-spacing:-.045em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--red)}
+.offer{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:26px;font-weight:800;font-size:clamp(20px,2.4vw,32px);letter-spacing:-.02em}
+.offer span{background:#fff;color:var(--black);padding:8px 16px;border-radius:6px}.offer b{color:var(--red);font-size:1.2em}
+.hero p.sub{color:#C9CCD1;max-width:34em;margin-top:20px;font-size:18px}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+.tier{border:2px solid #34373D;border-radius:8px;padding:14px 14px 12px;transition:border-color .2s,background .2s}
+.tier b{display:block;font-weight:900;font-size:28px;letter-spacing:-.03em}.tier span{color:#A5AAB2;font-size:13px;font-weight:600}
+.tier.on{border-color:var(--red);background:rgba(234,0,40,.14)}
+.calc{background:#fff;color:var(--ink);border-radius:14px;padding:28px;box-shadow:0 40px 80px -40px rgba(234,0,40,.6)}
+.calc h2{font-weight:900;font-size:24px;letter-spacing:-.03em;line-height:1.1}
+.calc label{display:flex;justify-content:space-between;font-weight:600;margin-top:22px}.calc output{font-weight:900;font-size:22px}
+.calc input[type=range]{width:100%;accent-color:var(--red);margin:12px 0 4px;height:28px}
+.marks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:600}
+.res{margin-top:22px;border-top:2px solid var(--ink);padding-top:16px;display:grid;gap:4px}
+.res .row{display:flex;justify-content:space-between;font-weight:600}
+.res .save{color:var(--red);font-weight:800}
+.res .tot{font-weight:900;font-size:26px;letter-spacing:-.03em;padding-top:8px}
+.calc .btn{display:block;text-align:center;margin-top:18px;background:var(--red);color:#fff;font-weight:800;text-decoration:none;padding:15px;border-radius:8px}
+.calc .btn:hover{background:var(--red-d)}
+.calc small{display:block;color:var(--muted);font-size:12px;margin-top:10px;line-height:1.45}
+/* sections */
+.sec{padding-block:72px}
+h2.t{font-weight:900;font-size:clamp(30px,4.4vw,56px);letter-spacing:-.04em;line-height:.98}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.head p{max-width:30em;color:var(--muted)}
+.dark{background:var(--black);color:#fff;--sx-ink:#fff;--sx-bg:#1A1C20;--sx-line:#2D3036;--sx-soft:#22252A;--sx-muted:#A5AAB2}
+.dark .head p{color:#A5AAB2}
+.dark .sx-btn{color:#fff}
+.dark .sx-chip[aria-pressed=true]{background:#fff;color:var(--black);border-color:#fff}
+.dark .sx-sort{background:#1A1C20;color:#fff;border-color:#2D3036}
+.depts{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.dept{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;font:inherit;background:#222}
+.dept img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}.dept:hover img{transform:scale(1.06)}
+.dept::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,15,17,.85),transparent 55%)}
+.dept span{position:absolute;left:14px;bottom:12px;z-index:1;font-weight:800;font-size:19px;letter-spacing:-.02em;line-height:1.1}
+.fin{background:var(--red);color:#fff}
+.fin .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:64px}
+.fin h2{font-weight:900;font-size:clamp(34px,5vw,68px);letter-spacing:-.045em;line-height:.95}
+.fin p{margin-top:16px;max-width:30em;font-size:18px;opacity:.95}
+.fin ul{list-style:none;padding:0;display:grid;gap:10px}
+.fin li{background:rgba(0,0,0,.2);border-radius:10px;padding:16px 20px;font-weight:700;font-size:18px}
+.fin li small{display:block;font-weight:500;opacity:.9;font-size:14px;margin-top:2px}
+.fin .go{display:inline-block;margin-top:24px;background:#fff;color:var(--red);font-weight:800;text-decoration:none;padding:15px 24px;border-radius:8px}
+.fine{font-size:12.5px;color:var(--muted);max-width:60em;line-height:1.55}
+footer{background:var(--black);color:#B9BDC3;padding-block:44px 28px;font-size:15px}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
+footer h4{color:#fff;margin-bottom:10px;font-weight:800}footer ul{list-style:none;padding:0;display:grid;gap:7px}footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+footer .f{margin-top:32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#8C9097}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#fff;color:#16171A;font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);border:1px solid var(--line)}
+@media (max-width:980px){
+ .bar{grid-template-columns:1fr auto;row-gap:10px}.searchbox{grid-column:1/-1;order:3;max-width:none}.storebtn{display:none}
+ .hero .wrap,.fin .wrap{grid-template-columns:1fr;gap:34px}.hero .wrap{padding-block:40px}
+ .tiers{grid-template-columns:1fr 1fr}.depts{grid-template-columns:repeat(2,1fr)}
+ footer .cols{grid-template-columns:1fr 1fr}.sec{padding-block:48px}
+ .logo{font-size:16px;padding:7px 11px 8px}
+}
+</style>
+</head>
+<body>
+<div class="ticker" aria-label="Current offers"><div class="track">
+ <span>Doorbusters in every department<i></i>60 months special financing*<i></i>No down payment*<i></i>Tell ’em Marc Schewel sent you<i></i></span>
+ <span>Doorbusters in every department<i></i>60 months special financing*<i></i>No down payment*<i></i>Tell ’em Marc Schewel sent you<i></i></span>
+ <span>Doorbusters in every department<i></i>60 months special financing*<i></i>No down payment*<i></i>Tell ’em Marc Schewel sent you<i></i></span>
+ <span>Doorbusters in every department<i></i>60 months special financing*<i></i>No down payment*<i></i>Tell ’em Marc Schewel sent you<i></i></span>
+</div></div>
+<header>
+ <div class="wrap bar">
+  <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
+  <label class="searchbox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" data-sx="search" placeholder="Search sofas, beds, washers" aria-label="Search"></label>
+  <button class="storebtn" data-sx="store"><span class="dot"></span><span data-sx-label="store" data-default="Choose your showroom">Choose your showroom</span></button>
+  <div class="icons"><button class="ic" data-sx="wish" aria-label="Saved items"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg><span class="bdg" data-sx-count="wish" hidden>0</span></button><button class="ic" data-sx="cart" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" data-sx-count="cart" hidden>0</span></button></div>
+ </div>
+ <nav class="cats" aria-label="Departments"><div class="wrap">
+  <a class="hot" href="#shop">Doorbusters</a><a href="#shop" data-sx="filter" data-cat="living">Living room</a><a href="#shop" data-sx="filter" data-cat="bedroom">Bedroom</a><a href="#shop" data-sx="filter" data-cat="mattress">Mattresses</a><a href="#shop" data-sx="filter" data-cat="dining">Dining</a><a href="#shop" data-sx="filter" data-cat="office">Home office</a><a href="#shop" data-sx="filter" data-cat="appliances">Appliances</a><a href="#shop" data-sx="filter" data-cat="entertainment">Electronics</a><a href="#fin">Financing</a><a href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a>
+ </div></nav>
+</header>
+
+<main>
+<section class="hero"><div class="wrap">
+ <div>
+  <h1>Doorbusters in <em>every</em> department.</h1>
+  <div class="offer"><span>Up to 50% off*</span><b>+</b><span>Up to $200 off*</span></div>
+  <p class="sub">The more you bring home, the more you save. Special financing for up to 60 months, with no down payment.*</p>
+  <div class="tiers" id="tiers"></div>
+ </div>
+ <div class="calc">
+  <h2>How much will you save?</h2>
+  <label for="amt">Your purchase <output id="amtO">$1,800</output></label>
+  <input id="amt" type="range" min="0" max="4000" step="50" value="1800">
+  <div class="marks"><span>$0</span><span>$1,000</span><span>$2,000</span><span>$3,000</span><span>$4,000</span></div>
+  <div class="res"><div class="row"><span>Subtotal</span><span id="rSub"></span></div><div class="row save"><span>Black Friday savings</span><span id="rSave"></span></div><div class="row tot"><span>You pay</span><span id="rTot"></span></div><div class="row" style="font-size:14px;color:var(--muted)"><span>Or about <b id="rMo"></b>/mo over 60 months</span></div></div>
+  <a class="btn" href="#shop">Shop doorbusters</a>
+  <small>Sample math based on the current promotion. Per-month figure is the total divided by 60, before any fees or interest. Excludes Bedgear and select mattresses. See store for details.</small>
+ </div>
+</div></section>
+
+<section class="sec dark" id="shop"><div class="wrap">
+ <div class="head"><h2 class="t">This week’s doorbusters</h2><p>Add to your cart and watch the savings tier climb. Tap a photo for the details.</p></div>
+ <div data-sx-grid></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="head"><h2 class="t">Shop by department</h2><p>Eight departments, one trip. Pick a room and we’ll jump to it.</p></div>
+ <div class="depts">
+  <button class="dept" data-sx="filter" data-cat="living"><img loading="lazy" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=500&q=70" alt=""><span>Living room</span></button>
+  <button class="dept" data-sx="filter" data-cat="bedroom"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=500&q=70" alt=""><span>Bedroom</span></button>
+  <button class="dept" data-sx="filter" data-cat="mattress"><img loading="lazy" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=500&q=70" alt=""><span>Mattresses</span></button>
+  <button class="dept" data-sx="filter" data-cat="dining"><img loading="lazy" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=500&q=70" alt=""><span>Dining</span></button>
+  <button class="dept" data-sx="filter" data-cat="office"><img loading="lazy" src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?auto=format&fit=crop&w=500&q=70" alt=""><span>Home office</span></button>
+  <button class="dept" data-sx="filter" data-cat="appliances"><img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=500&q=70" alt=""><span>Appliances</span></button>
+ </div>
+</div></section>
+
+<section class="fin" id="fin"><div class="wrap">
+ <div><h2>Own it now. Pay over time.</h2><p>We hold our own accounts, so the people who sell you the furniture are the people who set up your plan. Lease-to-own is there too if you need it.</p><a class="go" href="https://www.schewelshome.com/financing">Apply for financing</a></div>
+ <ul><li>60 months special financing*<small>On qualifying purchases</small></li><li>No down payment*<small>Ask your showroom for details</small></li><li>Lease-to-own options<small>Take it home today, own it at the end</small></li></ul>
+</div></section>
+
+<section style="padding-block:28px"><div class="wrap"><p class="fine">*Sample promotion shown for this concept, based on the current Black Friday offer. Savings apply to qualifying purchases of $500 and up; Bedgear and select mattresses are excluded, and restrictions apply. Special financing and no-down-payment offers are subject to credit approval. See store for details. Products and prices on this page are samples.</p></div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="cols">
+  <div><h4>Schewels Home</h4><p>Furniture, mattresses, appliances, and electronics in 52 showrooms across Virginia, West Virginia, and North Carolina.</p></div>
+  <div><h4>Shop</h4><ul><li><a href="#shop">Doorbusters</a></li><li><a href="#shop">Living room</a></li><li><a href="#shop">Bedroom</a></li><li><a href="#shop">Appliances</a></li></ul></div>
+  <div><h4>Customer care</h4><ul><li><a href="#fin">Financing</a></li><li><a href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a></li><li><a href="#">Delivery</a></li><li><a href="#">Contact us</a></li></ul></div>
+  <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Community</a></li></ul></div>
+ </div>
+ <div class="f">Redesign concept for review. Photos are stand-ins.</div>
+</div></footer>
+<a class="concept-tag" href="../">All concepts</a>
+
+<script src="../shared/features.js"></script>
+<script>
+SX.config.tiers=true;
+const T=SX.tiers.slice().reverse(); // ascending
+const tiersEl=document.getElementById('tiers');
+tiersEl.innerHTML=T.map((t,i)=>{const nx=T[i+1];return `<div class="tier" data-min="${t[0]}"><b>$${t[1]} off</b><span>${nx?SX.money(t[0])+' to '+SX.money(nx[0]-1):SX.money(t[0])+' and up'}</span></div>`}).join('');
+const amt=document.getElementById('amt');
+function calc(){
+  const a=+amt.value;let save=0,on=null;for(const t of T){if(a>=t[0]){save=t[1];on=t[0]}}
+  document.getElementById('amtO').textContent=SX.money(a);
+  document.getElementById('rSub').textContent=SX.money(a);
+  document.getElementById('rSave').textContent=save?'−'+SX.money(save):'$0';
+  document.getElementById('rTot').textContent=SX.money(a-save);
+  document.getElementById('rMo').textContent=SX.money((a-save)/60);
+  tiersEl.querySelectorAll('.tier').forEach(e=>e.classList.toggle('on',+e.dataset.min===on));
+}
+amt.addEventListener('input',calc);calc();
+</script>
+</body>
+</html>

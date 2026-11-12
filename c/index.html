@@ -108,12 +108,23 @@ footer .f{margin-top:32px;padding-top:18px;border-top:2px solid var(--slate);fon
   .sec{padding-block:48px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.icons{display:flex;gap:8px}.ic{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:inherit}.ic:hover{border-color:currentColor}.bdg{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;border-radius:99px;background:#EA0028;color:#fff;font:700 11px/19px 'Montserrat',sans-serif;text-align:center;padding:0 5px}.bdg[hidden]{display:none}
+:root{--sx-accent:#EA0028;--sx-ink:#17181B;--sx-radius:10px;--sx-btn-radius:8px;--sx-head:'Zilla Slab',Georgia,serif;--sx-head-weight:700;--sx-ratio:4/3}
+.sx-card{border:2px solid var(--slate)!important}.sx-img{border-bottom:2px solid var(--slate)!important}
+.sx-chip{border:2px solid var(--slate)!important}.sx-chip[aria-pressed=true]{background:var(--slate)}
+.storebtn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--sans);border:2px solid var(--slate);background:#fff;color:var(--slate);padding:8px 14px;border-radius:8px;cursor:pointer;max-width:210px}
+.storebtn span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--red);flex:none}
+nav.top .ic{border:2px solid var(--slate);width:40px;height:40px}
+.mine{margin-top:12px;font-size:15px;color:#33423A}
+.card{cursor:pointer;background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit}
+@media (max-width:640px){.pay-btn{display:none}.storebtn{max-width:104px;padding:8px 10px}nav.top{gap:10px}header .wrap{gap:12px}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a>
-  <nav class="top" aria-label="Main"><a href="#floor">Shop the showroom</a><a href="#talk">Financing</a><a href="#family">Our story</a><a class="pay-btn" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a></nav>
+  <nav class="top" aria-label="Main"><a href="#floor">Shop the showroom</a><a href="#talk">Financing</a><a href="#family">Our story</a><button class="storebtn" data-sx="store"><span class="dot"></span><span data-sx-label="store" data-default="Choose showroom">Choose showroom</span></button><div class="icons"><button class="ic" data-sx="wish" aria-label="Saved items"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg><span class="bdg" data-sx-count="wish" hidden>0</span></button><button class="ic" data-sx="cart" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" data-sx-count="cart" hidden>0</span></button></div><a class="pay-btn" href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a></nav>
 </div></header>
 
 <main>
@@ -133,7 +144,7 @@ footer .f{margin-top:32px;padding-top:18px;border-top:2px solid var(--slate);fon
     <div class="list" id="list" role="listbox" aria-label="Showrooms"></div>
     <div class="picked" id="picked" hidden>
       <h3 id="pName"></h3><p id="pSub"></p>
-      <div class="row"><a class="b red" id="pPage" href="#">Visit store page</a><a class="b line" id="pDir" href="#" target="_blank" rel="noopener">Get directions</a></div>
+      <div class="row"><button class="b red" id="pMine" style="cursor:pointer;font:inherit;font-weight:700">Make this my showroom</button><a class="b line" id="pPage" href="#">Store page</a><a class="b line" id="pDir" href="#" target="_blank" rel="noopener">Get directions</a></div>
     </div>
   </div>
 </div></section>
@@ -147,12 +158,13 @@ footer .f{margin-top:32px;padding-top:18px;border-top:2px solid var(--slate);fon
 <section class="sec" id="floor"><div class="wrap">
   <div class="head"><h2 class="t">What’s on the floor.</h2><p>Every showroom carries furniture, mattresses, appliances, and electronics. Ask your store what’s in stock.</p></div>
   <div class="floor">
-    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=700&q=75" alt=""></div><h3>Living room</h3><p>Sofas, sectionals, recliners</p></a>
-    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=75" alt=""></div><h3>Bedroom</h3><p>Beds, dressers, nightstands</p></a>
-    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=75" alt=""></div><h3>Dining room</h3><p>Tables and chairs for 2 to 8+</p></a>
-    <a class="card" href="#"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=700&q=75" alt=""></div><h3>Appliances</h3><p>Laundry, kitchen, and more</p></a>
+    <button class="card" data-sx="filter" data-cat="living"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=700&q=75" alt=""></div><h3>Living room</h3><p>Sofas, sectionals, recliners</p></button>
+    <button class="card" data-sx="filter" data-cat="bedroom"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=75" alt=""></div><h3>Bedroom</h3><p>Beds, dressers, nightstands</p></button>
+    <button class="card" data-sx="filter" data-cat="dining"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=75" alt=""></div><h3>Dining room</h3><p>Tables and chairs for 2 to 8+</p></button>
+    <button class="card" data-sx="filter" data-cat="appliances"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=700&q=75" alt=""></div><h3>Appliances</h3><p>Laundry, kitchen, and more</p></button>
   </div>
-  <div class="floor-more"><a class="b line" href="#">Mattresses</a><a class="b line" href="#">Home office</a><a class="b line" href="#">Electronics</a><a class="b line" href="#">Outdoor</a><a class="b line" href="#">Lawn &amp; garden</a><a class="b line" href="#">Current sale</a></div>
+  <div class="floor-more"><a class="b line" href="#floor-grid" data-sx="filter" data-cat="mattress">Mattresses</a><a class="b line" href="#floor-grid" data-sx="filter" data-cat="office">Home office</a><a class="b line" href="#floor-grid" data-sx="filter" data-cat="entertainment">Electronics</a><a class="b line" href="#">Outdoor</a><a class="b line" href="#">Lawn &amp; garden</a><a class="b line" href="#">Current sale</a></div>
+<div id="floor-grid" style="margin-top:44px"><div data-sx-grid></div></div>
 </div></section>
 
 <section class="sec talk" id="talk"><div class="wrap">
@@ -178,18 +190,16 @@ footer .f{margin-top:32px;padding-top:18px;border-top:2px solid var(--slate);fon
   <div class="cols">
     <div><h4>Schewels Home</h4><p>Lynchburg, Virginia. Family owned since 1897.</p></div>
     <div><h4>Shop</h4><ul><li><a href="#">Living room</a></li><li><a href="#">Bedroom</a></li><li><a href="#">Mattresses</a></li><li><a href="#">Appliances</a></li></ul></div>
-    <div><h4>Help</h4><ul><li><a href="#">Financing</a></li><li><a href="#">Delivery</a></li><li><a href="#">Warranty</a></li><li><a href="#">Contact us</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Financing</a></li><li><a href="#">Delivery</a></li><li><a href="#">Warranty</a></li><li><a href="#">Contact us</a></li><li><a href="https://ipn2.paymentus.com/cp/scfc">Make a payment</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Community</a></li></ul></div>
   </div>
   <div class="f">Redesign concept for review. Photos are stand-ins.</div>
 </div></footer>
 <a class="concept-tag" href="../">All concepts</a>
 
+<script src="../shared/features.js"></script>
 <script>
-// [name, state, id, slug override]
-const D=[["Ahoskie","NC",56304],["Altavista","VA",596],["Amherst","VA",597],["Appomattox","VA",598],["Beckley","WV",56305],["Bedford","VA",599],["Blackstone","VA",600],["Bristol","VA",601],["Charles Town","WV",56307],["Charlottesville","VA",602],["Christiansburg","VA",603],["Collinsville","VA",604],["Covington","VA",605],["Culpeper","VA",606],["Danville","VA",607],["Eden","NC",56308],["Elizabeth City","NC",56399],["Elkin","NC",56309],["Emporia","VA",608],["Farmville","VA",609],["Franklin","VA",610],["Front Royal","VA",612],["Galax","VA",613],["Harrisonburg","VA",614],["Henderson","NC",56310],["Lewisburg","WV",56311],["Lexington","VA",615],["Luray","VA",616],["Lynchburg","VA",618],["Martinsburg","WV",56312],["Mount Airy","NC",56313],["Orange","VA",619],["Oxford","NC",56314],["Princeton","WV",56315],["Reidsville","NC",56316],["Richlands","VA",620],["Richmond (Central)","VA",56516,"richmond"],["Richmond (West)","VA",56317,"richmond"],["Roanoke","VA",621],["Roanoke Rapids","NC",56318],["Rocky Mount","VA",622],["Roxboro","NC",645],["Salem","VA",623],["South Boston","VA",624],["South Hill","VA",625],["Staunton","VA",626],["Suffolk","VA",627],["Washington","NC",56487],["Waynesboro","VA",628],["Williamston","NC",646],["Winchester","VA",629],["Wytheville","VA",630]];
-const FULL={VA:['virginia','Virginia'],WV:['westvirginia','West Virginia'],NC:['northcarolina','North Carolina']};
-const S=D.map(([n,st,id,slug])=>({n,st,id,url:`https://www.schewelshome.com/stores/${slug||n.toLowerCase().replace(/ /g,'-')}-${FULL[st][0]}/${id}`}));
+const S=SX.stores;const FULL={VA:['','Virginia'],WV:['','West Virginia'],NC:['','North Carolina']};
 let state='ALL',sel=null;
 const list=document.getElementById('list'),q=document.getElementById('q');
 const sb=document.getElementById('states');
@@ -204,12 +214,13 @@ function render(){
   list.innerHTML='';
   if(!m.length){list.innerHTML=`<div class="empty">No showroom in “${q.value.trim()}”. Try a nearby town or clear the state filter.</div>`;return}
   m.forEach(s=>{const b=document.createElement('button');b.setAttribute('role','option');b.setAttribute('aria-selected',sel===s);
-    b.innerHTML=`${s.n}<em>${FULL[s.st][1]}</em>`;b.onclick=()=>pickIt(s);list.append(b)});
+    b.innerHTML=`${s.n}<em>${s.full}</em>`;b.onclick=()=>pickIt(s);list.append(b)});
 }
 function pickIt(s){sel=s;
-  pName.textContent='Schewels Home, '+s.n;pSub.textContent=FULL[s.st][1];
+  pName.textContent='Schewels Home, '+s.n;pSub.textContent=s.full;
   pPage.href=s.url;pDir.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Schewels Home '+s.n.replace(/ \(.*\)/,'')+', '+s.st);
   picked.hidden=false;render()}
+pMine.onclick=()=>{if(sel)SX.setStore(sel.n,sel.st)};
 q.addEventListener('input',render);render();
 </script>
 </body>

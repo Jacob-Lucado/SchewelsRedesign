@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Schewels Home – Concept E: Match my room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#EA0028;--red-d:#C4001F;--ink:#16171A;--gray:#F4F5F6;--line:#DEE2E6;--muted:#5B6168;--font:'Montserrat',system-ui,sans-serif;
+ --sx-accent:#EA0028;--sx-radius:22px;--sx-btn-radius:999px;--sx-head-weight:700;--sx-ratio:1/1;--sx-soft:#F4F5F6}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);color:var(--ink);background:var(--gray);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit}button{font-family:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.logo{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;background:#EA0028;color:#fff;padding:9px 14px 10px;border-radius:9px;font-size:19px;line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;text-align:center}.icons{display:flex;gap:8px}.ic{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;display:grid;place-items:center;cursor:pointer;color:inherit}.ic:hover{border-color:currentColor}.bdg{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;border-radius:99px;background:#EA0028;color:#fff;font:700 11px/19px 'Montserrat',sans-serif;text-align:center;padding:0 5px}.bdg[hidden]{display:none}
+header{background:#fff;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px}
+.right{display:flex;gap:10px;align-items:center}
+.storebtn{display:inline-flex;gap:8px;align-items:center;font:600 14px var(--font);border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:10px 15px;border-radius:999px;cursor:pointer;max-width:230px}
+.storebtn:hover{border-color:var(--ink)}.storebtn span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dot{width:9px;height:9px;border-radius:50%;background:var(--red);flex:none}
+.intro{text-align:center;padding:64px 0 26px}
+h1{font-weight:800;font-size:clamp(36px,5.4vw,68px);line-height:1.02;letter-spacing:-.04em;text-wrap:balance;max-width:14em;margin-inline:auto}
+.intro p{color:var(--muted);font-size:18px;margin:16px auto 0;max-width:30em}
+.quiz{background:#fff;border-radius:32px;padding:34px clamp(20px,4vw,48px) 40px;margin:26px auto 60px;max-width:980px;box-shadow:0 40px 80px -50px rgba(22,23,26,.45)}
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.prog .bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}.prog .bar i{display:block;height:100%;background:var(--red);border-radius:99px;transition:width .35s}
+.prog span{font-weight:600;font-size:14px;color:var(--muted);white-space:nowrap}
+.back{background:none;border:0;font:600 14px var(--font);color:var(--muted);cursor:pointer;padding:6px 0;text-decoration:underline}.back[hidden]{display:none}
+h2.q{font-weight:800;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.035em;line-height:1.08;margin-bottom:6px}
+.hint{color:var(--muted);margin-bottom:24px}
+.opts{display:grid;gap:14px}
+.opts.photos{grid-template-columns:repeat(3,1fr)}.opts.five{grid-template-columns:repeat(5,1fr)}.opts.text{grid-template-columns:repeat(2,1fr)}
+.opt{position:relative;border:2px solid var(--line);background:#fff;border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;padding:0;transition:border-color .15s,transform .15s,box-shadow .15s;color:var(--ink)}
+.opt:hover{border-color:var(--ink);transform:translateY(-2px)}
+.opt[aria-pressed=true]{border-color:var(--red);box-shadow:0 0 0 3px rgba(234,0,40,.18)}
+.opt img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.five .opt img{aspect-ratio:3/4}
+.opt b{display:block;padding:12px 16px 14px;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.opts.text .opt{padding:20px 22px}.opts.text .opt b{padding:0;font-size:19px}.opts.text .opt span{display:block;color:var(--muted);margin-top:4px;font-size:15px}
+.result{max-width:1120px;margin:0 auto 70px}
+.res-head{text-align:center;margin-bottom:30px}
+.res-head h2{font-weight:800;font-size:clamp(30px,4.4vw,54px);letter-spacing:-.04em;line-height:1.03}
+.tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.tags span{background:#fff;border:1.5px solid var(--line);padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px}
+.res-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:start}
+.plan{background:#16171A;color:#fff;border-radius:28px;padding:30px;position:sticky;top:20px}
+.plan h3{font-weight:800;font-size:24px;letter-spacing:-.03em;line-height:1.1}
+.plan p{color:#C9CCD1;margin-top:12px;font-size:16px}
+.plan .big{font-weight:800;font-size:46px;letter-spacing:-.04em;line-height:1;margin-top:18px}.plan .big small{font-size:15px;font-weight:500;color:#C9CCD1;letter-spacing:0}
+.plan .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.pill{border:0;border-radius:999px;padding:13px 20px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;display:inline-block}
+.pill.red{background:var(--red);color:#fff}.pill.red:hover{background:var(--red-d)}.pill.ghost{background:transparent;color:#fff;border:2px solid #fff}.pill.ghost:hover{background:#fff;color:#16171A}
+.pill.dark{background:var(--ink);color:#fff}
+.more{margin-top:44px}.more h3{font-weight:800;font-size:28px;letter-spacing:-.03em;margin-bottom:18px}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px;max-width:46em}
+footer{padding:36px 0 60px;color:var(--muted);font-size:14px;text-align:center}
+.concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#16171A;color:#fff;font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;text-decoration:none}
+[hidden]{display:none!important}
+@media (max-width:860px){.opts.photos,.opts.text{grid-template-columns:1fr 1fr}.opts.five{grid-template-columns:repeat(2,1fr)}.res-grid{grid-template-columns:1fr}.plan{position:static}.intro{padding-top:40px}.storebtn{max-width:130px;padding:9px 11px}.logo{font-size:16px;padding:7px 11px 8px}}
+@media (max-width:480px){.opts.text{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#" aria-label="Schewels Home">schewels<br>home</a><div class="right"><button class="storebtn" data-sx="store"><span class="dot"></span><span data-sx-label="store" data-default="Choose showroom">Choose showroom</span></button><div class="icons"><button class="ic" data-sx="wish" aria-label="Saved items"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.6 8 4.6c1.7 0 3.3.9 4 2.4.7-1.5 2.3-2.4 4-2.4 2.4 0 4.5 2 4.5 4.7 0 6.1-8.5 11.2-8.5 11.2z"/></svg><span class="bdg" data-sx-count="wish" hidden>0</span></button><button class="ic" data-sx="cart" aria-label="Cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" data-sx-count="cart" hidden>0</span></button></div></div></div></header>
+<main>
+<section class="intro wrap"><h1>Let’s find the right pieces for your room.</h1><p>Four quick questions. We’ll pick what fits your style and budget, then show you how it could be paid for.</p></section>
+
+<section class="quiz wrap" id="quiz" aria-live="polite">
+ <div class="prog"><button class="back" id="back" hidden>Back</button><div class="bar"><i id="barI" style="width:25%"></i></div><span id="stepL">Question 1 of 4</span></div>
+ <h2 class="q" id="qT"></h2><p class="hint" id="qH"></p>
+ <div class="opts" id="opts"></div>
+</section>
+
+<section class="result wrap" id="result" hidden>
+ <div class="res-head"><h2 id="rT">Here’s your match.</h2><div class="tags" id="tags"></div></div>
+ <div class="res-grid">
+  <div><div data-grid id="matchGrid" data-filters="off"></div></div>
+  <aside class="plan" id="plan"></aside>
+ </div>
+ <div class="more" id="more"><h3 id="moreT"></h3><div data-grid id="allGrid"></div></div>
+ <p class="note">Sample products and prices, matched by simple rules for this concept. Monthly figures are demo math: price divided by months, before any fees or interest.</p>
+</section>
+</main>
+<footer>Redesign concept for review. Photos are stand-ins.</footer>
+<a class="concept-tag" href="../">All concepts</a>
+
+<script src="../shared/features.js"></script>
+<script>
+const U=(i,w=600)=>`https://images.unsplash.com/photo-${i}?auto=format&fit=crop&w=${w}&q=70`;
+const STEPS=[
+ {k:'room',t:'Which room are you working on?',h:'Pick the one you want to start with.',type:'photos',o:[['living','Living room','1493663284031-b7e3aefcae8e'],['bedroom','Bedroom','1505693416388-ac5ce068fe85'],['dining','Dining room','1617806118233-18e1de247200'],['office','Home office','1611269154421-4e27233ac5c7'],['mattress','Mattress','1631049307264-da0ec9d70304'],['appliances','Appliances','1626806787461-102c1bfaaea1']]},
+ {k:'style',t:'Which look feels most like home?',h:'There’s no wrong answer. You can change it later.',type:'five',o:[['Casual','Casual','1484101403633-562f891dc89a'],['Contemporary','Contemporary','1616486338812-3dadae4b4ace'],['Traditional','Traditional','1505693416388-ac5ce068fe85'],['Transitional','Transitional','1600210492486-724fe5c67fb0'],['Relaxed vintage','Relaxed vintage','1540518614846-7eded433c457']]},
+ {k:'budget',t:'What do you want to spend on each piece?',h:'A rough range is fine.',type:'text',o:[['0-500','Under $500','Accent chairs, shelves, side pieces'],['500-1000','$500 to $1,000','Most sofas, desks, beds'],['1000-1500','$1,000 to $1,500','Bigger sofas and full dining sets'],['1500-9999','$1,500 and up','Leather, sectionals, statement pieces']]},
+ {k:'pay',t:'How would you like to pay?',h:'We’ll show what each way could look like.',type:'text',o:[['cash','All at once','Pay in full at the showroom'],['monthly','Monthly, with a Schewels account','We hold our own accounts'],['lease','Lease-to-own','Take it home now, own it at the end'],['unsure','Not sure yet','Talk it through with someone']]}
+];
+const A={};let step=0;
+const opts=document.getElementById('opts');
+function render(){
+  const s=STEPS[step];
+  document.getElementById('qT').textContent=s.t;document.getElementById('qH').textContent=s.h;
+  document.getElementById('stepL').textContent=`Question ${step+1} of ${STEPS.length}`;
+  document.getElementById('barI').style.width=((step+1)/STEPS.length*100)+'%';
+  document.getElementById('back').hidden=step===0;
+  opts.className='opts '+s.type;
+  opts.innerHTML=s.o.map(o=>s.type==='text'
+    ?`<button class="opt" data-v="${o[0]}" aria-pressed="${A[s.k]===o[0]}"><b>${o[1]}</b><span>${o[2]}</span></button>`
+    :`<button class="opt" data-v="${o[0]}" aria-pressed="${A[s.k]===o[0]}"><img src="${U(o[2])}" alt=""><b>${o[1]}</b></button>`).join('');
+}
+opts.addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;
+  A[STEPS[step].k]=b.dataset.v;[...opts.children].forEach(x=>x.setAttribute('aria-pressed',x===b));
+  setTimeout(()=>{if(step<STEPS.length-1){step++;render();}else showResult();},220)});
+document.getElementById('back').onclick=()=>{if(step>0){step--;render()}};
+
+const REL={mattress:['bedroom'],appliances:['entertainment','office'],entertainment:['living'],office:['living','dining'],living:[],bedroom:[],dining:[]};
+function match(){
+  const [lo,hi]=A.budget.split('-').map(Number);
+  let pool=SX.products.filter(p=>p.cat===A.room);
+  if(pool.length<3)REL[A.room].forEach(c=>{pool=pool.concat(SX.products.filter(p=>p.cat===c))});
+  return pool.map(p=>({p,s:(p.price>=lo&&p.price<=hi?3:0)+(p.style===A.style?2:0)+(p.cat===A.room?1:0)-Math.abs(((lo+Math.min(hi,2500))/2)-p.price)/5000})).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.p);
+}
+function showResult(){
+  const m=match(),top=m[0],roomName=SX.cats[A.room];
+  document.getElementById('quiz').hidden=true;
+  const res=document.getElementById('result');res.hidden=false;
+  document.getElementById('rT').textContent=`Here’s your ${roomName.toLowerCase()} match.`;
+  const bl={'0-500':'Under $500','500-1000':'$500 to $1,000','1000-1500':'$1,000 to $1,500','1500-9999':'$1,500 and up'}[A.budget];
+  document.getElementById('tags').innerHTML=[roomName,A.style,bl].map(t=>`<span>${t}</span>`).join('');
+  const g=document.getElementById('matchGrid');g.setAttribute('data-ids',m.map(x=>x.id).join(','));SX.mountGrid(g);
+  const mo=SX.money(top.price/24);
+  const plans={
+    cash:['Paying in full','Ask your showroom about current promotions before you buy. They can tell you what applies to your picks.',''],
+    monthly:['Paying monthly','A Schewels account lets you spread it out. Here is what your top pick could look like over 24 months.',`<div class="big">${mo}<small> a month</small></div>`],
+    lease:['Lease-to-own','Take it home now and own it after your last payment. A showroom team member will walk you through it.',`<div class="big">${mo}<small> a month, as an example</small></div>`],
+    unsure:['Let’s talk it through','Nothing to decide today. Your showroom can lay out every option side by side.','']
+  }[A.pay];
+  document.getElementById('plan').innerHTML=`<h3>${plans[0]}</h3><p>${plans[1]}</p>${plans[2]}<div class="row"><button class="pill red" id="pStore">${SX.state.store?'Your showroom: '+SX.state.store.n.replace(/ \(.*\)/,''):'Choose your showroom'}</button><a class="pill ghost" href="https://www.schewelshome.com/financing">Apply for financing</a></div><div class="row" style="margin-top:12px"><button class="pill ghost" id="again">Start over</button></div>`;
+  document.getElementById('pStore').onclick=()=>SX.openStore();
+  document.getElementById('again').onclick=()=>{res.hidden=true;document.getElementById('quiz').hidden=false;step=0;Object.keys(A).forEach(k=>delete A[k]);render();window.scrollTo({top:0})};
+  document.getElementById('moreT').textContent=`More in ${roomName.toLowerCase()}`;
+  const ag=document.getElementById('allGrid');ag.setAttribute('data-cat',A.room);ag.setAttribute('data-filters','off');SX.mountGrid(ag);
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+SX.onChange(()=>{const b=document.getElementById('pStore');if(b)b.textContent=SX.state.store?'Your showroom: '+SX.state.store.n.replace(/ \(.*\)/,''):'Choose your showroom'});
+render();
+</script>
+</body>
+</html>
