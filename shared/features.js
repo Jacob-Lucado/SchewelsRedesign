@@ -67,7 +67,7 @@
 
   /* ---------- styles ---------- */
   var css = '\
-:root{--sx-accent:#EA0028;--sx-accent-d:#C4001F;--sx-accent-ink:#fff;--sx-ink:#16171A;--sx-bg:#fff;--sx-soft:#F7F7F7;--sx-line:#DEE2E6;--sx-muted:#5B6168;--sx-radius:12px;--sx-btn-radius:10px;--sx-font:"Montserrat",system-ui,sans-serif;--sx-head:var(--sx-font);--sx-head-weight:700;--sx-ratio:4/3}\
+:where(:root){--sx-accent:#EA0028;--sx-accent-d:#C4001F;--sx-accent-ink:#fff;--sx-ink:#16171A;--sx-bg:#fff;--sx-soft:#F7F7F7;--sx-line:#DEE2E6;--sx-muted:#5B6168;--sx-radius:12px;--sx-btn-radius:10px;--sx-font:"Montserrat",system-ui,sans-serif;--sx-head:var(--sx-font);--sx-head-weight:700;--sx-ratio:4/3}\
 .sx-btn,.sx-ghost,.sx-chip{font:600 14px/1 var(--sx-font);cursor:pointer;border-radius:var(--sx-btn-radius);transition:background .15s,color .15s,border-color .15s}\
 .sx-btn{background:var(--sx-accent);color:var(--sx-accent-ink);border:2px solid var(--sx-accent);padding:12px 18px}\
 .sx-btn:hover{background:var(--sx-accent-d);border-color:var(--sx-accent-d)}\
@@ -85,7 +85,7 @@
 .sx-img{display:block;width:100%;padding:0;border:0;background:var(--sx-soft);aspect-ratio:var(--sx-ratio);cursor:pointer;overflow:hidden}\
 .sx-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}\
 .sx-card:hover .sx-img img{transform:scale(1.04)}\
-.sx-heart{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.95);display:grid;place-items:center;cursor:pointer;color:var(--sx-ink);box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}\
+.sx-heart{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.95);display:grid;place-items:center;cursor:pointer;color:#16171A;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}\
 .sx-heart[aria-pressed=true]{color:var(--sx-accent)}.sx-heart[aria-pressed=true] svg{fill:currentColor}\
 .sx-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}\
 .sx-tag{font:500 13px var(--sx-font);color:var(--sx-muted)}\
