@@ -378,17 +378,17 @@
       '.sx-about .ab-mv{display:grid;gap:26px;padding-top:6px}' +
       '.sx-about .ab-mv small{display:block;font-size:13px;font-weight:700;color:var(--sx-accent,#EA0028);margin-bottom:6px}' +
       '.sx-about .ab-mv p{margin:0;font-size:20px;line-height:1.45;color:var(--ab-ink);font-weight:500}' +
-      '.sx-about .ab-ph{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin:64px 0}' +
-      '.sx-about .ab-ph img{width:100%;height:280px;object-fit:cover;display:block;border-radius:var(--sx-radius,12px);background:var(--ab-line)}' +
+      '.sx-about .ab-ph{display:flex;gap:16px;align-items:flex-start;margin:64px 0}.sx-about .ab-ph img{min-width:0}' +
+      '.sx-about .ab-ph img{width:100%;height:auto;display:block;border-radius:var(--sx-radius,12px);background:var(--ab-line)}' +
       '.sx-about .ab-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:0 48px}' +
       '.sx-about .ab-vals div{padding:22px 0;border-top:1px solid var(--ab-line)}' +
       '.sx-about .ab-vals b{display:block;font-size:17px;margin-bottom:6px}.sx-about .ab-vals p{margin:0;color:var(--ab-mut);font-size:15px;line-height:1.6}' +
-      '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr;gap:32px}.sx-about .ab-vals{grid-template-columns:1fr 1fr}.sx-about .ab-ph img{height:200px}}' +
-      '@media(max-width:560px){.sx-about{padding:64px 20px}.sx-about .ab-ph{grid-template-columns:1fr;margin:40px 0}.sx-about .ab-vals{grid-template-columns:1fr}.sx-about .ab-ph img{height:220px}}';
+      '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr;gap:32px}.sx-about .ab-vals{grid-template-columns:1fr 1fr}}' +
+      '@media(max-width:560px){.sx-about{padding:64px 20px}.sx-about .ab-ph{flex-direction:column;margin:40px 0}.sx-about .ab-ph img{flex:none!important}.sx-about .ab-vals{grid-template-columns:1fr}}';
     var vals = [['Integrity', 'Demonstrate honesty, respect and trust in everything we do.'], ['Customer Focus', 'Go above and beyond to provide an exceptional customer experience.'],
       ['Family', 'Treat our customers and employees like family.'], ['Commitment to Employees', 'Provide employees with opportunities to grow personally and professionally in an enjoyable work environment with great benefits.'],
       ['Teamwork', 'Work together for a common goal.'], ['Community', 'Give back to the communities that have made our business great.']];
-    var photos = [['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/fd3ad17e-02aa-4da2-a37d-4c56bf5513e3.jpg?format=webp&quality=85&width=700','The Schewel family'],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/14f83c92-0932-45c7-9c8b-cbe6e5199b40.jpg?format=webp&quality=85&width=700','Our old locations'],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/7fc1bcb7-925e-42f9-807b-131037c272d4.jpg?format=webp&quality=85&width=700','A Schewels Home store today']];
+    var photos = [['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/fd3ad17e-02aa-4da2-a37d-4c56bf5513e3.jpg?format=webp&quality=85&width=700','The Schewel family',833/811],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/14f83c92-0932-45c7-9c8b-cbe6e5199b40.jpg?format=webp&quality=85&width=700','Our old locations',823/718],['https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/rodeo/prod/489408e5f546687d334043d152ae0814/files/7fc1bcb7-925e-42f9-807b-131037c272d4.jpg?format=webp&quality=85&width=700','A Schewels Home store today',1518/1000]];
     function lum(c) { var m = (c || '').match(/\d+(\.\d+)?/g); if (!m || (m.length > 3 && +m[3] === 0)) return 1; return (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) / 255; }
     function build() {
       if (document.getElementById('about')) return;
@@ -403,7 +403,7 @@
         '<p>Today we are owned and operated by Marc and Jack Schewel, the fourth generation, and Matt Schewel, the fifth, with showrooms throughout Virginia, West Virginia and North Carolina.</p></div>' +
         '<div class="ab-mv"><div><small>Our mission</small><p>To provide affordable home furnishings and exceptional customer service to generations of families.</p></div>' +
         '<div><small>Our vision</small><p>To be the premier destination for home furnishings in the communities we serve, where everyone wants to shop and everyone wants to work.</p></div></div></div>' +
-        '<div class="ab-ph">' + photos.map(function (p) { return '<img loading="lazy" src="' + p[0] + '" alt="' + p[1] + '">'; }).join('') + '</div>' +
+        '<div class="ab-ph">' + photos.map(function (p) { return '<img loading="lazy" style="flex:' + p[2].toFixed(3) + ' 1 0;aspect-ratio:' + p[2].toFixed(3) + '" src="' + p[0] + '" alt="' + p[1] + '">'; }).join('') + '</div>' +
         '<div class="ab-vals">' + vals.map(function (v) { return '<div><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div></div>';
       foot.parentNode.insertBefore(s, foot);
       if (!document.querySelector('a[href="#about"]') && !foot.querySelector('a[href="#"]')) {
