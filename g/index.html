@@ -58,8 +58,8 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#ff4d6a,var(--red));-we
 .spot .row{display:flex;gap:10px;padding:14px 8px 4px;align-items:center}
 .spot .row .btn{padding:11px 20px;font-size:14px}
 .arrows{margin-left:auto;display:flex;gap:8px}.arrows button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel);cursor:pointer;font-size:16px}.arrows button:hover{background:var(--red);border-color:var(--red)}
-.tag3d{position:absolute;right:-14px;top:36px;transform:translateZ(70px);background:rgba(7,8,10,.85);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)}
-.tag3d b{display:block;font:700 16px Sora;color:#fff}
+.tag3d{position:absolute;right:32px;top:32px;z-index:4;background:rgba(7,8,10,.85);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)}
+.tag3d b{display:block;font:700 15px Sora;color:#fff;white-space:nowrap}.tag3d{white-space:nowrap}
 /* hud */
 .hud{border-block:1px solid var(--line);background:rgba(255,255,255,.02)}
 .hud .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -93,7 +93,7 @@ input[type=range]{width:100%;accent-color:var(--red);margin:14px 0 22px}
 .pi .ic{width:38px;height:38px;border-radius:9px;background:var(--panel);display:grid;place-items:center}
 footer{border-top:1px solid var(--line);padding:30px 20px;color:var(--mut);font-size:13px;text-align:center}
 .concept-tag{position:fixed;left:16px;bottom:16px;z-index:60;background:#fff;color:#111;padding:10px 16px;border-radius:99px;font:700 13px Montserrat;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.4)}
-@media(max-width:900px){.hero .wrap,.plan{grid-template-columns:1fr}.hud .wrap{grid-template-columns:1fr 1fr}.hud div:nth-child(3){border-left:0;padding-left:0}.tag3d{display:none}.cmd span.t{display:none}.cmd kbd{display:none}.cmd{flex:0 0 auto;margin:0 0 0 auto}.sbtn{display:none}}
+@media(max-width:900px){.hero .wrap,.plan{grid-template-columns:1fr}.hud .wrap{grid-template-columns:1fr 1fr}.hud div:nth-child(3){border-left:0;padding-left:0}.cmd span.t{display:none}.cmd kbd{display:none}.cmd{flex:0 0 auto;margin:0 0 0 auto}.sbtn{display:none}}
 @media(prefers-reduced-motion:reduce){.blob,.scan{animation:none}}
 </style>
 </head>
