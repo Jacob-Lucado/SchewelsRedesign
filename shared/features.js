@@ -367,6 +367,58 @@
     changed();
   }
 
+
+  /* About Schewels: injected into every concept so the story and values are always on the page */
+  (function () {
+    var css = '.sx-about{padding:72px 20px;font-family:var(--sx-font,Montserrat,sans-serif);background:var(--ab-bg);color:var(--ab-ink)}' +
+      '.sx-about .ab-in{max-width:1180px;margin:0 auto}' +
+      '.sx-about h2{font-family:var(--sx-head,var(--sx-font,Montserrat,sans-serif));font-weight:var(--sx-head-weight,800);font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px;max-width:18ch}' +
+      '.sx-about .ab-top{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;margin-bottom:44px}' +
+      '.sx-about .ab-top p{margin:0 0 14px;font-size:17px;line-height:1.65;color:var(--ab-mut);max-width:62ch}' +
+      '.sx-about .ab-gen{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}' +
+      '.sx-about .ab-gen span{border:1.5px solid var(--ab-line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}' +
+      '.sx-about .ab-mv{display:grid;gap:14px}' +
+      '.sx-about .ab-mv div{background:var(--ab-card);border:1px solid var(--ab-line);border-radius:var(--sx-radius,14px);padding:22px 24px}' +
+      '.sx-about .ab-mv b{display:block;color:var(--sx-accent,#EA0028);font-weight:800;margin-bottom:6px}' +
+      '.sx-about .ab-mv p{margin:0;font-size:16px;color:var(--ab-ink)}' +
+      '.sx-about .ab-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}' +
+      '.sx-about .ab-vals div{background:var(--ab-card);border:1px solid var(--ab-line);border-radius:var(--sx-radius,14px);padding:22px;border-top:4px solid var(--sx-accent,#EA0028)}' +
+      '.sx-about .ab-vals b{display:block;font-size:18px;margin-bottom:6px}.sx-about .ab-vals p{margin:0;color:var(--ab-mut);font-size:15px;line-height:1.55}' +
+      '.sx-about .ab-note{margin:26px 0 0;font-size:13px;color:var(--ab-mut)}' +
+      '@media(max-width:900px){.sx-about .ab-top{grid-template-columns:1fr}.sx-about .ab-vals{grid-template-columns:1fr 1fr}}' +
+      '@media(max-width:560px){.sx-about{padding:52px 16px}.sx-about .ab-vals{grid-template-columns:1fr}}';
+    var vals = [['Integrity', 'Honesty, respect and trust in everything we do.'], ['Customer focus', 'Going the extra mile to give every shopper a great experience.'],
+      ['Family', 'We treat customers and employees like family.'], ['Commitment to employees', 'Room to grow, a good place to work, and strong benefits.'],
+      ['Teamwork', 'Working together toward shared goals.'], ['Community', 'Giving back to the communities that have supported us.']];
+    function lum(c) { var m = (c || '').match(/\d+(\.\d+)?/g); if (!m || (m.length > 3 && +m[3] === 0)) return 1; return (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) / 255; }
+    function build() {
+      if (document.getElementById('about')) return;
+      var foot = document.querySelector('footer'); if (!foot) return;
+      var dark = lum(getComputedStyle(document.body).backgroundColor) < 0.4;
+      var st = document.createElement('style');
+      st.textContent = css + '.sx-about{' + (dark ? '--ab-bg:#0E0F11;--ab-ink:#fff;--ab-mut:#b4b9bf;--ab-card:#17191C;--ab-line:#2A2D31' : '--ab-bg:#F7F7F7;--ab-ink:#212529;--ab-mut:#525960;--ab-card:#fff;--ab-line:#E3E5E8') + '}';
+      document.head.appendChild(st);
+      var s = document.createElement('section'); s.id = 'about'; s.className = 'sx-about';
+      s.innerHTML = '<div class="ab-in"><div class="ab-top"><div><h2>About Schewels Home</h2>' +
+        '<p>Elias Schewel started selling chairs door to door in Lynchburg, Virginia in 1897. He let customers pay over time, and he served everyone in the community, whatever their race or religion.</p>' +
+        '<p>Today we are one of the oldest furniture retailers in the country, with showrooms across Virginia, West Virginia and North Carolina. We are still family owned.</p>' +
+        '<div class="ab-gen"><span>Marc Schewel, 4th generation</span><span>Jack Schewel, 4th generation</span><span>Matt Schewel, 5th generation</span></div></div>' +
+        '<div class="ab-mv"><div><b>Our mission</b><p>Provide affordable home furnishings and excellent customer service to generations of families.</p></div>' +
+        '<div><b>Our vision</b><p>Be the leading home furnishings destination in the communities we serve, where customers want to shop and employees want to work.</p></div></div></div>' +
+        '<div class="ab-vals">' + vals.map(function (v) { return '<div><b>' + v[0] + '</b><p>' + v[1] + '</p></div>'; }).join('') + '</div>' +
+        '<p class="ab-note">Online prices and descriptions can differ from what you see in the showroom. Showroom pricing is the most accurate, so please confirm details with your local store.</p></div>';
+      foot.parentNode.insertBefore(s, foot);
+      if (!document.querySelector('a[href="#about"]') && !foot.querySelector('a[href="#"]')) {
+        var l = document.createElement('a'); l.href = '#about'; l.textContent = 'About us'; l.style.cssText = 'color:inherit;font-weight:700;margin-left:14px;text-decoration:underline';
+        (foot.querySelector('.wrap') || foot).appendChild(l);
+      }
+      [].forEach.call(document.querySelectorAll('a[href="#"]'), function (a) {
+        if (/^(about|our story)$/i.test(a.textContent.trim())) a.setAttribute('href', '#about');
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build); else build();
+  })();
+
   window.SX = {
     products: P, byId: byId, cats: CATS, styles: STYLES, stores: STORES, nav: NAV, state: S, config: cfg,
     money: $, img: IMG, esc: esc, add: add, addMany: addMany, wish: wish, openProduct: openProduct, openCart: openDrawer, openStore: openStore, setStore: setStore,
